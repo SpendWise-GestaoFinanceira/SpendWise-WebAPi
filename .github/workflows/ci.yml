@@ -1,0 +1,196 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+env:
+  DOTNET_VERSION: '8.0.x'
+  NODE_VERSION: '18.x'
+
+jobs:
+  # Lint Backend
+  lint-backend:
+    name: Lint Backend (.NET)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: Restore dependencies
+        run: dotnet restore SpendWise/backend/SpendWise.sln
+
+      - name: Build solution
+        run: dotnet build SpendWise/backend/SpendWise.sln --no-restore --verbosity normal
+
+      - name: Run code analysis
+        run: dotnet build SpendWise/backend/SpendWise.sln --no-restore --verbosity normal --property:TreatWarningsAsErrors=true
+
+  # Lint Frontend
+  lint-frontend:
+    name: Lint Frontend (Next.js)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: latest
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+        working-directory: MateusOrlando-TPPE-2025.2-Frontend
+
+      - name: Run ESLint
+        run: pnpm lint
+        working-directory: MateusOrlando-TPPE-2025.2-Frontend
+
+      - name: Run Prettier check
+        run: pnpm format:check
+        working-directory: MateusOrlando-TPPE-2025.2-Frontend
+
+      - name: Run TypeScript check
+        run: pnpm type-check
+        working-directory: MateusOrlando-TPPE-2025.2-Frontend
+
+  # Test Backend
+  test-backend:
+    name: Test Backend
+    runs-on: ubuntu-latest
+    needs: lint-backend
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: spendwise_test
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: Restore dependencies
+        run: dotnet restore SpendWise/backend/SpendWise.sln
+
+      - name: Run tests
+        run: dotnet test SpendWise/backend/SpendWise.sln --no-build --verbosity normal --collect:"XPlat Code Coverage" --results-directory ./TestResults
+        env:
+          ConnectionStrings__DefaultConnection: "Host=localhost;Port=5432;Database=spendwise_test;Username=postgres;Password=postgres"
+
+      - name: Upload test results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: test-results
+          path: TestResults/
+
+  # Test Frontend
+  test-frontend:
+    name: Test Frontend
+    runs-on: ubuntu-latest
+    needs: lint-frontend
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: latest
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+        working-directory: MateusOrlando-TPPE-2025.2-Frontend
+
+      - name: Build application
+        run: pnpm build
+        working-directory: MateusOrlando-TPPE-2025.2-Frontend
+
+  # Build and Push Docker Images
+  build-docker:
+    name: Build Docker Images
+    runs-on: ubuntu-latest
+    needs: [test-backend, test-frontend]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build and push backend image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./SpendWise/backend
+          file: ./SpendWise/backend/Dockerfile
+          push: true
+          tags: |
+            ${{ secrets.DOCKER_USERNAME }}/spendwise-backend:latest
+            ${{ secrets.DOCKER_USERNAME }}/spendwise-backend:${{ github.sha }}
+
+      - name: Build and push frontend image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./MateusOrlando-TPPE-2025.2-Frontend
+          file: ./MateusOrlando-TPPE-2025.2-Frontend/Dockerfile
+          push: true
+          tags: |
+            ${{ secrets.DOCKER_USERNAME }}/spendwise-frontend:latest
+            ${{ secrets.DOCKER_USERNAME }}/spendwise-frontend:${{ github.sha }}
+
+  # Deploy to Production
+  deploy:
+    name: Deploy to Production
+    runs-on: ubuntu-latest
+    needs: build-docker
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    environment: production
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy to server
+        run: |
+          echo "Deploying to production server..."
+          # Add your deployment commands here
+          # Example: SSH to server and run docker-compose up
