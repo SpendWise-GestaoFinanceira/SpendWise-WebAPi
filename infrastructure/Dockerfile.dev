@@ -1,0 +1,35 @@
+# Dockerfile para desenvolvimento
+FROM mcr.microsoft.com/dotnet/sdk:9.0
+
+# Instalar dependências do sistema
+RUN apt-get update && apt-get install -y \
+    curl \
+    postgresql-client \
+    && rm -rf /var/lib/apt/lists/*
+
+# Configurar diretório de trabalho
+WORKDIR /app
+
+# Copiar arquivos de solução e projetos
+COPY ["Directory.Build.props", "./"]
+COPY ["SpendWise.sln", "./"]
+COPY ["src/SpendWise.API/SpendWise.API.csproj", "src/SpendWise.API/"]
+COPY ["src/SpendWise.Application/SpendWise.Application.csproj", "src/SpendWise.Application/"]
+COPY ["src/SpendWise.Domain/SpendWise.Domain.csproj", "src/SpendWise.Domain/"]
+COPY ["src/SpendWise.Infrastructure/SpendWise.Infrastructure.csproj", "src/SpendWise.Infrastructure/"]
+COPY ["tests/SpendWise.Domain.Tests/SpendWise.Domain.Tests.csproj", "tests/SpendWise.Domain.Tests/"]
+COPY ["tests/SpendWise.Application.Tests/SpendWise.Application.Tests.csproj", "tests/SpendWise.Application.Tests/"]
+COPY ["tests/SpendWise.Infrastructure.Tests/SpendWise.Infrastructure.Tests.csproj", "tests/SpendWise.Infrastructure.Tests/"]
+
+# Restaurar dependências
+RUN dotnet restore "SpendWise.sln"
+
+# Copiar todo o código
+COPY ["src/", "src/"]
+COPY ["tests/", "tests/"]
+
+# Expor portas
+EXPOSE 5000
+
+# Comando para desenvolvimento (watch mode)
+CMD ["dotnet", "watch", "run", "--project", "src/SpendWise.API/SpendWise.API.csproj", "--urls", "http://0.0.0.0:5000"]

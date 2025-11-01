@@ -1,0 +1,2907 @@
+{
+  "SpendWise.Domain.dll": {
+    "C:\\Users\\mateu\\OneDrive\\Área de Trabalho\\UNB\\TPPE\\MateusOrlando-TPPE-2025.2-WebAPi\\SpendWise\\backend\\src\\SpendWise.Domain\\ValueObjects\\Email.cs": {
+      "SpendWise.Domain.ValueObjects.Email": {
+        "System.String SpendWise.Domain.ValueObjects.Email::get_Valor()": {
+          "Lines": {
+            "11": 83
+          },
+          "Branches": []
+        },
+        "System.String SpendWise.Domain.ValueObjects.Email::get_Domain()": {
+          "Lines": {
+            "13": 3
+          },
+          "Branches": []
+        },
+        "System.String SpendWise.Domain.ValueObjects.Email::get_LocalPart()": {
+          "Lines": {
+            "14": 3
+          },
+          "Branches": []
+        },
+        "System.String SpendWise.Domain.ValueObjects.Email::op_Implicit(SpendWise.Domain.ValueObjects.Email)": {
+          "Lines": {
+            "29": 1
+          },
+          "Branches": []
+        },
+        "SpendWise.Domain.ValueObjects.Email SpendWise.Domain.ValueObjects.Email::op_Implicit(System.String)": {
+          "Lines": {
+            "30": 0
+          },
+          "Branches": []
+        },
+        "System.String SpendWise.Domain.ValueObjects.Email::ToString()": {
+          "Lines": {
+            "32": 1
+          },
+          "Branches": []
+        },
+        "System.Boolean SpendWise.Domain.ValueObjects.Email::Equals(System.Object)": {
+          "Lines": {
+            "35": 6,
+            "36": 6,
+            "37": 6,
+            "38": 6
+          },
+          "Branches": [
+            {
+              "Line": 36,
+              "Offset": 17,
+              "EndOffset": 19,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 36,
+              "Offset": 17,
+              "EndOffset": 23,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 6
+            }
+          ]
+        },
+        "System.Int32 SpendWise.Domain.ValueObjects.Email::GetHashCode()": {
+          "Lines": {
+            "40": 2
+          },
+          "Branches": []
+        },
+        "System.Boolean SpendWise.Domain.ValueObjects.Email::op_Equality(SpendWise.Domain.ValueObjects.Email,SpendWise.Domain.ValueObjects.Email)": {
+          "Lines": {
+            "42": 1
+          },
+          "Branches": []
+        },
+        "System.Boolean SpendWise.Domain.ValueObjects.Email::op_Inequality(SpendWise.Domain.ValueObjects.Email,SpendWise.Domain.ValueObjects.Email)": {
+          "Lines": {
+            "43": 1
+          },
+          "Branches": []
+        },
+        "System.Void SpendWise.Domain.ValueObjects.Email::.ctor()": {
+          "Lines": {
+            "16": 0
+          },
+          "Branches": []
+        },
+        "System.Void SpendWise.Domain.ValueObjects.Email::.ctor(System.String)": {
+          "Lines": {
+            "18": 60,
+            "19": 60,
+            "20": 60,
+            "21": 3,
+            "23": 57,
+            "24": 6,
+            "26": 51,
+            "27": 51
+          },
+          "Branches": [
+            {
+              "Line": 20,
+              "Offset": 16,
+              "EndOffset": 18,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 3
+            },
+            {
+              "Line": 20,
+              "Offset": 16,
+              "EndOffset": 34,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 57
+            },
+            {
+              "Line": 23,
+              "Offset": 50,
+              "EndOffset": 52,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 6
+            },
+            {
+              "Line": 23,
+              "Offset": 50,
+              "EndOffset": 68,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 51
+            }
+          ]
+        },
+        "System.Void SpendWise.Domain.ValueObjects.Email::.cctor()": {
+          "Lines": {
+            "7": 1,
+            "8": 1,
+            "9": 1
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\mateu\\OneDrive\\Área de Trabalho\\UNB\\TPPE\\MateusOrlando-TPPE-2025.2-WebAPi\\SpendWise\\backend\\src\\SpendWise.Domain\\ValueObjects\\Money.cs": {
+      "SpendWise.Domain.ValueObjects.Money": {
+        "System.Decimal SpendWise.Domain.ValueObjects.Money::get_Valor()": {
+          "Lines": {
+            "5": 408
+          },
+          "Branches": []
+        },
+        "System.String SpendWise.Domain.ValueObjects.Money::get_Moeda()": {
+          "Lines": {
+            "6": 319
+          },
+          "Branches": []
+        },
+        "SpendWise.Domain.ValueObjects.Money SpendWise.Domain.ValueObjects.Money::Add(SpendWise.Domain.ValueObjects.Money)": {
+          "Lines": {
+            "20": 12,
+            "21": 12,
+            "22": 1,
+            "24": 11,
+            "25": 11
+          },
+          "Branches": [
+            {
+              "Line": 21,
+              "Offset": 20,
+              "EndOffset": 22,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 21,
+              "Offset": 20,
+              "EndOffset": 33,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 11
+            }
+          ]
+        },
+        "SpendWise.Domain.ValueObjects.Money SpendWise.Domain.ValueObjects.Money::Subtract(SpendWise.Domain.ValueObjects.Money)": {
+          "Lines": {
+            "28": 7,
+            "29": 7,
+            "30": 1,
+            "32": 6,
+            "33": 6
+          },
+          "Branches": [
+            {
+              "Line": 29,
+              "Offset": 20,
+              "EndOffset": 22,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 29,
+              "Offset": 20,
+              "EndOffset": 33,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 6
+            }
+          ]
+        },
+        "SpendWise.Domain.ValueObjects.Money SpendWise.Domain.ValueObjects.Money::Multiply(System.Decimal)": {
+          "Lines": {
+            "36": 1,
+            "37": 1,
+            "38": 1
+          },
+          "Branches": []
+        },
+        "System.Boolean SpendWise.Domain.ValueObjects.Money::get_IsZero()": {
+          "Lines": {
+            "40": 5
+          },
+          "Branches": []
+        },
+        "System.Boolean SpendWise.Domain.ValueObjects.Money::get_IsPositive()": {
+          "Lines": {
+            "41": 3
+          },
+          "Branches": []
+        },
+        "System.Boolean SpendWise.Domain.ValueObjects.Money::get_IsNegative()": {
+          "Lines": {
+            "42": 4
+          },
+          "Branches": []
+        },
+        "SpendWise.Domain.ValueObjects.Money SpendWise.Domain.ValueObjects.Money::Zero(System.String)": {
+          "Lines": {
+            "44": 2
+          },
+          "Branches": []
+        },
+        "System.Decimal SpendWise.Domain.ValueObjects.Money::op_Implicit(SpendWise.Domain.ValueObjects.Money)": {
+          "Lines": {
+            "46": 1
+          },
+          "Branches": []
+        },
+        "System.String SpendWise.Domain.ValueObjects.Money::ToString()": {
+          "Lines": {
+            "48": 1
+          },
+          "Branches": []
+        },
+        "System.Boolean SpendWise.Domain.ValueObjects.Money::Equals(System.Object)": {
+          "Lines": {
+            "51": 13,
+            "52": 13,
+            "53": 13,
+            "54": 13
+          },
+          "Branches": [
+            {
+              "Line": 52,
+              "Offset": 17,
+              "EndOffset": 19,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 52,
+              "Offset": 17,
+              "EndOffset": 23,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 13
+            },
+            {
+              "Line": 53,
+              "Offset": 40,
+              "EndOffset": 42,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 11
+            },
+            {
+              "Line": 53,
+              "Offset": 40,
+              "EndOffset": 61,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 2
+            }
+          ]
+        },
+        "System.Int32 SpendWise.Domain.ValueObjects.Money::GetHashCode()": {
+          "Lines": {
+            "56": 2
+          },
+          "Branches": []
+        },
+        "System.Boolean SpendWise.Domain.ValueObjects.Money::op_Equality(SpendWise.Domain.ValueObjects.Money,SpendWise.Domain.ValueObjects.Money)": {
+          "Lines": {
+            "58": 1
+          },
+          "Branches": []
+        },
+        "System.Boolean SpendWise.Domain.ValueObjects.Money::op_Inequality(SpendWise.Domain.ValueObjects.Money,SpendWise.Domain.ValueObjects.Money)": {
+          "Lines": {
+            "59": 1
+          },
+          "Branches": []
+        },
+        "System.Boolean SpendWise.Domain.ValueObjects.Money::op_GreaterThan(SpendWise.Domain.ValueObjects.Money,SpendWise.Domain.ValueObjects.Money)": {
+          "Lines": {
+            "60": 0
+          },
+          "Branches": []
+        },
+        "System.Boolean SpendWise.Domain.ValueObjects.Money::op_LessThan(SpendWise.Domain.ValueObjects.Money,SpendWise.Domain.ValueObjects.Money)": {
+          "Lines": {
+            "61": 0
+          },
+          "Branches": []
+        },
+        "System.Boolean SpendWise.Domain.ValueObjects.Money::op_GreaterThanOrEqual(SpendWise.Domain.ValueObjects.Money,SpendWise.Domain.ValueObjects.Money)": {
+          "Lines": {
+            "62": 0
+          },
+          "Branches": []
+        },
+        "System.Boolean SpendWise.Domain.ValueObjects.Money::op_LessThanOrEqual(SpendWise.Domain.ValueObjects.Money,SpendWise.Domain.ValueObjects.Money)": {
+          "Lines": {
+            "63": 0
+          },
+          "Branches": []
+        },
+        "System.Void SpendWise.Domain.ValueObjects.Money::.ctor()": {
+          "Lines": {
+            "8": 0
+          },
+          "Branches": []
+        },
+        "System.Void SpendWise.Domain.ValueObjects.Money::.ctor(System.Decimal,System.String)": {
+          "Lines": {
+            "10": 209,
+            "11": 209,
+            "12": 209,
+            "13": 3,
+            "15": 206,
+            "16": 206,
+            "17": 206
+          },
+          "Branches": [
+            {
+              "Line": 12,
+              "Offset": 16,
+              "EndOffset": 18,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 3
+            },
+            {
+              "Line": 12,
+              "Offset": 16,
+              "EndOffset": 34,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 206
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\mateu\\OneDrive\\Área de Trabalho\\UNB\\TPPE\\MateusOrlando-TPPE-2025.2-WebAPi\\SpendWise\\backend\\src\\SpendWise.Domain\\ValueObjects\\Periodo.cs": {
+      "SpendWise.Domain.ValueObjects.Periodo": {
+        "System.DateTime SpendWise.Domain.ValueObjects.Periodo::get_DataInicio()": {
+          "Lines": {
+            "5": 18
+          },
+          "Branches": []
+        },
+        "System.DateTime SpendWise.Domain.ValueObjects.Periodo::get_DataFim()": {
+          "Lines": {
+            "6": 16
+          },
+          "Branches": []
+        },
+        "System.Int32 SpendWise.Domain.ValueObjects.Periodo::get_QuantidadeDias()": {
+          "Lines": {
+            "19": 0
+          },
+          "Branches": []
+        },
+        "System.Boolean SpendWise.Domain.ValueObjects.Periodo::ContemData(System.DateTime)": {
+          "Lines": {
+            "22": 0,
+            "23": 0,
+            "24": 0,
+            "25": 0
+          },
+          "Branches": [
+            {
+              "Line": 24,
+              "Offset": 21,
+              "EndOffset": 23,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 24,
+              "Offset": 21,
+              "EndOffset": 37,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Boolean SpendWise.Domain.ValueObjects.Periodo::SobrepoeA(SpendWise.Domain.ValueObjects.Periodo)": {
+          "Lines": {
+            "28": 0,
+            "29": 0,
+            "30": 0
+          },
+          "Branches": [
+            {
+              "Line": 29,
+              "Offset": 18,
+              "EndOffset": 20,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 29,
+              "Offset": 18,
+              "EndOffset": 39,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "SpendWise.Domain.ValueObjects.Periodo SpendWise.Domain.ValueObjects.Periodo::MesAtual()": {
+          "Lines": {
+            "33": 0,
+            "34": 0,
+            "35": 0,
+            "36": 0,
+            "37": 0,
+            "38": 0
+          },
+          "Branches": []
+        },
+        "SpendWise.Domain.ValueObjects.Periodo SpendWise.Domain.ValueObjects.Periodo::AnoAtual()": {
+          "Lines": {
+            "41": 0,
+            "42": 0,
+            "43": 0,
+            "44": 0,
+            "45": 0,
+            "46": 0
+          },
+          "Branches": []
+        },
+        "System.String SpendWise.Domain.ValueObjects.Periodo::ToString()": {
+          "Lines": {
+            "48": 0
+          },
+          "Branches": []
+        },
+        "System.Boolean SpendWise.Domain.ValueObjects.Periodo::Equals(System.Object)": {
+          "Lines": {
+            "51": 2,
+            "52": 2,
+            "53": 2,
+            "54": 2
+          },
+          "Branches": [
+            {
+              "Line": 52,
+              "Offset": 17,
+              "EndOffset": 19,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 52,
+              "Offset": 17,
+              "EndOffset": 23,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 2
+            },
+            {
+              "Line": 53,
+              "Offset": 40,
+              "EndOffset": 42,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 1
+            },
+            {
+              "Line": 53,
+              "Offset": 40,
+              "EndOffset": 61,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 1
+            }
+          ]
+        },
+        "System.Int32 SpendWise.Domain.ValueObjects.Periodo::GetHashCode()": {
+          "Lines": {
+            "56": 0
+          },
+          "Branches": []
+        },
+        "System.Void SpendWise.Domain.ValueObjects.Periodo::.ctor()": {
+          "Lines": {
+            "8": 0
+          },
+          "Branches": []
+        },
+        "System.Void SpendWise.Domain.ValueObjects.Periodo::.ctor(System.DateTime,System.DateTime)": {
+          "Lines": {
+            "10": 10,
+            "11": 10,
+            "12": 10,
+            "13": 1,
+            "15": 9,
+            "16": 9,
+            "17": 9
+          },
+          "Branches": [
+            {
+              "Line": 12,
+              "Offset": 17,
+              "EndOffset": 19,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 12,
+              "Offset": 17,
+              "EndOffset": 30,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 9
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\mateu\\OneDrive\\Área de Trabalho\\UNB\\TPPE\\MateusOrlando-TPPE-2025.2-WebAPi\\SpendWise\\backend\\src\\SpendWise.Domain\\Utils\\DateUtils.cs": {
+      "SpendWise.Domain.Utils.DateUtils": {
+        "System.String SpendWise.Domain.Utils.DateUtils::ToAnoMesString(System.DateTime)": {
+          "Lines": {
+            "8": 0,
+            "9": 0,
+            "10": 0
+          },
+          "Branches": []
+        },
+        "System.String SpendWise.Domain.Utils.DateUtils::ToAnoMesString(System.Int32,System.Int32)": {
+          "Lines": {
+            "13": 0,
+            "14": 0,
+            "15": 0
+          },
+          "Branches": []
+        },
+        "SpendWise.Domain.ValueObjects.Periodo SpendWise.Domain.Utils.DateUtils::GetPeriodoFromAnoMes(System.String)": {
+          "Lines": {
+            "18": 0,
+            "19": 0,
+            "20": 0,
+            "21": 0,
+            "24": 0,
+            "26": 0,
+            "27": 0
+          },
+          "Branches": [
+            {
+              "Line": 19,
+              "Offset": 31,
+              "EndOffset": 33,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 19,
+              "Offset": 31,
+              "EndOffset": 56,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\mateu\\OneDrive\\Área de Trabalho\\UNB\\TPPE\\MateusOrlando-TPPE-2025.2-WebAPi\\SpendWise\\backend\\src\\SpendWise.Domain\\Services\\IBusinessRuleService.cs": {
+      "SpendWise.Domain.Services.ValidationResult": {
+        "System.Boolean SpendWise.Domain.Services.ValidationResult::get_IsValid()": {
+          "Lines": {
+            "17": 0
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.List`1<System.String> SpendWise.Domain.Services.ValidationResult::get_Errors()": {
+          "Lines": {
+            "18": 0
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.List`1<System.String> SpendWise.Domain.Services.ValidationResult::get_Warnings()": {
+          "Lines": {
+            "19": 0
+          },
+          "Branches": []
+        },
+        "System.Void SpendWise.Domain.Services.ValidationResult::AddError(System.String)": {
+          "Lines": {
+            "21": 0
+          },
+          "Branches": []
+        },
+        "System.Void SpendWise.Domain.Services.ValidationResult::AddWarning(System.String)": {
+          "Lines": {
+            "22": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\mateu\\OneDrive\\Área de Trabalho\\UNB\\TPPE\\MateusOrlando-TPPE-2025.2-WebAPi\\SpendWise\\backend\\src\\SpendWise.Domain\\Services\\ValidationResult.cs": {
+      "SpendWise.Domain.Services.BusinessValidationResult": {
+        "System.Boolean SpendWise.Domain.Services.BusinessValidationResult::get_IsValid()": {
+          "Lines": {
+            "5": 0
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.List`1<System.String> SpendWise.Domain.Services.BusinessValidationResult::get_Errors()": {
+          "Lines": {
+            "6": 0
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.List`1<System.String> SpendWise.Domain.Services.BusinessValidationResult::get_Warnings()": {
+          "Lines": {
+            "7": 0
+          },
+          "Branches": []
+        },
+        "System.Void SpendWise.Domain.Services.BusinessValidationResult::AddError(System.String)": {
+          "Lines": {
+            "10": 0,
+            "11": 0,
+            "12": 0
+          },
+          "Branches": []
+        },
+        "System.Void SpendWise.Domain.Services.BusinessValidationResult::AddWarning(System.String)": {
+          "Lines": {
+            "15": 0,
+            "16": 0,
+            "17": 0
+          },
+          "Branches": []
+        },
+        "System.Boolean SpendWise.Domain.Services.BusinessValidationResult::get_HasErrors()": {
+          "Lines": {
+            "19": 0
+          },
+          "Branches": []
+        },
+        "System.Boolean SpendWise.Domain.Services.BusinessValidationResult::get_HasWarnings()": {
+          "Lines": {
+            "20": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\mateu\\OneDrive\\Área de Trabalho\\UNB\\TPPE\\MateusOrlando-TPPE-2025.2-WebAPi\\SpendWise\\backend\\src\\SpendWise.Domain\\Exceptions\\BusinessRuleViolationException.cs": {
+      "SpendWise.Domain.Exceptions.BusinessRuleViolationException": {
+        "System.Void SpendWise.Domain.Exceptions.BusinessRuleViolationException::.ctor(System.String)": {
+          "Lines": {
+            "5": 0,
+            "6": 0,
+            "7": 0
+          },
+          "Branches": []
+        },
+        "System.Void SpendWise.Domain.Exceptions.BusinessRuleViolationException::.ctor(System.String,System.Exception)": {
+          "Lines": {
+            "9": 0,
+            "10": 0,
+            "11": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\mateu\\OneDrive\\Área de Trabalho\\UNB\\TPPE\\MateusOrlando-TPPE-2025.2-WebAPi\\SpendWise\\backend\\src\\SpendWise.Domain\\Exceptions\\DomainException.cs": {
+      "SpendWise.Domain.Exceptions.DomainException": {
+        "System.Void SpendWise.Domain.Exceptions.DomainException::.ctor(System.String)": {
+          "Lines": {
+            "5": 0,
+            "6": 0,
+            "7": 0
+          },
+          "Branches": []
+        },
+        "System.Void SpendWise.Domain.Exceptions.DomainException::.ctor(System.String,System.Exception)": {
+          "Lines": {
+            "9": 0,
+            "10": 0,
+            "11": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\mateu\\OneDrive\\Área de Trabalho\\UNB\\TPPE\\MateusOrlando-TPPE-2025.2-WebAPi\\SpendWise\\backend\\src\\SpendWise.Domain\\Exceptions\\MesFechadoException.cs": {
+      "SpendWise.Domain.Exceptions.MesFechadoException": {
+        "System.Void SpendWise.Domain.Exceptions.MesFechadoException::.ctor(System.String)": {
+          "Lines": {
+            "6": 0,
+            "7": 0,
+            "8": 0
+          },
+          "Branches": []
+        },
+        "System.Void SpendWise.Domain.Exceptions.MesFechadoException::.ctor(System.String,System.String)": {
+          "Lines": {
+            "11": 0,
+            "12": 0,
+            "13": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\mateu\\OneDrive\\Área de Trabalho\\UNB\\TPPE\\MateusOrlando-TPPE-2025.2-WebAPi\\SpendWise\\backend\\src\\SpendWise.Domain\\BaseEntity.cs": {
+      "SpendWise.Domain.Entities.BaseEntity": {
+        "System.Guid SpendWise.Domain.Entities.BaseEntity::get_Id()": {
+          "Lines": {
+            "5": 220
+          },
+          "Branches": []
+        },
+        "System.DateTime SpendWise.Domain.Entities.BaseEntity::get_CreatedAt()": {
+          "Lines": {
+            "6": 208
+          },
+          "Branches": []
+        },
+        "System.Nullable`1<System.DateTime> SpendWise.Domain.Entities.BaseEntity::get_UpdatedAt()": {
+          "Lines": {
+            "7": 105
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\mateu\\OneDrive\\Área de Trabalho\\UNB\\TPPE\\MateusOrlando-TPPE-2025.2-WebAPi\\SpendWise\\backend\\src\\SpendWise.Domain\\Entities\\Categoria.cs": {
+      "SpendWise.Domain.Entities.Categoria": {
+        "System.String SpendWise.Domain.Entities.Categoria::get_Nome()": {
+          "Lines": {
+            "8": 59
+          },
+          "Branches": []
+        },
+        "System.String SpendWise.Domain.Entities.Categoria::get_Descricao()": {
+          "Lines": {
+            "9": 60
+          },
+          "Branches": []
+        },
+        "System.String SpendWise.Domain.Entities.Categoria::get_Cor()": {
+          "Lines": {
+            "10": 2
+          },
+          "Branches": []
+        },
+        "SpendWise.Domain.Enums.TipoCategoria SpendWise.Domain.Entities.Categoria::get_Tipo()": {
+          "Lines": {
+            "11": 55
+          },
+          "Branches": []
+        },
+        "SpendWise.Domain.Enums.PrioridadeCategoria SpendWise.Domain.Entities.Categoria::get_Prioridade()": {
+          "Lines": {
+            "12": 96
+          },
+          "Branches": []
+        },
+        "System.Guid SpendWise.Domain.Entities.Categoria::get_UsuarioId()": {
+          "Lines": {
+            "13": 49
+          },
+          "Branches": []
+        },
+        "System.Boolean SpendWise.Domain.Entities.Categoria::get_IsAtiva()": {
+          "Lines": {
+            "14": 63
+          },
+          "Branches": []
+        },
+        "SpendWise.Domain.ValueObjects.Money SpendWise.Domain.Entities.Categoria::get_Limite()": {
+          "Lines": {
+            "15": 69
+          },
+          "Branches": []
+        },
+        "SpendWise.Domain.Entities.Usuario SpendWise.Domain.Entities.Categoria::get_Usuario()": {
+          "Lines": {
+            "18": 49
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.ICollection`1<SpendWise.Domain.Entities.Transacao> SpendWise.Domain.Entities.Categoria::get_Transacoes()": {
+          "Lines": {
+            "19": 51
+          },
+          "Branches": []
+        },
+        "System.Void SpendWise.Domain.Entities.Categoria::AtualizarNome(System.String)": {
+          "Lines": {
+            "44": 12,
+            "45": 12,
+            "46": 7,
+            "48": 5,
+            "49": 5,
+            "50": 5
+          },
+          "Branches": [
+            {
+              "Line": 45,
+              "Offset": 9,
+              "EndOffset": 11,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 7
+            },
+            {
+              "Line": 45,
+              "Offset": 9,
+              "EndOffset": 27,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 5
+            }
+          ]
+        },
+        "System.Void SpendWise.Domain.Entities.Categoria::AtualizarDescricao(System.String)": {
+          "Lines": {
+            "53": 5,
+            "54": 5,
+            "55": 5,
+            "56": 5
+          },
+          "Branches": []
+        },
+        "System.Void SpendWise.Domain.Entities.Categoria::AtualizarLimite(SpendWise.Domain.ValueObjects.Money)": {
+          "Lines": {
+            "59": 1,
+            "60": 1,
+            "61": 1,
+            "62": 1
+          },
+          "Branches": []
+        },
+        "System.Void SpendWise.Domain.Entities.Categoria::AtualizarCor(System.String)": {
+          "Lines": {
+            "65": 1,
+            "66": 1,
+            "67": 1,
+            "68": 1
+          },
+          "Branches": []
+        },
+        "System.Void SpendWise.Domain.Entities.Categoria::Desativar()": {
+          "Lines": {
+            "71": 4,
+            "72": 4,
+            "73": 4,
+            "74": 4
+          },
+          "Branches": []
+        },
+        "System.Void SpendWise.Domain.Entities.Categoria::Ativar()": {
+          "Lines": {
+            "77": 2,
+            "78": 2,
+            "79": 2,
+            "80": 2
+          },
+          "Branches": []
+        },
+        "System.Decimal SpendWise.Domain.Entities.Categoria::CalcularGastoMensal(System.Collections.Generic.IEnumerable`1<SpendWise.Domain.Entities.Transacao>,System.DateTime,System.DateTime)": {
+          "Lines": {
+            "84": 2,
+            "85": 2,
+            "86": 6,
+            "87": 6,
+            "88": 6,
+            "89": 6,
+            "90": 2
+          },
+          "Branches": [
+            {
+              "Line": 86,
+              "Offset": 7,
+              "EndOffset": 9,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 6
+            },
+            {
+              "Line": 86,
+              "Offset": 26,
+              "EndOffset": 28,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 5
+            },
+            {
+              "Line": 86,
+              "Offset": 7,
+              "EndOffset": 47,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            },
+            {
+              "Line": 86,
+              "Offset": 26,
+              "EndOffset": 47,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 1
+            }
+          ]
+        },
+        "System.Decimal SpendWise.Domain.Entities.Categoria::CalcularPercentualUtilizado(System.Decimal)": {
+          "Lines": {
+            "93": 5,
+            "94": 5,
+            "95": 1,
+            "97": 4,
+            "98": 5
+          },
+          "Branches": [
+            {
+              "Line": 94,
+              "Offset": 8,
+              "EndOffset": 10,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 94,
+              "Offset": 8,
+              "EndOffset": 14,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 4
+            },
+            {
+              "Line": 94,
+              "Offset": 21,
+              "EndOffset": 23,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 4
+            },
+            {
+              "Line": 94,
+              "Offset": 21,
+              "EndOffset": 46,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 1
+            },
+            {
+              "Line": 94,
+              "Offset": 49,
+              "EndOffset": 51,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 1
+            },
+            {
+              "Line": 94,
+              "Offset": 49,
+              "EndOffset": 59,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 4
+            }
+          ]
+        },
+        "SpendWise.Domain.Enums.StatusLimite SpendWise.Domain.Entities.Categoria::VerificarStatusLimite(System.Decimal)": {
+          "Lines": {
+            "101": 4,
+            "102": 4,
+            "103": 1,
+            "105": 3,
+            "107": 3,
+            "108": 3,
+            "109": 1,
+            "110": 1,
+            "111": 1,
+            "112": 3,
+            "113": 4
+          },
+          "Branches": [
+            {
+              "Line": 102,
+              "Offset": 8,
+              "EndOffset": 10,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 102,
+              "Offset": 8,
+              "EndOffset": 14,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 3
+            },
+            {
+              "Line": 102,
+              "Offset": 23,
+              "EndOffset": 25,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 1
+            },
+            {
+              "Line": 102,
+              "Offset": 23,
+              "EndOffset": 29,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 3
+            },
+            {
+              "Line": 107,
+              "Offset": 54,
+              "EndOffset": 56,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 2
+            },
+            {
+              "Line": 107,
+              "Offset": 54,
+              "EndOffset": 73,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 1
+            },
+            {
+              "Line": 107,
+              "Offset": 69,
+              "EndOffset": 77,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 1
+            },
+            {
+              "Line": 107,
+              "Offset": 69,
+              "EndOffset": 81,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 1
+            }
+          ]
+        },
+        "System.Boolean SpendWise.Domain.Entities.Categoria::PodeAdicionarDespesa(SpendWise.Domain.ValueObjects.Money,System.Decimal)": {
+          "Lines": {
+            "116": 3,
+            "117": 3,
+            "118": 1,
+            "120": 2,
+            "121": 3
+          },
+          "Branches": [
+            {
+              "Line": 117,
+              "Offset": 8,
+              "EndOffset": 10,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 117,
+              "Offset": 8,
+              "EndOffset": 14,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 2
+            },
+            {
+              "Line": 117,
+              "Offset": 23,
+              "EndOffset": 25,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 1
+            },
+            {
+              "Line": 117,
+              "Offset": 23,
+              "EndOffset": 29,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 2
+            }
+          ]
+        },
+        "System.Void SpendWise.Domain.Entities.Categoria::.ctor()": {
+          "Lines": {
+            "22": 0,
+            "23": 0,
+            "24": 0,
+            "25": 0
+          },
+          "Branches": []
+        },
+        "System.Void SpendWise.Domain.Entities.Categoria::.ctor(System.String,SpendWise.Domain.Enums.TipoCategoria,System.Guid,System.String,SpendWise.Domain.ValueObjects.Money,SpendWise.Domain.Enums.PrioridadeCategoria)": {
+          "Lines": {
+            "27": 49,
+            "28": 49,
+            "29": 49,
+            "30": 3,
+            "32": 46,
+            "33": 1,
+            "35": 45,
+            "36": 45,
+            "37": 45,
+            "38": 45,
+            "39": 45,
+            "40": 45,
+            "41": 45
+          },
+          "Branches": [
+            {
+              "Line": 29,
+              "Offset": 48,
+              "EndOffset": 50,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 3
+            },
+            {
+              "Line": 29,
+              "Offset": 48,
+              "EndOffset": 66,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 46
+            },
+            {
+              "Line": 32,
+              "Offset": 79,
+              "EndOffset": 81,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 1
+            },
+            {
+              "Line": 32,
+              "Offset": 79,
+              "EndOffset": 97,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 45
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\mateu\\OneDrive\\Área de Trabalho\\UNB\\TPPE\\MateusOrlando-TPPE-2025.2-WebAPi\\SpendWise\\backend\\src\\SpendWise.Domain\\Entities\\FechamentoMensal.cs": {
+      "SpendWise.Domain.Entities.FechamentoMensal": {
+        "System.Guid SpendWise.Domain.Entities.FechamentoMensal::get_UsuarioId()": {
+          "Lines": {
+            "7": 17
+          },
+          "Branches": []
+        },
+        "System.String SpendWise.Domain.Entities.FechamentoMensal::get_AnoMes()": {
+          "Lines": {
+            "8": 21
+          },
+          "Branches": []
+        },
+        "System.DateTime SpendWise.Domain.Entities.FechamentoMensal::get_DataFechamento()": {
+          "Lines": {
+            "9": 18
+          },
+          "Branches": []
+        },
+        "SpendWise.Domain.Enums.StatusFechamento SpendWise.Domain.Entities.FechamentoMensal::get_Status()": {
+          "Lines": {
+            "10": 27
+          },
+          "Branches": []
+        },
+        "System.Decimal SpendWise.Domain.Entities.FechamentoMensal::get_TotalReceitas()": {
+          "Lines": {
+            "11": 18
+          },
+          "Branches": []
+        },
+        "System.Decimal SpendWise.Domain.Entities.FechamentoMensal::get_TotalDespesas()": {
+          "Lines": {
+            "12": 18
+          },
+          "Branches": []
+        },
+        "System.Decimal SpendWise.Domain.Entities.FechamentoMensal::get_SaldoFinal()": {
+          "Lines": {
+            "13": 23
+          },
+          "Branches": []
+        },
+        "System.String SpendWise.Domain.Entities.FechamentoMensal::get_Observacoes()": {
+          "Lines": {
+            "14": 22
+          },
+          "Branches": []
+        },
+        "SpendWise.Domain.Entities.Usuario SpendWise.Domain.Entities.FechamentoMensal::get_Usuario()": {
+          "Lines": {
+            "17": 20
+          },
+          "Branches": []
+        },
+        "System.Void SpendWise.Domain.Entities.FechamentoMensal::Reabrir(System.String)": {
+          "Lines": {
+            "55": 4,
+            "56": 4,
+            "57": 1,
+            "59": 3,
+            "60": 3,
+            "61": 3,
+            "62": 3
+          },
+          "Branches": [
+            {
+              "Line": 56,
+              "Offset": 15,
+              "EndOffset": 17,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 56,
+              "Offset": 15,
+              "EndOffset": 28,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 3
+            }
+          ]
+        },
+        "System.Void SpendWise.Domain.Entities.FechamentoMensal::AtualizarTotais(System.Decimal,System.Decimal)": {
+          "Lines": {
+            "65": 0,
+            "66": 0,
+            "67": 0,
+            "69": 0,
+            "70": 0,
+            "71": 0,
+            "72": 0
+          },
+          "Branches": [
+            {
+              "Line": 66,
+              "Offset": 12,
+              "EndOffset": 14,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 66,
+              "Offset": 12,
+              "EndOffset": 25,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void SpendWise.Domain.Entities.FechamentoMensal::FecharNovamente()": {
+          "Lines": {
+            "75": 0,
+            "76": 0,
+            "77": 0,
+            "79": 0,
+            "80": 0,
+            "81": 0
+          },
+          "Branches": [
+            {
+              "Line": 76,
+              "Offset": 15,
+              "EndOffset": 17,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 76,
+              "Offset": 15,
+              "EndOffset": 28,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void SpendWise.Domain.Entities.FechamentoMensal::.ctor()": {
+          "Lines": {
+            "20": 0
+          },
+          "Branches": []
+        },
+        "System.Void SpendWise.Domain.Entities.FechamentoMensal::.ctor(System.Guid,System.String,System.Decimal,System.Decimal,System.String)": {
+          "Lines": {
+            "22": 20,
+            "23": 20,
+            "24": 20,
+            "25": 20,
+            "26": 20,
+            "27": 20,
+            "28": 20,
+            "29": 20,
+            "30": 1,
+            "32": 19,
+            "33": 3,
+            "35": 16,
+            "36": 0,
+            "38": 16,
+            "39": 0,
+            "41": 16,
+            "42": 0,
+            "44": 16,
+            "45": 16,
+            "46": 16,
+            "47": 16,
+            "48": 16,
+            "49": 16,
+            "50": 16,
+            "51": 16,
+            "52": 16
+          },
+          "Branches": [
+            {
+              "Line": 29,
+              "Offset": 28,
+              "EndOffset": 30,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 29,
+              "Offset": 28,
+              "EndOffset": 41,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 19
+            },
+            {
+              "Line": 32,
+              "Offset": 49,
+              "EndOffset": 51,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 3
+            },
+            {
+              "Line": 32,
+              "Offset": 49,
+              "EndOffset": 62,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 16
+            },
+            {
+              "Line": 35,
+              "Offset": 78,
+              "EndOffset": 80,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 35,
+              "Offset": 78,
+              "EndOffset": 91,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 16
+            },
+            {
+              "Line": 38,
+              "Offset": 104,
+              "EndOffset": 106,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 38,
+              "Offset": 104,
+              "EndOffset": 117,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 16
+            },
+            {
+              "Line": 41,
+              "Offset": 133,
+              "EndOffset": 135,
+              "Path": 0,
+              "Ordinal": 8,
+              "Hits": 0
+            },
+            {
+              "Line": 41,
+              "Offset": 133,
+              "EndOffset": 146,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 16
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\mateu\\OneDrive\\Área de Trabalho\\UNB\\TPPE\\MateusOrlando-TPPE-2025.2-WebAPi\\SpendWise\\backend\\src\\SpendWise.Domain\\Entities\\Meta.cs": {
+      "SpendWise.Domain.Entities.Meta": {
+        "System.String SpendWise.Domain.Entities.Meta::get_Nome()": {
+          "Lines": {
+            "7": 21
+          },
+          "Branches": []
+        },
+        "System.String SpendWise.Domain.Entities.Meta::get_Descricao()": {
+          "Lines": {
+            "8": 21
+          },
+          "Branches": []
+        },
+        "SpendWise.Domain.ValueObjects.Money SpendWise.Domain.Entities.Meta::get_ValorObjetivo()": {
+          "Lines": {
+            "9": 41
+          },
+          "Branches": []
+        },
+        "System.DateTime SpendWise.Domain.Entities.Meta::get_Prazo()": {
+          "Lines": {
+            "10": 21
+          },
+          "Branches": []
+        },
+        "SpendWise.Domain.ValueObjects.Money SpendWise.Domain.Entities.Meta::get_ValorAtual()": {
+          "Lines": {
+            "11": 62
+          },
+          "Branches": []
+        },
+        "System.Guid SpendWise.Domain.Entities.Meta::get_UsuarioId()": {
+          "Lines": {
+            "12": 19
+          },
+          "Branches": []
+        },
+        "System.Boolean SpendWise.Domain.Entities.Meta::get_IsAtiva()": {
+          "Lines": {
+            "13": 37
+          },
+          "Branches": []
+        },
+        "System.Nullable`1<System.DateTime> SpendWise.Domain.Entities.Meta::get_DataAlcancada()": {
+          "Lines": {
+            "14": 19
+          },
+          "Branches": []
+        },
+        "SpendWise.Domain.Entities.Usuario SpendWise.Domain.Entities.Meta::get_Usuario()": {
+          "Lines": {
+            "17": 27
+          },
+          "Branches": []
+        },
+        "System.Void SpendWise.Domain.Entities.Meta::AtualizarNome(System.String)": {
+          "Lines": {
+            "55": 1,
+            "56": 1,
+            "57": 0,
+            "59": 1,
+            "60": 1,
+            "61": 1
+          },
+          "Branches": [
+            {
+              "Line": 56,
+              "Offset": 9,
+              "EndOffset": 11,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 56,
+              "Offset": 9,
+              "EndOffset": 27,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            }
+          ]
+        },
+        "System.Void SpendWise.Domain.Entities.Meta::AtualizarDescricao(System.String)": {
+          "Lines": {
+            "64": 1,
+            "65": 1,
+            "66": 0,
+            "68": 1,
+            "69": 1,
+            "70": 1
+          },
+          "Branches": [
+            {
+              "Line": 65,
+              "Offset": 9,
+              "EndOffset": 11,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 65,
+              "Offset": 9,
+              "EndOffset": 27,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            }
+          ]
+        },
+        "System.Void SpendWise.Domain.Entities.Meta::AtualizarValorObjetivo(SpendWise.Domain.ValueObjects.Money)": {
+          "Lines": {
+            "73": 0,
+            "74": 0,
+            "75": 0,
+            "77": 0,
+            "78": 0,
+            "79": 0
+          },
+          "Branches": [
+            {
+              "Line": 74,
+              "Offset": 19,
+              "EndOffset": 21,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 74,
+              "Offset": 19,
+              "EndOffset": 37,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void SpendWise.Domain.Entities.Meta::AtualizarPrazo(System.DateTime)": {
+          "Lines": {
+            "82": 0,
+            "83": 0,
+            "84": 0,
+            "86": 0,
+            "87": 0,
+            "88": 0
+          },
+          "Branches": [
+            {
+              "Line": 83,
+              "Offset": 22,
+              "EndOffset": 24,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 83,
+              "Offset": 22,
+              "EndOffset": 40,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void SpendWise.Domain.Entities.Meta::AdicionarProgresso(SpendWise.Domain.ValueObjects.Money)": {
+          "Lines": {
+            "91": 10,
+            "92": 10,
+            "93": 0,
+            "95": 10,
+            "98": 10,
+            "99": 5,
+            "100": 5,
+            "101": 5,
+            "103": 10,
+            "104": 10
+          },
+          "Branches": [
+            {
+              "Line": 92,
+              "Offset": 19,
+              "EndOffset": 21,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 92,
+              "Offset": 19,
+              "EndOffset": 37,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 10
+            },
+            {
+              "Line": 98,
+              "Offset": 83,
+              "EndOffset": 85,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 5
+            },
+            {
+              "Line": 98,
+              "Offset": 83,
+              "EndOffset": 104,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 5
+            },
+            {
+              "Line": 98,
+              "Offset": 107,
+              "EndOffset": 109,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 5
+            },
+            {
+              "Line": 98,
+              "Offset": 107,
+              "EndOffset": 128,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 10
+            }
+          ]
+        },
+        "System.Void SpendWise.Domain.Entities.Meta::RemoverProgresso(SpendWise.Domain.ValueObjects.Money)": {
+          "Lines": {
+            "107": 2,
+            "108": 2,
+            "109": 0,
+            "111": 2,
+            "114": 2,
+            "115": 2,
+            "116": 2,
+            "117": 2,
+            "119": 2,
+            "120": 2
+          },
+          "Branches": [
+            {
+              "Line": 108,
+              "Offset": 19,
+              "EndOffset": 21,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 108,
+              "Offset": 19,
+              "EndOffset": 37,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 2
+            },
+            {
+              "Line": 114,
+              "Offset": 85,
+              "EndOffset": 87,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 2
+            },
+            {
+              "Line": 114,
+              "Offset": 85,
+              "EndOffset": 105,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 2
+            }
+          ]
+        },
+        "System.Void SpendWise.Domain.Entities.Meta::Desativar()": {
+          "Lines": {
+            "123": 3,
+            "124": 3,
+            "125": 3,
+            "126": 3
+          },
+          "Branches": []
+        },
+        "System.Void SpendWise.Domain.Entities.Meta::Reativar()": {
+          "Lines": {
+            "129": 1,
+            "130": 1,
+            "131": 1,
+            "132": 1
+          },
+          "Branches": []
+        },
+        "System.Double SpendWise.Domain.Entities.Meta::CalcularPercentualProgresso()": {
+          "Lines": {
+            "136": 2,
+            "137": 2,
+            "138": 2,
+            "139": 2
+          },
+          "Branches": [
+            {
+              "Line": 137,
+              "Offset": 24,
+              "EndOffset": 26,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 137,
+              "Offset": 24,
+              "EndOffset": 38,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 2
+            }
+          ]
+        },
+        "SpendWise.Domain.ValueObjects.Money SpendWise.Domain.Entities.Meta::CalcularValorRestante()": {
+          "Lines": {
+            "142": 3,
+            "143": 3,
+            "144": 3,
+            "145": 3
+          },
+          "Branches": []
+        },
+        "System.Int32 SpendWise.Domain.Entities.Meta::CalcularDiasRestantes()": {
+          "Lines": {
+            "148": 2,
+            "149": 2,
+            "150": 2,
+            "151": 2
+          },
+          "Branches": []
+        },
+        "System.Nullable`1<System.DateTime> SpendWise.Domain.Entities.Meta::ProjetarDataAlcance(System.Decimal)": {
+          "Lines": {
+            "154": 2,
+            "155": 3,
+            "157": 1,
+            "158": 1,
+            "160": 1,
+            "161": 1,
+            "162": 2
+          },
+          "Branches": [
+            {
+              "Line": 155,
+              "Offset": 14,
+              "EndOffset": 16,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 155,
+              "Offset": 14,
+              "EndOffset": 29,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            },
+            {
+              "Line": 158,
+              "Offset": 56,
+              "EndOffset": 58,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 158,
+              "Offset": 56,
+              "EndOffset": 68,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 1
+            }
+          ]
+        },
+        "System.String SpendWise.Domain.Entities.Meta::ObterStatusDescricao()": {
+          "Lines": {
+            "165": 3,
+            "166": 4,
+            "167": 3,
+            "168": 1,
+            "169": 1,
+            "170": 1,
+            "171": 3
+          },
+          "Branches": [
+            {
+              "Line": 166,
+              "Offset": 12,
+              "EndOffset": 14,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 166,
+              "Offset": 12,
+              "EndOffset": 22,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 2
+            },
+            {
+              "Line": 167,
+              "Offset": 38,
+              "EndOffset": 40,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 1
+            },
+            {
+              "Line": 167,
+              "Offset": 38,
+              "EndOffset": 48,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 1
+            },
+            {
+              "Line": 168,
+              "Offset": 61,
+              "EndOffset": 63,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 168,
+              "Offset": 61,
+              "EndOffset": 71,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 1
+            },
+            {
+              "Line": 169,
+              "Offset": 87,
+              "EndOffset": 89,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 169,
+              "Offset": 87,
+              "EndOffset": 97,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 1
+            }
+          ]
+        },
+        "System.Void SpendWise.Domain.Entities.Meta::.ctor()": {
+          "Lines": {
+            "20": 0,
+            "21": 0,
+            "22": 0,
+            "23": 0,
+            "24": 0,
+            "25": 0,
+            "26": 0
+          },
+          "Branches": []
+        },
+        "System.Void SpendWise.Domain.Entities.Meta::.ctor(System.String,System.String,SpendWise.Domain.ValueObjects.Money,System.DateTime,System.Guid)": {
+          "Lines": {
+            "28": 27,
+            "29": 27,
+            "30": 27,
+            "31": 3,
+            "33": 24,
+            "34": 3,
+            "36": 21,
+            "37": 2,
+            "39": 19,
+            "40": 1,
+            "42": 18,
+            "43": 0,
+            "45": 18,
+            "46": 18,
+            "47": 18,
+            "48": 18,
+            "49": 18,
+            "50": 18,
+            "51": 18
+          },
+          "Branches": [
+            {
+              "Line": 30,
+              "Offset": 30,
+              "EndOffset": 32,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 3
+            },
+            {
+              "Line": 30,
+              "Offset": 30,
+              "EndOffset": 48,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 24
+            },
+            {
+              "Line": 33,
+              "Offset": 56,
+              "EndOffset": 58,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 3
+            },
+            {
+              "Line": 33,
+              "Offset": 56,
+              "EndOffset": 74,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 21
+            },
+            {
+              "Line": 36,
+              "Offset": 92,
+              "EndOffset": 94,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 2
+            },
+            {
+              "Line": 36,
+              "Offset": 92,
+              "EndOffset": 110,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 19
+            },
+            {
+              "Line": 39,
+              "Offset": 133,
+              "EndOffset": 135,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 1
+            },
+            {
+              "Line": 39,
+              "Offset": 133,
+              "EndOffset": 151,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 18
+            },
+            {
+              "Line": 42,
+              "Offset": 167,
+              "EndOffset": 169,
+              "Path": 0,
+              "Ordinal": 8,
+              "Hits": 0
+            },
+            {
+              "Line": 42,
+              "Offset": 167,
+              "EndOffset": 185,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 18
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\mateu\\OneDrive\\Área de Trabalho\\UNB\\TPPE\\MateusOrlando-TPPE-2025.2-WebAPi\\SpendWise\\backend\\src\\SpendWise.Domain\\Entities\\OrcamentoMensal.cs": {
+      "SpendWise.Domain.Entities.OrcamentoMensal": {
+        "System.Guid SpendWise.Domain.Entities.OrcamentoMensal::get_UsuarioId()": {
+          "Lines": {
+            "7": 23
+          },
+          "Branches": []
+        },
+        "System.String SpendWise.Domain.Entities.OrcamentoMensal::get_AnoMes()": {
+          "Lines": {
+            "8": 27
+          },
+          "Branches": []
+        },
+        "SpendWise.Domain.ValueObjects.Money SpendWise.Domain.Entities.OrcamentoMensal::get_Valor()": {
+          "Lines": {
+            "9": 38
+          },
+          "Branches": []
+        },
+        "SpendWise.Domain.Entities.Usuario SpendWise.Domain.Entities.OrcamentoMensal::get_Usuario()": {
+          "Lines": {
+            "12": 0
+          },
+          "Branches": []
+        },
+        "System.Void SpendWise.Domain.Entities.OrcamentoMensal::AtualizarValor(SpendWise.Domain.ValueObjects.Money)": {
+          "Lines": {
+            "34": 3,
+            "35": 3,
+            "36": 2,
+            "37": 2
+          },
+          "Branches": [
+            {
+              "Line": 35,
+              "Offset": 4,
+              "EndOffset": 6,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 35,
+              "Offset": 4,
+              "EndOffset": 18,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 2
+            }
+          ]
+        },
+        "SpendWise.Domain.ValueObjects.Money SpendWise.Domain.Entities.OrcamentoMensal::CalcularSaldoDisponivel(SpendWise.Domain.ValueObjects.Money)": {
+          "Lines": {
+            "40": 3,
+            "41": 3,
+            "42": 3
+          },
+          "Branches": []
+        },
+        "System.Decimal SpendWise.Domain.Entities.OrcamentoMensal::CalcularPercentualUtilizado(SpendWise.Domain.ValueObjects.Money)": {
+          "Lines": {
+            "45": 3,
+            "46": 4,
+            "47": 2,
+            "48": 3
+          },
+          "Branches": [
+            {
+              "Line": 46,
+              "Offset": 24,
+              "EndOffset": 26,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 46,
+              "Offset": 24,
+              "EndOffset": 34,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 2
+            }
+          ]
+        },
+        "System.Boolean SpendWise.Domain.Entities.OrcamentoMensal::PodeAdicionarDespesa(SpendWise.Domain.ValueObjects.Money)": {
+          "Lines": {
+            "51": 3,
+            "52": 3,
+            "53": 3
+          },
+          "Branches": []
+        },
+        "System.String SpendWise.Domain.Entities.OrcamentoMensal::ObterAnoMesAtual()": {
+          "Lines": {
+            "56": 1,
+            "57": 1,
+            "58": 1
+          },
+          "Branches": []
+        },
+        "System.Boolean SpendWise.Domain.Entities.OrcamentoMensal::IsValidAnoMesFormat(System.String)": {
+          "Lines": {
+            "61": 28,
+            "62": 28,
+            "63": 28,
+            "64": 28
+          },
+          "Branches": []
+        },
+        "System.Void SpendWise.Domain.Entities.OrcamentoMensal::.ctor()": {
+          "Lines": {
+            "15": 0
+          },
+          "Branches": []
+        },
+        "System.Void SpendWise.Domain.Entities.OrcamentoMensal::.ctor(System.Guid,System.String,SpendWise.Domain.ValueObjects.Money)": {
+          "Lines": {
+            "17": 33,
+            "18": 33,
+            "19": 33,
+            "20": 1,
+            "22": 32,
+            "23": 4,
+            "25": 28,
+            "26": 8,
+            "28": 20,
+            "29": 20,
+            "30": 20,
+            "31": 19
+          },
+          "Branches": [
+            {
+              "Line": 19,
+              "Offset": 21,
+              "EndOffset": 23,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 19,
+              "Offset": 21,
+              "EndOffset": 39,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 32
+            },
+            {
+              "Line": 22,
+              "Offset": 47,
+              "EndOffset": 49,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 4
+            },
+            {
+              "Line": 22,
+              "Offset": 47,
+              "EndOffset": 65,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 28
+            },
+            {
+              "Line": 25,
+              "Offset": 76,
+              "EndOffset": 78,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 8
+            },
+            {
+              "Line": 25,
+              "Offset": 76,
+              "EndOffset": 94,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 20
+            },
+            {
+              "Line": 30,
+              "Offset": 113,
+              "EndOffset": 115,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 1
+            },
+            {
+              "Line": 30,
+              "Offset": 113,
+              "EndOffset": 127,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 19
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\mateu\\OneDrive\\Área de Trabalho\\UNB\\TPPE\\MateusOrlando-TPPE-2025.2-WebAPi\\SpendWise\\backend\\src\\SpendWise.Domain\\Entities\\Transacao.cs": {
+      "SpendWise.Domain.Entities.Transacao": {
+        "System.String SpendWise.Domain.Entities.Transacao::get_Descricao()": {
+          "Lines": {
+            "8": 43
+          },
+          "Branches": []
+        },
+        "SpendWise.Domain.ValueObjects.Money SpendWise.Domain.Entities.Transacao::get_Valor()": {
+          "Lines": {
+            "9": 47
+          },
+          "Branches": []
+        },
+        "System.DateTime SpendWise.Domain.Entities.Transacao::get_DataTransacao()": {
+          "Lines": {
+            "10": 52
+          },
+          "Branches": []
+        },
+        "SpendWise.Domain.Enums.TipoTransacao SpendWise.Domain.Entities.Transacao::get_Tipo()": {
+          "Lines": {
+            "11": 46
+          },
+          "Branches": []
+        },
+        "System.Guid SpendWise.Domain.Entities.Transacao::get_UsuarioId()": {
+          "Lines": {
+            "12": 39
+          },
+          "Branches": []
+        },
+        "System.Guid SpendWise.Domain.Entities.Transacao::get_CategoriaId()": {
+          "Lines": {
+            "13": 39
+          },
+          "Branches": []
+        },
+        "System.String SpendWise.Domain.Entities.Transacao::get_Observacoes()": {
+          "Lines": {
+            "14": 40
+          },
+          "Branches": []
+        },
+        "SpendWise.Domain.Entities.Usuario SpendWise.Domain.Entities.Transacao::get_Usuario()": {
+          "Lines": {
+            "17": 0
+          },
+          "Branches": []
+        },
+        "SpendWise.Domain.Entities.Categoria SpendWise.Domain.Entities.Transacao::get_Categoria()": {
+          "Lines": {
+            "18": 0
+          },
+          "Branches": []
+        },
+        "System.Void SpendWise.Domain.Entities.Transacao::AtualizarDescricao(System.String)": {
+          "Lines": {
+            "51": 5,
+            "52": 5,
+            "53": 3,
+            "55": 2,
+            "56": 2,
+            "57": 2
+          },
+          "Branches": [
+            {
+              "Line": 52,
+              "Offset": 9,
+              "EndOffset": 11,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 3
+            },
+            {
+              "Line": 52,
+              "Offset": 9,
+              "EndOffset": 27,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 2
+            }
+          ]
+        },
+        "System.Void SpendWise.Domain.Entities.Transacao::AtualizarValor(SpendWise.Domain.ValueObjects.Money)": {
+          "Lines": {
+            "60": 3,
+            "61": 3,
+            "62": 2,
+            "63": 2
+          },
+          "Branches": [
+            {
+              "Line": 61,
+              "Offset": 4,
+              "EndOffset": 6,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 61,
+              "Offset": 4,
+              "EndOffset": 18,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 2
+            }
+          ]
+        },
+        "System.Void SpendWise.Domain.Entities.Transacao::AtualizarDataTransacao(System.DateTime)": {
+          "Lines": {
+            "66": 1,
+            "67": 1,
+            "68": 1,
+            "69": 1
+          },
+          "Branches": []
+        },
+        "System.Void SpendWise.Domain.Entities.Transacao::AtualizarObservacoes(System.String)": {
+          "Lines": {
+            "72": 2,
+            "73": 2,
+            "74": 2,
+            "75": 2
+          },
+          "Branches": []
+        },
+        "System.Void SpendWise.Domain.Entities.Transacao::AtualizarCategoria(System.Guid)": {
+          "Lines": {
+            "78": 2,
+            "79": 2,
+            "80": 1,
+            "82": 1,
+            "83": 1,
+            "84": 1
+          },
+          "Branches": [
+            {
+              "Line": 79,
+              "Offset": 14,
+              "EndOffset": 16,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 79,
+              "Offset": 14,
+              "EndOffset": 32,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            }
+          ]
+        },
+        "System.Void SpendWise.Domain.Entities.Transacao::AtualizarTipo(SpendWise.Domain.Enums.TipoTransacao)": {
+          "Lines": {
+            "87": 0,
+            "88": 0,
+            "89": 0,
+            "90": 0
+          },
+          "Branches": []
+        },
+        "System.Void SpendWise.Domain.Entities.Transacao::.ctor()": {
+          "Lines": {
+            "21": 0
+          },
+          "Branches": []
+        },
+        "System.Void SpendWise.Domain.Entities.Transacao::.ctor(System.String,SpendWise.Domain.ValueObjects.Money,System.DateTime,SpendWise.Domain.Enums.TipoTransacao,System.Guid,System.Guid,System.String)": {
+          "Lines": {
+            "23": 40,
+            "24": 40,
+            "25": 40,
+            "26": 40,
+            "27": 40,
+            "28": 40,
+            "29": 40,
+            "30": 40,
+            "31": 40,
+            "32": 40,
+            "33": 3,
+            "35": 37,
+            "36": 1,
+            "38": 36,
+            "39": 1,
+            "41": 35,
+            "42": 35,
+            "43": 34,
+            "44": 34,
+            "45": 34,
+            "46": 34,
+            "47": 34,
+            "48": 34
+          },
+          "Branches": [
+            {
+              "Line": 32,
+              "Offset": 16,
+              "EndOffset": 18,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 3
+            },
+            {
+              "Line": 32,
+              "Offset": 16,
+              "EndOffset": 34,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 37
+            },
+            {
+              "Line": 35,
+              "Offset": 48,
+              "EndOffset": 50,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 1
+            },
+            {
+              "Line": 35,
+              "Offset": 48,
+              "EndOffset": 66,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 36
+            },
+            {
+              "Line": 38,
+              "Offset": 80,
+              "EndOffset": 82,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 1
+            },
+            {
+              "Line": 38,
+              "Offset": 80,
+              "EndOffset": 98,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 35
+            },
+            {
+              "Line": 42,
+              "Offset": 109,
+              "EndOffset": 111,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 1
+            },
+            {
+              "Line": 42,
+              "Offset": 109,
+              "EndOffset": 123,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 34
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\mateu\\OneDrive\\Área de Trabalho\\UNB\\TPPE\\MateusOrlando-TPPE-2025.2-WebAPi\\SpendWise\\backend\\src\\SpendWise.Domain\\Entities\\Usuario.cs": {
+      "SpendWise.Domain.Entities.Usuario": {
+        "System.String SpendWise.Domain.Entities.Usuario::get_Nome()": {
+          "Lines": {
+            "7": 37
+          },
+          "Branches": []
+        },
+        "SpendWise.Domain.ValueObjects.Email SpendWise.Domain.Entities.Usuario::get_Email()": {
+          "Lines": {
+            "8": 33
+          },
+          "Branches": []
+        },
+        "System.String SpendWise.Domain.Entities.Usuario::get_Senha()": {
+          "Lines": {
+            "9": 27
+          },
+          "Branches": []
+        },
+        "System.Decimal SpendWise.Domain.Entities.Usuario::get_RendaMensal()": {
+          "Lines": {
+            "10": 30
+          },
+          "Branches": []
+        },
+        "System.Boolean SpendWise.Domain.Entities.Usuario::get_IsAtivo()": {
+          "Lines": {
+            "11": 40
+          },
+          "Branches": []
+        },
+        "System.String SpendWise.Domain.Entities.Usuario::get_PasswordResetToken()": {
+          "Lines": {
+            "14": 0
+          },
+          "Branches": []
+        },
+        "System.Nullable`1<System.DateTime> SpendWise.Domain.Entities.Usuario::get_PasswordResetTokenExpiry()": {
+          "Lines": {
+            "15": 0
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.ICollection`1<SpendWise.Domain.Entities.Categoria> SpendWise.Domain.Entities.Usuario::get_Categorias()": {
+          "Lines": {
+            "18": 34
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.ICollection`1<SpendWise.Domain.Entities.Transacao> SpendWise.Domain.Entities.Usuario::get_Transacoes()": {
+          "Lines": {
+            "19": 34
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.ICollection`1<SpendWise.Domain.Entities.Meta> SpendWise.Domain.Entities.Usuario::get_Metas()": {
+          "Lines": {
+            "20": 32
+          },
+          "Branches": []
+        },
+        "System.Void SpendWise.Domain.Entities.Usuario::AtualizarNome(System.String)": {
+          "Lines": {
+            "50": 9,
+            "51": 9,
+            "52": 6,
+            "54": 3,
+            "55": 3,
+            "56": 3
+          },
+          "Branches": [
+            {
+              "Line": 51,
+              "Offset": 9,
+              "EndOffset": 11,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 6
+            },
+            {
+              "Line": 51,
+              "Offset": 9,
+              "EndOffset": 27,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 3
+            }
+          ]
+        },
+        "System.Void SpendWise.Domain.Entities.Usuario::AtualizarRendaMensal(System.Decimal)": {
+          "Lines": {
+            "59": 2,
+            "60": 2,
+            "61": 1,
+            "63": 1,
+            "64": 1,
+            "65": 1
+          },
+          "Branches": [
+            {
+              "Line": 60,
+              "Offset": 14,
+              "EndOffset": 16,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 60,
+              "Offset": 14,
+              "EndOffset": 32,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            }
+          ]
+        },
+        "System.Void SpendWise.Domain.Entities.Usuario::Desativar()": {
+          "Lines": {
+            "68": 2,
+            "69": 2,
+            "70": 2,
+            "71": 2
+          },
+          "Branches": []
+        },
+        "System.Void SpendWise.Domain.Entities.Usuario::Ativar()": {
+          "Lines": {
+            "74": 1,
+            "75": 1,
+            "76": 1,
+            "77": 1
+          },
+          "Branches": []
+        },
+        "System.Void SpendWise.Domain.Entities.Usuario::DefinirTokenResetSenha(System.String,System.TimeSpan)": {
+          "Lines": {
+            "80": 0,
+            "81": 0,
+            "82": 0,
+            "84": 0,
+            "85": 0,
+            "86": 0,
+            "87": 0
+          },
+          "Branches": [
+            {
+              "Line": 81,
+              "Offset": 9,
+              "EndOffset": 11,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 81,
+              "Offset": 9,
+              "EndOffset": 27,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Boolean SpendWise.Domain.Entities.Usuario::IsTokenResetSenhaValido(System.String)": {
+          "Lines": {
+            "90": 0,
+            "91": 0,
+            "92": 0,
+            "94": 0,
+            "95": 0,
+            "97": 0,
+            "98": 0
+          },
+          "Branches": [
+            {
+              "Line": 91,
+              "Offset": 7,
+              "EndOffset": 9,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 91,
+              "Offset": 7,
+              "EndOffset": 22,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 91,
+              "Offset": 25,
+              "EndOffset": 27,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 91,
+              "Offset": 25,
+              "EndOffset": 31,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 94,
+              "Offset": 45,
+              "EndOffset": 47,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 94,
+              "Offset": 68,
+              "EndOffset": 70,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 94,
+              "Offset": 68,
+              "EndOffset": 73,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 0
+            },
+            {
+              "Line": 94,
+              "Offset": 45,
+              "EndOffset": 89,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            },
+            {
+              "Line": 94,
+              "Offset": 92,
+              "EndOffset": 94,
+              "Path": 0,
+              "Ordinal": 8,
+              "Hits": 0
+            },
+            {
+              "Line": 94,
+              "Offset": 92,
+              "EndOffset": 98,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void SpendWise.Domain.Entities.Usuario::ResetarSenha(System.String)": {
+          "Lines": {
+            "101": 0,
+            "102": 0,
+            "103": 0,
+            "105": 0,
+            "106": 0,
+            "107": 0,
+            "108": 0,
+            "109": 0
+          },
+          "Branches": [
+            {
+              "Line": 102,
+              "Offset": 9,
+              "EndOffset": 11,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 102,
+              "Offset": 9,
+              "EndOffset": 27,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void SpendWise.Domain.Entities.Usuario::.ctor()": {
+          "Lines": {
+            "23": 0,
+            "24": 0,
+            "25": 0,
+            "26": 0,
+            "27": 0,
+            "28": 0
+          },
+          "Branches": []
+        },
+        "System.Void SpendWise.Domain.Entities.Usuario::.ctor(System.String,SpendWise.Domain.ValueObjects.Email,System.String,System.Decimal)": {
+          "Lines": {
+            "30": 32,
+            "31": 32,
+            "32": 32,
+            "33": 3,
+            "35": 29,
+            "36": 1,
+            "38": 28,
+            "39": 28,
+            "40": 27,
+            "41": 26,
+            "42": 26
+          },
+          "Branches": [
+            {
+              "Line": 32,
+              "Offset": 56,
+              "EndOffset": 58,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 3
+            },
+            {
+              "Line": 32,
+              "Offset": 56,
+              "EndOffset": 74,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 29
+            },
+            {
+              "Line": 35,
+              "Offset": 88,
+              "EndOffset": 90,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 1
+            },
+            {
+              "Line": 35,
+              "Offset": 88,
+              "EndOffset": 106,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 28
+            },
+            {
+              "Line": 39,
+              "Offset": 117,
+              "EndOffset": 119,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 1
+            },
+            {
+              "Line": 39,
+              "Offset": 117,
+              "EndOffset": 131,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 27
+            },
+            {
+              "Line": 40,
+              "Offset": 140,
+              "EndOffset": 142,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 1
+            },
+            {
+              "Line": 40,
+              "Offset": 140,
+              "EndOffset": 154,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 26
+            }
+          ]
+        },
+        "System.Void SpendWise.Domain.Entities.Usuario::.ctor(System.String,SpendWise.Domain.ValueObjects.Email,System.String)": {
+          "Lines": {
+            "44": 15,
+            "45": 15,
+            "47": 15
+          },
+          "Branches": []
+        }
+      }
+    }
+  }
+}

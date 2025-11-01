@@ -1,25 +1,82 @@
-# SpendWise - Sistema Inteligente de Finanças Pessoais
+# SpendWise - Sistema de Gerenciamento Financeiro Pessoal
 
-## **Visão Geral**
+## Sobre o Projeto
 
-Evolução completa de um projeto Java simples(https://github.com/Vitor4818/Minhas-Financas-Java/tree/main) para uma aplicação enterprise robusta demonstrando as melhores práticas de desenvolvimento.
+Sistema enterprise completo para gerenciamento de financas pessoais, construido com Clean Architecture, CQRS e as melhores praticas de desenvolvimento.
 
-### **Transformação:**
-- **De:** Console app Java básico
-- **Para:** Sistema enterprise completo (.NET + React + PostgreSQL)
+### Transformacao
+- **De:** Console app Java basico
+- **Para:** Sistema enterprise completo (.NET 9 + Next.js + PostgreSQL)
 
-## **Estrutura do Projeto**
+## Estrutura do Projeto
 
 ```
-├── projeto-original/       # Projeto Java original (referência)
-├── SpendWise/              # Novo sistema enterprise
-│   ├── backend/            # ASP.NET Core API
-│   ├── infraestrutura/     # Docker + PostgreSQL
-│   └── documentacao/       # Diagramas + Specs
+MateusOrlando-TPPE-2025.2-WebAPi/
+├── src/                    # Codigo fonte (.NET)
+│   ├── SpendWise.Domain/
+│   ├── SpendWise.Application/
+│   ├── SpendWise.Infrastructure/
+│   └── SpendWise.API/
+├── tests/                  # Testes unitarios
+│   ├── SpendWise.Domain.Tests/
+│   ├── SpendWise.Application.Tests/
+│   └── SpendWise.Infrastructure.Tests/
+├── infrastructure/         # Docker, DB, nginx
+│   ├── Dockerfile
+│   ├── Dockerfile.dev
+│   ├── docker-compose.yml
+│   └── database/
+│       └── migrations.sql
+├── docs/                   # Documentacao
+│   └── examples/
+│       └── transacoes_exemplo.csv
+├── scripts/                # Scripts utilitarios
+│   ├── dev.sh             # Linux/Mac
+│   └── dev.ps1            # Windows
+├── .github/                # CI/CD (futuro)
+├── .env                    # Variaveis de ambiente (NAO COMMITAR)
+├── .env.example            # Template de variaveis
+├── SpendWise.sln          # Solucao .NET
 └── README.md
 ```
 
-## **Como Executar**
+## Quick Start
+
+### Pre-requisitos
+- Docker Desktop
+- (Opcional) .NET 9 SDK para desenvolvimento local
+
+### Iniciar Ambiente de Desenvolvimento
+
+**Windows (PowerShell):**
+```powershell
+# 1. Criar arquivo .env (se nao existir)
+Rename-Item ".env-COPIAR-MANUALMENTE.txt" ".env"
+
+# 2. Iniciar ambiente
+.\scripts\dev.ps1
+```
+
+**Linux/Mac (Bash):**
+```bash
+# 1. Criar arquivo .env (se nao existir)
+mv .env-COPIAR-MANUALMENTE.txt .env
+
+# 2. Dar permissao de execucao
+chmod +x scripts/dev.sh
+
+# 3. Iniciar ambiente
+./scripts/dev.sh
+```
+
+### Acessar Servicos
+
+- **API:** http://localhost:5000
+- **Swagger:** http://localhost:5000/swagger
+- **Health Check:** http://localhost:5000/health
+- **Adminer:** http://localhost:8080
+
+## Como Executar
 
 ### **Pré-requisitos:**
 - Docker Desktop
