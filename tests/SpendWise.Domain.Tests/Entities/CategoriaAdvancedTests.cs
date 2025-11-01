@@ -28,7 +28,6 @@ public class CategoriaAdvancedTests
     [Theory]
     [InlineData("")]
     [InlineData(" ")]
-    [InlineData(null)]
     public void AtualizarNome_DeveLancarException_QuandoNomeInvalido(string nomeInvalido)
     {
         // Arrange
@@ -36,6 +35,17 @@ public class CategoriaAdvancedTests
 
         // Act & Assert
         var act = () => categoria.AtualizarNome(nomeInvalido);
+        act.Should().Throw<ArgumentException>().WithMessage("*Nome*");
+    }
+
+    [Fact]
+    public void AtualizarNome_DeveLancarException_QuandoNomeNull()
+    {
+        // Arrange
+        var categoria = new Categoria("Nome", TipoCategoria.Despesa, _usuarioId);
+
+        // Act & Assert
+        var act = () => categoria.AtualizarNome(null!);
         act.Should().Throw<ArgumentException>().WithMessage("*Nome*");
     }
 

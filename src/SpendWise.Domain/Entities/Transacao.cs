@@ -14,11 +14,17 @@ public class Transacao : BaseEntity
     public string? Observacoes { get; private set; }
 
     // Relacionamentos
-    public virtual Usuario Usuario { get; private set; }
-    public virtual Categoria Categoria { get; private set; }
+    public virtual Usuario Usuario { get; private set; } = null!;
+    public virtual Categoria Categoria { get; private set; } = null!;
 
     // Construtor privado para EF Core
-    private Transacao() { }
+    private Transacao()
+    {
+        Descricao = string.Empty;
+        Valor = Money.Zero();
+        Usuario = null!;
+        Categoria = null!;
+    }
 
     public Transacao(
         string descricao, 

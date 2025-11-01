@@ -46,7 +46,6 @@ public class OrcamentoMensalTests
     [InlineData("")]
     [InlineData(" ")]
     [InlineData("   ")]
-    [InlineData(null)]
     public void OrcamentoMensal_ShouldThrowException_WithInvalidAnoMes(string invalidAnoMes)
     {
         // Arrange
@@ -54,6 +53,19 @@ public class OrcamentoMensalTests
 
         // Act & Assert
         Action act = () => new OrcamentoMensal(_usuarioId, invalidAnoMes, valor);
+        act.Should().Throw<ArgumentException>()
+           .WithMessage("AnoMes não pode ser vazio*")
+           .WithParameterName("anoMes");
+    }
+
+    [Fact]
+    public void OrcamentoMensal_ShouldThrowException_WhenAnoMesIsNull()
+    {
+        // Arrange
+        var valor = new Money(3000m);
+
+        // Act & Assert
+        Action act = () => new OrcamentoMensal(_usuarioId, null!, valor);
         act.Should().Throw<ArgumentException>()
            .WithMessage("AnoMes não pode ser vazio*")
            .WithParameterName("anoMes");

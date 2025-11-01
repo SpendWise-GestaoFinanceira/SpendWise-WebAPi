@@ -1,3 +1,5 @@
+using System.Globalization;
+
 namespace SpendWise.Domain.ValueObjects;
 
 public class Money
@@ -5,7 +7,10 @@ public class Money
     public decimal Valor { get; private set; }
     public string Moeda { get; private set; }
 
-    private Money() { } // Para EF Core
+    private Money()
+    {
+        Moeda = "BRL";
+    }
 
     public Money(decimal valor, string moeda = "BRL")
     {
@@ -45,7 +50,11 @@ public class Money
 
     public static implicit operator decimal(Money money) => money.Valor;
 
-    public override string ToString() => $"{Valor:C} {Moeda}";
+    public override string ToString()
+    {
+        var culture = CultureInfo.GetCultureInfo("pt-BR");
+        return $"{Valor.ToString("N2", culture)} {Moeda}";
+    }
 
     public override bool Equals(object? obj)
     {

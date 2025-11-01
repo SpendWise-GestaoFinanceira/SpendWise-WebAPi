@@ -13,7 +13,10 @@ public class Email
     public string Domain => Valor.Split('@')[1];
     public string LocalPart => Valor.Split('@')[0];
 
-    private Email() { } // Para EF Core
+    private Email()
+    {
+        Valor = string.Empty;
+    }
 
     public Email(string valor)
     {

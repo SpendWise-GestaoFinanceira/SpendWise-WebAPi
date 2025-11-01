@@ -46,11 +46,19 @@ public class MoneyTests
     [Theory]
     [InlineData("")]
     [InlineData(" ")]
-    [InlineData(null)]
     public void Money_ShouldThrowException_WhenCurrencyIsInvalid(string invalidCurrency)
     {
         // Arrange & Act & Assert
         Action act = () => new Money(100, invalidCurrency);
+        act.Should().Throw<ArgumentException>()
+           .WithMessage("Moeda não pode ser vazia*");
+    }
+
+    [Fact]
+    public void Money_ShouldThrowException_WhenCurrencyIsNull()
+    {
+        // Arrange & Act & Assert
+        Action act = () => new Money(100, null!);
         act.Should().Throw<ArgumentException>()
            .WithMessage("Moeda não pode ser vazia*");
     }

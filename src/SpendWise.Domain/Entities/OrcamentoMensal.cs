@@ -9,10 +9,15 @@ public class OrcamentoMensal : BaseEntity
     public Money Valor { get; private set; }
 
     // Relacionamentos
-    public virtual Usuario Usuario { get; private set; }
+    public virtual Usuario Usuario { get; private set; } = null!;
 
     // Construtor privado para EF Core
-    private OrcamentoMensal() { }
+    private OrcamentoMensal()
+    {
+        AnoMes = string.Empty;
+        Valor = Money.Zero();
+        Usuario = null!;
+    }
 
     public OrcamentoMensal(Guid usuarioId, string anoMes, Money valor)
     {

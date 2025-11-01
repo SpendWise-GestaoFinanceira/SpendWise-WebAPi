@@ -34,7 +34,6 @@ public class EmailTests
     [Theory]
     [InlineData("")]
     [InlineData(" ")]
-    [InlineData(null)]
     [InlineData("invalid-email")]
     [InlineData("@domain.com")]
     [InlineData("user@")]
@@ -45,6 +44,15 @@ public class EmailTests
     {
         // Act & Assert
         Action act = () => new Email(invalidEmail);
+        act.Should().Throw<ArgumentException>()
+           .WithMessage("Email inválido*");
+    }
+
+    [Fact]
+    public void Email_ShouldThrowException_WhenEmailIsNull()
+    {
+        // Act & Assert
+        Action act = () => new Email(null!);
         act.Should().Throw<ArgumentException>()
            .WithMessage("Email inválido*");
     }

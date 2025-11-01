@@ -17,7 +17,10 @@ public class FechamentoMensal : BaseEntity
     public Usuario Usuario { get; set; } = null!;
 
     // Construtor protegido para EF
-    protected FechamentoMensal() { }
+    protected FechamentoMensal()
+    {
+        AnoMes = string.Empty;
+    }
 
     public FechamentoMensal(
         Guid usuarioId,

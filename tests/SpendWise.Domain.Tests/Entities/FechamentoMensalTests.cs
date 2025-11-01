@@ -42,12 +42,21 @@ public class FechamentoMensalTests
 
     [Theory]
     [InlineData("")]
-    [InlineData(null)]
     [InlineData("  ")]
     public void CriarFechamentoMensal_DeveLancarException_QuandoAnoMesInvalidoOuVazio(string anoMes)
     {
         // Arrange & Act & Assert
-        var act = () => new FechamentoMensal(_usuarioId, anoMes!, 1000, 500);
+        var act = () => new FechamentoMensal(_usuarioId, anoMes, 1000, 500);
+        
+        act.Should().Throw<ArgumentException>()
+            .WithMessage("*AnoMes*");
+    }
+
+    [Fact]
+    public void CriarFechamentoMensal_DeveLancarException_QuandoAnoMesNull()
+    {
+        // Arrange & Act & Assert
+        var act = () => new FechamentoMensal(_usuarioId, null!, 1000, 500);
         
         act.Should().Throw<ArgumentException>()
             .WithMessage("*AnoMes*");

@@ -35,7 +35,6 @@ public class MetaTests
     [Theory]
     [InlineData("")]
     [InlineData(" ")]
-    [InlineData(null)]
     public void CriarMeta_DeveLancarException_QuandoNomeInvalido(string nomeInvalido)
     {
         // Arrange & Act & Assert
@@ -43,14 +42,29 @@ public class MetaTests
         act.Should().Throw<ArgumentException>().WithMessage("*Nome*");
     }
 
+    [Fact]
+    public void CriarMeta_DeveLancarException_QuandoNomeNull()
+    {
+        // Arrange & Act & Assert
+        var act = () => new Meta(null!, "Descrição", new Money(1000), DateTime.UtcNow.AddDays(30), _usuarioId);
+        act.Should().Throw<ArgumentException>().WithMessage("*Nome*");
+    }
+
     [Theory]
     [InlineData("")]
     [InlineData(" ")]
-    [InlineData(null)]
     public void CriarMeta_DeveLancarException_QuandoDescricaoInvalida(string descricaoInvalida)
     {
         // Arrange & Act & Assert
         var act = () => new Meta("Nome", descricaoInvalida, new Money(1000), DateTime.UtcNow.AddDays(30), _usuarioId);
+        act.Should().Throw<ArgumentException>().WithMessage("*Descrição*");
+    }
+
+    [Fact]
+    public void CriarMeta_DeveLancarException_QuandoDescricaoNull()
+    {
+        // Arrange & Act & Assert
+        var act = () => new Meta("Nome", null!, new Money(1000), DateTime.UtcNow.AddDays(30), _usuarioId);
         act.Should().Throw<ArgumentException>().WithMessage("*Descrição*");
     }
 

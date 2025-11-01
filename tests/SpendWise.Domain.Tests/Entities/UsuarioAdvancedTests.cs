@@ -37,7 +37,6 @@ public class UsuarioAdvancedTests
     [Theory]
     [InlineData("")]
     [InlineData(" ")]
-    [InlineData(null)]
     public void AtualizarNome_DeveLancarException_QuandoNomeInvalido(string nomeInvalido)
     {
         // Arrange
@@ -45,6 +44,17 @@ public class UsuarioAdvancedTests
 
         // Act & Assert
         var act = () => usuario.AtualizarNome(nomeInvalido);
+        act.Should().Throw<ArgumentException>();
+    }
+
+    [Fact]
+    public void AtualizarNome_DeveLancarException_QuandoNomeNull()
+    {
+        // Arrange
+        var usuario = new Usuario("Nome", new Email("teste@email.com"), "hash");
+
+        // Act & Assert
+        var act = () => usuario.AtualizarNome(null!);
         act.Should().Throw<ArgumentException>();
     }
 
