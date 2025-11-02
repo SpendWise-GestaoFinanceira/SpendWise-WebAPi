@@ -1,9 +1,9 @@
+using System.Security.Cryptography;
 using FluentValidation;
 using MediatR;
 using SpendWise.Application.Commands.Auth;
 using SpendWise.Application.DTOs.Auth;
 using SpendWise.Domain.Interfaces;
-using System.Security.Cryptography;
 
 namespace SpendWise.Application.Handlers.Auth;
 
@@ -35,7 +35,7 @@ public class ForgotPasswordCommandHandler : IRequestHandler<ForgotPasswordComman
         }
 
         var usuario = await _unitOfWork.Usuarios.BuscarPorEmailAsync(request.Email);
-        
+
         // Por segurança, sempre retornar sucesso mesmo se usuário não existir
         if (usuario == null)
         {
@@ -49,7 +49,7 @@ public class ForgotPasswordCommandHandler : IRequestHandler<ForgotPasswordComman
         // Gerar token seguro
         var token = GenerateSecureToken();
         var validPeriod = TimeSpan.FromMinutes(30); // Token válido por 30 minutos
-        
+
         usuario.DefinirTokenResetSenha(token, validPeriod);
         await _unitOfWork.SaveChangesAsync();
 
@@ -59,14 +59,14 @@ public class ForgotPasswordCommandHandler : IRequestHandler<ForgotPasswordComman
 
         // Enviar email
         var emailSent = await _emailService.SendPasswordResetEmailAsync(
-            usuario.Email.Valor, 
-            token, 
+            usuario.Email.Valor,
+            token,
             resetUrl);
 
         return new ForgotPasswordResponseDto
         {
             Success = emailSent,
-            Message = emailSent 
+            Message = emailSent
                 ? "Se o email estiver cadastrado, você receberá instruções para redefinir sua senha."
                 : "Erro temporário. Tente novamente em alguns minutos."
         };
@@ -126,7 +126,7 @@ public class ResetPasswordCommandHandler : IRequestHandler<ResetPasswordCommand,
 
         // Hash da nova senha
         var senhaHash = _passwordHasher.HashPassword(request.NewPassword);
-        
+
         // Resetar senha
         usuario.ResetarSenha(senhaHash);
         await _unitOfWork.SaveChangesAsync();

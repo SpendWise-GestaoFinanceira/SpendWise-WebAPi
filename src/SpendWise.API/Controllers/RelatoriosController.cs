@@ -1,11 +1,11 @@
+using System.Security.Claims;
+using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using SpendWise.Application.Queries.Relatorios;
-using SpendWise.Application.DTOs.Relatorios;
 using SpendWise.API.Extensions;
-using FluentValidation;
-using System.Security.Claims;
+using SpendWise.Application.DTOs.Relatorios;
+using SpendWise.Application.Queries.Relatorios;
 
 namespace SpendWise.API.Controllers;
 

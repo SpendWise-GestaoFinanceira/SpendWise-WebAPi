@@ -22,7 +22,7 @@ public class ReabrirMesCommandHandler : IRequestHandler<ReabrirMesCommand, bool>
             return false;
 
         fechamento.Reabrir($"Solicitação de reabertura em {DateTime.UtcNow:dd/MM/yyyy HH:mm}");
-        
+
         await _unitOfWork.FechamentosMensais.UpdateAsync(fechamento);
         await _unitOfWork.SaveChangesAsync();
 

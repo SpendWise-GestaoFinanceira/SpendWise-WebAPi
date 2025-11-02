@@ -1,8 +1,8 @@
 using FluentAssertions;
 using Microsoft.EntityFrameworkCore;
 using SpendWise.Domain.Entities;
-using SpendWise.Domain.ValueObjects;
 using SpendWise.Domain.Enums;
+using SpendWise.Domain.ValueObjects;
 using SpendWise.Infrastructure.Data;
 using SpendWise.Infrastructure.Repositories;
 

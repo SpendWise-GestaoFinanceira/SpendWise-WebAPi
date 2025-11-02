@@ -1,9 +1,9 @@
-using Microsoft.Extensions.Configuration;
-using Microsoft.IdentityModel.Tokens;
-using SpendWise.Domain.Interfaces;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
+using SpendWise.Domain.Interfaces;
 
 namespace SpendWise.Infrastructure.Services;
 
@@ -84,7 +84,7 @@ public class TokenService : ITokenService
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var jsonToken = tokenHandler.ReadJwtToken(token);
-            
+
             return jsonToken.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value;
         }
         catch

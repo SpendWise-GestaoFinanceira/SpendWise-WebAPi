@@ -8,7 +8,7 @@ public interface IUnitOfWork : IDisposable
     IOrcamentoMensalRepository OrcamentosMensais { get; }
     IFechamentoMensalRepository FechamentosMensais { get; }
     IMetaRepository Metas { get; }
-    
+
     Task<int> SaveChangesAsync();
     Task BeginTransactionAsync();
     Task CommitTransactionAsync();

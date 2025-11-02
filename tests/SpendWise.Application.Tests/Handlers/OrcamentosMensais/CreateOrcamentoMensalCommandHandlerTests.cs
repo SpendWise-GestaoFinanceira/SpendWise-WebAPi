@@ -17,9 +17,9 @@ public class CreateOrcamentoMensalCommandHandlerTests
     {
         _unitOfWorkMock = new Mock<IUnitOfWork>();
         _orcamentoRepositoryMock = new Mock<IOrcamentoMensalRepository>();
-        
+
         _unitOfWorkMock.Setup(u => u.OrcamentosMensais).Returns(_orcamentoRepositoryMock.Object);
-        
+
         _usuarioId = Guid.NewGuid();
     }
 

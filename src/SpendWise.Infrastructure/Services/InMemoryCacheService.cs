@@ -1,5 +1,5 @@
-using SpendWise.Application.Services;
 using System.Collections.Concurrent;
+using SpendWise.Application.Services;
 
 namespace SpendWise.Infrastructure.Services;
 
@@ -14,12 +14,12 @@ public class InMemoryCacheService : ICacheService
             Value = value,
             ExpiresAt = expiration.HasValue ? DateTime.UtcNow.Add(expiration.Value) : DateTime.UtcNow.AddHours(1)
         };
-        
+
         _cache[key] = item;
-        
+
         // Clean expired items periodically
         CleanExpiredItems();
-        
+
         return Task.CompletedTask;
     }
 
@@ -32,10 +32,10 @@ public class InMemoryCacheService : ICacheService
                 _cache.TryRemove(key, out _);
                 return Task.FromResult<T?>(null);
             }
-            
+
             return Task.FromResult(item.Value as T);
         }
-        
+
         return Task.FromResult<T?>(null);
     }
 
@@ -56,7 +56,7 @@ public class InMemoryCacheService : ICacheService
             }
             return Task.FromResult(true);
         }
-        
+
         return Task.FromResult(false);
     }
 

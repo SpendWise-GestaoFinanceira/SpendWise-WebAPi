@@ -22,7 +22,7 @@ public class LinhaImportacaoDto
     public string? Observacoes { get; set; }
     public bool EhValida { get; set; }
     public List<string> Erros { get; set; } = new();
-    
+
     // Dados parseados (se válidos)
     public DateTime? DataParsed { get; set; }
     public decimal? ValorParsed { get; set; }

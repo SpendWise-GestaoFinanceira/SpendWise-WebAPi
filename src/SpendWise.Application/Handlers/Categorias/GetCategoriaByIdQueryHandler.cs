@@ -1,8 +1,8 @@
 using AutoMapper;
 using MediatR;
 using SpendWise.Application.DTOs;
-using SpendWise.Domain.Interfaces;
 using SpendWise.Application.Queries.Categorias;
+using SpendWise.Domain.Interfaces;
 
 
 namespace SpendWise.Application.Handlers.Categorias;
@@ -21,7 +21,7 @@ public class GetCategoriaByIdQueryHandler : IRequestHandler<GetCategoriaByIdQuer
     public async Task<CategoriaDto?> Handle(GetCategoriaByIdQuery request, CancellationToken cancellationToken)
     {
         var categoria = await _unitOfWork.Categorias.GetByIdAsync(request.Id);
-        
+
         if (categoria == null)
             return null;
 

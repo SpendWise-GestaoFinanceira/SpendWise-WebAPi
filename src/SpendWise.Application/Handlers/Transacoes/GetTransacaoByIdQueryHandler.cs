@@ -20,7 +20,7 @@ public class GetTransacaoByIdQueryHandler : IRequestHandler<GetTransacaoByIdQuer
     public async Task<TransacaoDto?> Handle(GetTransacaoByIdQuery request, CancellationToken cancellationToken)
     {
         var transacao = await _unitOfWork.Transacoes.GetByIdAsync(request.Id);
-        
+
         if (transacao == null)
             return null;
 

@@ -20,13 +20,13 @@ public class ValidationResult
     public List<string> Warnings { get; set; } = new();
 
     public static ValidationResult Success() => new() { IsValid = true };
-    
+
     public static ValidationResult Failure(params string[] errors) => new()
     {
         IsValid = false,
         Errors = errors.ToList()
     };
-    
+
     public static ValidationResult WithWarning(params string[] warnings) => new()
     {
         IsValid = true,

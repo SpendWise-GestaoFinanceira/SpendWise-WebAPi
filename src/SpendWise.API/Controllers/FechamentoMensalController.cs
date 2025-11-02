@@ -1,10 +1,10 @@
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using SpendWise.API.Extensions;
 using SpendWise.Application.Commands.FechamentoMensal;
 using SpendWise.Application.DTOs;
 using SpendWise.Application.Queries.FechamentoMensal;
-using SpendWise.API.Extensions;
 
 namespace SpendWise.API.Controllers;
 
@@ -77,7 +77,7 @@ public class FechamentoMensalController : ControllerBase
             var usuarioId = User.GetUserId();
             var command = new FecharMesCommand(usuarioId, request.AnoMes);
             var fechamento = await _mediator.Send(command);
-            
+
             return CreatedAtAction(nameof(GetById), new { id = fechamento.Id }, fechamento);
         }
         catch (ArgumentException ex)
@@ -101,10 +101,10 @@ public class FechamentoMensalController : ControllerBase
             var usuarioId = User.GetUserId();
             var command = new ReabrirMesCommand(usuarioId, request.AnoMes);
             var success = await _mediator.Send(command);
-            
+
             if (!success)
                 return NotFound("Fechamento não encontrado");
-                
+
             return Ok(new { message = $"Mês {request.AnoMes} reaberto com sucesso" });
         }
         catch (InvalidOperationException ex)

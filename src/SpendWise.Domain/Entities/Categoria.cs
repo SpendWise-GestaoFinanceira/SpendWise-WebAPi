@@ -19,16 +19,16 @@ public class Categoria : BaseEntity
     public virtual ICollection<Transacao> Transacoes { get; private set; } = new List<Transacao>();
 
     // Construtor privado para EF Core
-    private Categoria() 
-    { 
-        Nome = string.Empty; 
+    private Categoria()
+    {
+        Nome = string.Empty;
     }
 
     public Categoria(string nome, TipoCategoria tipo, Guid usuarioId, string? descricao = null, Money? limite = null, PrioridadeCategoria prioridade = PrioridadeCategoria.Superfluo)
     {
         if (string.IsNullOrWhiteSpace(nome))
             throw new ArgumentException("Nome da categoria não pode ser vazio", nameof(nome));
-        
+
         if (usuarioId == Guid.Empty)
             throw new ArgumentException("UsuarioId não pode ser vazio", nameof(usuarioId));
 
@@ -44,7 +44,7 @@ public class Categoria : BaseEntity
     {
         if (string.IsNullOrWhiteSpace(nome))
             throw new ArgumentException("Nome da categoria não pode ser vazio", nameof(nome));
-        
+
         Nome = nome;
         UpdatedAt = DateTime.UtcNow;
     }
@@ -83,8 +83,8 @@ public class Categoria : BaseEntity
     public decimal CalcularGastoMensal(IEnumerable<Transacao> transacoes, DateTime inicioMes, DateTime fimMes)
     {
         return transacoes
-            .Where(t => t.Tipo == Enums.TipoTransacao.Despesa 
-                && t.DataTransacao >= inicioMes 
+            .Where(t => t.Tipo == Enums.TipoTransacao.Despesa
+                && t.DataTransacao >= inicioMes
                 && t.DataTransacao <= fimMes)
             .Sum(t => t.Valor.Valor);
     }
@@ -93,7 +93,7 @@ public class Categoria : BaseEntity
     {
         if (Limite?.Valor == null || Limite.Valor == 0)
             return 0;
-        
+
         return Math.Round((gastoAtual / Limite.Valor) * 100, 2);
     }
 
@@ -103,7 +103,7 @@ public class Categoria : BaseEntity
             return StatusLimite.SemLimite;
 
         var percentual = CalcularPercentualUtilizado(gastoAtual);
-        
+
         return percentual switch
         {
             >= 100 => StatusLimite.Excedido,
@@ -116,7 +116,7 @@ public class Categoria : BaseEntity
     {
         if (Limite?.Valor == null)
             return true; // Sem limite definido, pode adicionar
-        
+
         return (gastoAtual + valorDespesa.Valor) <= Limite.Valor;
     }
 }

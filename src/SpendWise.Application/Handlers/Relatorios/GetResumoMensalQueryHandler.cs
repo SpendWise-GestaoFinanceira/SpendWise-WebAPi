@@ -1,8 +1,8 @@
 using MediatR;
 using SpendWise.Application.DTOs.Relatorios;
 using SpendWise.Application.Queries.Relatorios;
-using SpendWise.Domain.Interfaces;
 using SpendWise.Domain.Enums;
+using SpendWise.Domain.Interfaces;
 using SpendWise.Domain.Utils;
 
 namespace SpendWise.Application.Handlers.Relatorios;
@@ -19,11 +19,11 @@ public class GetResumoMensalQueryHandler : IRequestHandler<GetResumoMensalQuery,
     public async Task<ResumoMensalDto> Handle(GetResumoMensalQuery request, CancellationToken cancellationToken)
     {
         var periodo = DateUtils.GetPeriodoFromAnoMes(request.AnoMes);
-        
+
         // Buscar totais de receitas e despesas
         var totalReceitas = await _unitOfWork.Transacoes.GetTotalByTipoAsync(
             request.UsuarioId, TipoTransacao.Receita, periodo);
-            
+
         var totalDespesas = await _unitOfWork.Transacoes.GetTotalByTipoAsync(
             request.UsuarioId, TipoTransacao.Despesa, periodo);
 
@@ -33,8 +33,8 @@ public class GetResumoMensalQueryHandler : IRequestHandler<GetResumoMensalQuery,
 
         // Contar transações
         var transacoes = await _unitOfWork.Transacoes.GetByUsuarioIdAsync(request.UsuarioId);
-        var transacoesMes = transacoes.Where(t => 
-            t.DataTransacao.Date >= periodo.DataInicio && 
+        var transacoesMes = transacoes.Where(t =>
+            t.DataTransacao.Date >= periodo.DataInicio &&
             t.DataTransacao.Date <= periodo.DataFim).Count();
 
         var saldo = totalReceitas - totalDespesas;

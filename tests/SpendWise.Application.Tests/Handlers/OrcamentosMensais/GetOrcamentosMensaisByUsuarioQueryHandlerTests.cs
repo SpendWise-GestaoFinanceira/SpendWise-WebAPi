@@ -48,10 +48,10 @@ public class GetOrcamentosMensaisByUsuarioQueryHandlerTests
 
         _calculoServiceMock
             .Setup(s => s.CalcularEstatisticasOrcamentoAsync(_usuarioId, It.IsAny<string>()))
-            .ReturnsAsync(new Services.OrcamentoCalculoResultado 
-            { 
+            .ReturnsAsync(new Services.OrcamentoCalculoResultado
+            {
                 ValorOrcamento = 5000,
-                ValorGasto = 3000, 
+                ValorGasto = 3000,
                 ValorRestante = 2000,
                 PercentualUtilizado = 60,
                 Status = Services.StatusOrcamento.Dentro,
@@ -80,7 +80,7 @@ public class GetOrcamentosMensaisByUsuarioQueryHandlerTests
         result.Should().HaveCount(3);
         result.First().AnoMes.Should().Be("2025-12"); // Ordenado por AnoMes descendente
         _calculoServiceMock.Verify(
-            s => s.CalcularEstatisticasOrcamentoAsync(_usuarioId, It.IsAny<string>()), 
+            s => s.CalcularEstatisticasOrcamentoAsync(_usuarioId, It.IsAny<string>()),
             Times.Exactly(3)
         );
     }
@@ -102,7 +102,7 @@ public class GetOrcamentosMensaisByUsuarioQueryHandlerTests
         result.Should().NotBeNull();
         result.Should().BeEmpty();
         _calculoServiceMock.Verify(
-            s => s.CalcularEstatisticasOrcamentoAsync(It.IsAny<Guid>(), It.IsAny<string>()), 
+            s => s.CalcularEstatisticasOrcamentoAsync(It.IsAny<Guid>(), It.IsAny<string>()),
             Times.Never
         );
     }
@@ -126,10 +126,10 @@ public class GetOrcamentosMensaisByUsuarioQueryHandlerTests
 
         _calculoServiceMock
             .Setup(s => s.CalcularEstatisticasOrcamentoAsync(_usuarioId, It.IsAny<string>()))
-            .ReturnsAsync(new Services.OrcamentoCalculoResultado 
-            { 
+            .ReturnsAsync(new Services.OrcamentoCalculoResultado
+            {
                 ValorOrcamento = 5000,
-                ValorGasto = 1000, 
+                ValorGasto = 1000,
                 ValorRestante = 4000,
                 PercentualUtilizado = 20,
                 Status = Services.StatusOrcamento.Dentro,

@@ -19,11 +19,11 @@ public class BusinessRuleService : IBusinessRuleService
     }
 
     public async Task<ValidationResult> ValidarCriacaoTransacaoAsync(
-        Guid usuarioId, 
-        TipoTransacao tipo, 
-        Guid? categoriaId, 
-        Money valor, 
-        DateTime data, 
+        Guid usuarioId,
+        TipoTransacao tipo,
+        Guid? categoriaId,
+        Money valor,
+        DateTime data,
         CancellationToken cancellationToken = default)
     {
         _logger.LogInformation("Validando criação de transação para usuário {UsuarioId}", usuarioId);
@@ -78,16 +78,16 @@ public class BusinessRuleService : IBusinessRuleService
             }
         }
 
-        return errors.Any() 
-            ? ValidationResult.Failure(errors.ToArray()) 
-            : warnings.Any() 
+        return errors.Any()
+            ? ValidationResult.Failure(errors.ToArray())
+            : warnings.Any()
                 ? ValidationResult.WithWarning(warnings.ToArray())
                 : ValidationResult.Success();
     }
 
     public async Task<StatusLimite> VerificarLimiteCategoriaAsync(
-        Guid categoriaId, 
-        Money valorAdicional, 
+        Guid categoriaId,
+        Money valorAdicional,
         CancellationToken cancellationToken = default)
     {
         var categoria = await _unitOfWork.Categorias.GetByIdAsync(categoriaId);
@@ -101,14 +101,14 @@ public class BusinessRuleService : IBusinessRuleService
     }
 
     public async Task<bool> ValidarOrcamentoMensalAsync(
-        Guid usuarioId, 
-        Money valorDespesa, 
-        DateTime data, 
+        Guid usuarioId,
+        Money valorDespesa,
+        DateTime data,
         CancellationToken cancellationToken = default)
     {
         var anoMes = $"{data.Year:0000}-{data.Month:00}";
         var orcamento = await _unitOfWork.OrcamentosMensais.GetByUsuarioEAnoMesAsync(usuarioId, anoMes);
-        
+
         if (orcamento == null)
             return true; // Sem orçamento definido, permite
 
@@ -130,10 +130,10 @@ public class BusinessRuleService : IBusinessRuleService
     }
 
     public async Task<bool> ValidarPrioridadeEssencialSuperfluoAsync(
-        Guid usuarioId, 
-        Guid categoriaId, 
-        Money valor, 
-        DateTime data, 
+        Guid usuarioId,
+        Guid categoriaId,
+        Money valor,
+        DateTime data,
         CancellationToken cancellationToken = default)
     {
         var categoria = await _unitOfWork.Categorias.GetByIdAsync(categoriaId);
@@ -152,11 +152,11 @@ public class BusinessRuleService : IBusinessRuleService
         {
             var gastoEssencial = await CalcularGastoMensalCategoriaAsync(essencial.Id, data, cancellationToken);
             var statusEssencial = essencial.VerificarStatusLimite(gastoEssencial);
-            
+
             // Se alguma categoria essencial está em alerta ou excedida, bloquear supérfluas
             if (statusEssencial == StatusLimite.Alerta || statusEssencial == StatusLimite.Excedido)
             {
-                _logger.LogWarning("Bloqueando despesa supérflua pois categoria essencial {CategoriaEssencial} está comprometida", 
+                _logger.LogWarning("Bloqueando despesa supérflua pois categoria essencial {CategoriaEssencial} está comprometida",
                     essencial.Nome);
                 return false;
             }
@@ -166,8 +166,8 @@ public class BusinessRuleService : IBusinessRuleService
     }
 
     public async Task<decimal> CalcularGastoMensalCategoriaAsync(
-        Guid categoriaId, 
-        DateTime data, 
+        Guid categoriaId,
+        DateTime data,
         CancellationToken cancellationToken = default)
     {
         var inicioMes = new DateTime(data.Year, data.Month, 1);

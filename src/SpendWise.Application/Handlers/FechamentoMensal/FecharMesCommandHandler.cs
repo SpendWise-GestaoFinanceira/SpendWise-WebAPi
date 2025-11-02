@@ -1,10 +1,10 @@
 using AutoMapper;
 using MediatR;
-using SpendWise.Application.DTOs;
 using SpendWise.Application.Commands.FechamentoMensal;
+using SpendWise.Application.DTOs;
 using SpendWise.Domain.Entities;
-using SpendWise.Domain.Interfaces;
 using SpendWise.Domain.Enums;
+using SpendWise.Domain.Interfaces;
 
 namespace SpendWise.Application.Handlers.FechamentoMensal;
 
@@ -29,7 +29,7 @@ public class FecharMesCommandHandler : IRequestHandler<FecharMesCommand, Fechame
         // Verificar se o mês já está fechado
         var fechamentoExistente = await _unitOfWork.FechamentosMensais
             .GetByUsuarioEAnoMesAsync(request.UsuarioId, request.AnoMes);
-        
+
         if (fechamentoExistente != null)
             throw new InvalidOperationException($"O mês {request.AnoMes} já está fechado");
 
@@ -39,7 +39,7 @@ public class FecharMesCommandHandler : IRequestHandler<FecharMesCommand, Fechame
         var fimMes = inicioMes.AddMonths(1).AddDays(-1);
 
         var transacoes = await _unitOfWork.Transacoes.GetByUsuarioIdAsync(request.UsuarioId);
-        var transacoesMes = transacoes.Where(t => 
+        var transacoesMes = transacoes.Where(t =>
             t.DataTransacao >= inicioMes && t.DataTransacao <= fimMes);
 
         var totalReceitas = transacoesMes

@@ -50,7 +50,7 @@ public class UsuarioRepositoryTests : IDisposable
         // Arrange
         var email = new Email("test@example.com");
         var usuario = new Usuario("Test User", email, "hash", 3000m);
-        
+
         await _repository.AddAsync(usuario);
         await _context.SaveChangesAsync();
 
@@ -83,7 +83,7 @@ public class UsuarioRepositoryTests : IDisposable
             "hash",
             2000m
         );
-        
+
         await _repository.AddAsync(usuario);
         await _context.SaveChangesAsync();
 
@@ -106,7 +106,7 @@ public class UsuarioRepositoryTests : IDisposable
             "hash",
             1000m
         );
-        
+
         await _repository.AddAsync(usuario);
         await _context.SaveChangesAsync();
 
@@ -133,7 +133,7 @@ public class UsuarioRepositoryTests : IDisposable
             "hash",
             1500m
         );
-        
+
         await _repository.AddAsync(usuario);
         await _context.SaveChangesAsync();
 

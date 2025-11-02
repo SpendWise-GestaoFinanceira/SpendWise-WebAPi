@@ -21,9 +21,9 @@ public class DeleteCategoriaCommandHandlerTests
     {
         _unitOfWorkMock = new Mock<IUnitOfWork>();
         _categoriaRepositoryMock = new Mock<ICategoriaRepository>();
-        
+
         _unitOfWorkMock.Setup(u => u.Categorias).Returns(_categoriaRepositoryMock.Object);
-        
+
         _handler = new DeleteCategoriaCommandHandler(_unitOfWorkMock.Object);
         _categoriaId = Guid.NewGuid();
         _usuarioId = Guid.NewGuid();
@@ -34,7 +34,7 @@ public class DeleteCategoriaCommandHandlerTests
     {
         // Arrange
         var categoria = new Categoria("Alimentação", TipoCategoria.Despesa, _usuarioId, "Gastos com comida");
-        
+
         _categoriaRepositoryMock
             .Setup(r => r.GetByIdAsync(_categoriaId))
             .ReturnsAsync(categoria);

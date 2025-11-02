@@ -1,7 +1,7 @@
 using SpendWise.Domain.Entities;
 using SpendWise.Domain.Enums;
-using SpendWise.Domain.ValueObjects;
 using SpendWise.Domain.Interfaces;
+using SpendWise.Domain.ValueObjects;
 
 namespace SpendWise.Application.Services;
 
@@ -82,7 +82,7 @@ public class BusinessRuleService : IBusinessRuleService
     {
         // Criar string no formato YYYY-MM
         var anoMes = $"{data.Year:D4}-{data.Month:D2}";
-        
+
         var orcamento = await _unitOfWork.OrcamentosMensais.GetByUsuarioEAnoMesAsync(usuarioId, anoMes);
         if (orcamento == null)
             return true; // Se não há orçamento definido, permite a despesa
@@ -100,10 +100,10 @@ public class BusinessRuleService : IBusinessRuleService
     public async Task<bool> ValidarPrioridadeEssencialSuperfluoAsync(Guid usuarioId, Guid categoriaId, Money valor, DateTime data, CancellationToken cancellationToken = default)
     {
         var categoria = await _unitOfWork.Categorias.GetByIdAsync(categoriaId);
-        
+
         // Assumindo que categoria tem uma propriedade de prioridade
         // Como não encontrei PrioridadeCategoria na entity, vou usar um método simplificado
-        
+
         // Criar período para o mês
         var periodo = new Periodo(
             new DateTime(data.Year, data.Month, 1),
@@ -125,10 +125,10 @@ public class BusinessRuleService : IBusinessRuleService
             new DateTime(data.Year, data.Month, DateTime.DaysInMonth(data.Year, data.Month)));
 
         var transacoes = await _unitOfWork.Transacoes.GetByCategoriaAsync(categoriaId);
-        
+
         return transacoes
-            .Where(t => t.Tipo == TipoTransacao.Despesa && 
-                       t.DataTransacao >= periodo.DataInicio && 
+            .Where(t => t.Tipo == TipoTransacao.Despesa &&
+                       t.DataTransacao >= periodo.DataInicio &&
                        t.DataTransacao <= periodo.DataFim)
             .Sum(t => t.Valor.Valor);
     }

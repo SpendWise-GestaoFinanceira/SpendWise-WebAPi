@@ -273,7 +273,7 @@ public class OrcamentoMensalTests
 
         // Assert
         anoMesAtual.Should().MatchRegex(@"^\d{4}-\d{2}$");
-        
+
         // Verificar se é realmente o mês atual
         var expectedAnoMes = DateTime.Now.ToString("yyyy-MM");
         anoMesAtual.Should().Be(expectedAnoMes);

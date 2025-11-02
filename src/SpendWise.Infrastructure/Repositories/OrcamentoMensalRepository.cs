@@ -77,7 +77,7 @@ public class OrcamentoMensalRepository : IOrcamentoMensalRepository
         CancellationToken cancellationToken = default)
     {
         var orcamentos = new List<OrcamentoMensal>();
-        
+
         var dataAtual = new DateTime(anoInicio, mesInicio, 1);
         var dataFim = new DateTime(anoFim, mesFim, 1);
 
@@ -86,7 +86,7 @@ public class OrcamentoMensalRepository : IOrcamentoMensalRepository
             var anoMes = $"{dataAtual.Year:0000}-{dataAtual.Month:00}";
             var orcamento = await _context.OrcamentosMensais
                 .FirstOrDefaultAsync(o => o.UsuarioId == usuarioId && o.AnoMes == anoMes, cancellationToken);
-            
+
             if (orcamento != null)
             {
                 orcamentos.Add(orcamento);

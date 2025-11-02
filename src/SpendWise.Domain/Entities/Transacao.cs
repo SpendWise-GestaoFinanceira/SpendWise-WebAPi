@@ -27,20 +27,20 @@ public class Transacao : BaseEntity
     }
 
     public Transacao(
-        string descricao, 
-        Money valor, 
-        DateTime dataTransacao, 
-        TipoTransacao tipo, 
-        Guid usuarioId, 
-        Guid categoriaId, 
+        string descricao,
+        Money valor,
+        DateTime dataTransacao,
+        TipoTransacao tipo,
+        Guid usuarioId,
+        Guid categoriaId,
         string? observacoes = null)
     {
         if (string.IsNullOrWhiteSpace(descricao))
             throw new ArgumentException("Descrição não pode ser vazia", nameof(descricao));
-        
+
         if (usuarioId == Guid.Empty)
             throw new ArgumentException("UsuarioId não pode ser vazio", nameof(usuarioId));
-        
+
         if (categoriaId == Guid.Empty)
             throw new ArgumentException("CategoriaId não pode ser vazio", nameof(categoriaId));
 
@@ -57,7 +57,7 @@ public class Transacao : BaseEntity
     {
         if (string.IsNullOrWhiteSpace(descricao))
             throw new ArgumentException("Descrição não pode ser vazia", nameof(descricao));
-        
+
         Descricao = descricao;
         UpdatedAt = DateTime.UtcNow;
     }
@@ -84,7 +84,7 @@ public class Transacao : BaseEntity
     {
         if (categoriaId == Guid.Empty)
             throw new ArgumentException("CategoriaId não pode ser vazio", nameof(categoriaId));
-        
+
         CategoriaId = categoriaId;
         UpdatedAt = DateTime.UtcNow;
     }

@@ -22,12 +22,12 @@ public class TransacaoTests
 
         // Act
         var transacao = new Transacao(
-            descricao, 
-            valor, 
-            dataTransacao, 
-            tipo, 
-            _usuarioId, 
-            _categoriaId, 
+            descricao,
+            valor,
+            dataTransacao,
+            tipo,
+            _usuarioId,
+            _categoriaId,
             observacoes);
 
         // Assert
@@ -54,11 +54,11 @@ public class TransacaoTests
 
         // Act
         var transacao = new Transacao(
-            descricao, 
-            valor, 
-            dataTransacao, 
-            tipo, 
-            _usuarioId, 
+            descricao,
+            valor,
+            dataTransacao,
+            tipo,
+            _usuarioId,
             _categoriaId);
 
         // Assert
@@ -84,11 +84,11 @@ public class TransacaoTests
 
         // Act & Assert
         Action act = () => new Transacao(
-            invalidDescricao, 
-            valor, 
-            dataTransacao, 
-            tipo, 
-            _usuarioId, 
+            invalidDescricao,
+            valor,
+            dataTransacao,
+            tipo,
+            _usuarioId,
             _categoriaId);
 
         act.Should().Throw<ArgumentException>()
@@ -107,11 +107,11 @@ public class TransacaoTests
 
         // Act & Assert
         Action act = () => new Transacao(
-            descricao, 
-            valor!, 
-            dataTransacao, 
-            tipo, 
-            _usuarioId, 
+            descricao,
+            valor!,
+            dataTransacao,
+            tipo,
+            _usuarioId,
             _categoriaId);
 
         act.Should().Throw<ArgumentNullException>()
@@ -130,11 +130,11 @@ public class TransacaoTests
 
         // Act & Assert
         Action act = () => new Transacao(
-            descricao, 
-            valor, 
-            dataTransacao, 
-            tipo, 
-            usuarioId, 
+            descricao,
+            valor,
+            dataTransacao,
+            tipo,
+            usuarioId,
             _categoriaId);
 
         act.Should().Throw<ArgumentException>()
@@ -154,11 +154,11 @@ public class TransacaoTests
 
         // Act & Assert
         Action act = () => new Transacao(
-            descricao, 
-            valor, 
-            dataTransacao, 
-            tipo, 
-            _usuarioId, 
+            descricao,
+            valor,
+            dataTransacao,
+            tipo,
+            _usuarioId,
             categoriaId);
 
         act.Should().Throw<ArgumentException>()

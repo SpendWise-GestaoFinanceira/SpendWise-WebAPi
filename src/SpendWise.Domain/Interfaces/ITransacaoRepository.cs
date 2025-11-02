@@ -17,7 +17,7 @@ public interface ITransacaoRepository
     Task DeleteAsync(Guid id);
     Task<decimal> GetTotalByTipoAsync(Guid usuarioId, TipoTransacao tipo, Periodo periodo);
     Task<decimal> GetSaldoAsync(Guid usuarioId, Periodo periodo);
-    
+
     // Filtros Avançados
     Task<IEnumerable<Transacao>> GetAdvancedFilteredAsync(
         Guid usuarioId,
@@ -33,7 +33,7 @@ public interface ITransacaoRepository
         bool ascending = false,
         int skip = 0,
         int take = 10);
-        
+
     Task<int> CountAdvancedFilteredAsync(
         Guid usuarioId,
         DateTime? dataInicio = null,
@@ -44,7 +44,7 @@ public interface ITransacaoRepository
         TipoTransacao? tipo = null,
         string? descricao = null,
         string? observacoes = null);
-    
+
     // Métodos para relatórios
     Task<IEnumerable<Transacao>> BuscarPorPeriodoComCategoriasAsync(
         Guid usuarioId,

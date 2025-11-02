@@ -9,7 +9,7 @@ public class Usuario : BaseEntity
     public string Senha { get; private set; }
     public decimal RendaMensal { get; private set; }
     public bool IsAtivo { get; private set; } = true;
-    
+
     // Propriedades para reset de senha
     public string? PasswordResetToken { get; private set; }
     public DateTime? PasswordResetTokenExpiry { get; private set; }
@@ -20,8 +20,8 @@ public class Usuario : BaseEntity
     public virtual ICollection<Meta> Metas { get; private set; } = new List<Meta>();
 
     // Construtor privado para EF Core
-    private Usuario() 
-    { 
+    private Usuario()
+    {
         Nome = string.Empty;
         Email = new Email("default@temp.com");
         Senha = string.Empty;
@@ -31,7 +31,7 @@ public class Usuario : BaseEntity
     {
         if (string.IsNullOrWhiteSpace(nome))
             throw new ArgumentException("Nome não pode ser vazio", nameof(nome));
-        
+
         if (rendaMensal < 0)
             throw new ArgumentException("Renda mensal não pode ser negativa", nameof(rendaMensal));
 
@@ -50,7 +50,7 @@ public class Usuario : BaseEntity
     {
         if (string.IsNullOrWhiteSpace(nome))
             throw new ArgumentException("Nome não pode ser vazio", nameof(nome));
-        
+
         Nome = nome;
         UpdatedAt = DateTime.UtcNow;
     }
@@ -59,7 +59,7 @@ public class Usuario : BaseEntity
     {
         if (rendaMensal < 0)
             throw new ArgumentException("Renda mensal não pode ser negativa", nameof(rendaMensal));
-        
+
         RendaMensal = rendaMensal;
         UpdatedAt = DateTime.UtcNow;
     }

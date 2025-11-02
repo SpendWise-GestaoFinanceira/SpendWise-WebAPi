@@ -1,10 +1,10 @@
+using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using SpendWise.API.Extensions;
 using SpendWise.Application.Commands.Auth;
 using SpendWise.Application.DTOs.Auth;
-using SpendWise.API.Extensions;
-using FluentValidation;
 
 namespace SpendWise.API.Controllers;
 
@@ -64,11 +64,11 @@ public class AuthController : ControllerBase
             );
 
             var userId = await _mediator.Send(command);
-            
+
             // Fazer login automaticamente após registro
             var loginCommand = new LoginCommand(request.Email, request.Senha);
             var loginResult = await _mediator.Send(loginCommand);
-            
+
             return Ok(loginResult);
         }
         catch (ArgumentException ex)
@@ -140,7 +140,7 @@ public class AuthController : ControllerBase
                 request.Token,
                 request.NewPassword,
                 request.ConfirmPassword);
-            
+
             var result = await _mediator.Send(command);
             return Ok(result);
         }

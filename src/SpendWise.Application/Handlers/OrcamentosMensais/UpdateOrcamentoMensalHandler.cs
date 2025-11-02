@@ -1,11 +1,11 @@
+using FluentValidation;
 using MediatR;
 using SpendWise.Application.Commands.OrcamentosMensais;
 using SpendWise.Application.DTOs;
-using SpendWise.Domain.Interfaces;
 using SpendWise.Domain.Enums;
-using SpendWise.Domain.ValueObjects;
 using SpendWise.Domain.Exceptions;
-using FluentValidation;
+using SpendWise.Domain.Interfaces;
+using SpendWise.Domain.ValueObjects;
 
 namespace SpendWise.Application.Handlers.OrcamentosMensais;
 
@@ -60,16 +60,16 @@ public class UpdateOrcamentoMensalHandler : IRequestHandler<UpdateOrcamentoMensa
 
         // Criar período para buscar transações
         var periodo = CriarPeriodo(orcamentoMensal.AnoMes);
-        
+
         // Calcular valores gastos para o DTO
         var valorGastoTotal = await _unitOfWork.Transacoes.GetTotalByTipoAsync(
-            request.UsuarioId, 
+            request.UsuarioId,
             TipoTransacao.Despesa,
             periodo);
 
         var valorRestante = orcamentoMensal.Valor.Valor - valorGastoTotal;
-        var percentualUtilizado = orcamentoMensal.Valor.Valor > 0 
-            ? (valorGastoTotal / orcamentoMensal.Valor.Valor) * 100 
+        var percentualUtilizado = orcamentoMensal.Valor.Valor > 0
+            ? (valorGastoTotal / orcamentoMensal.Valor.Valor) * 100
             : 0;
 
         // Converter para DTO
@@ -92,10 +92,10 @@ public class UpdateOrcamentoMensalHandler : IRequestHandler<UpdateOrcamentoMensa
         var parts = anoMes.Split('-');
         var ano = int.Parse(parts[0]);
         var mes = int.Parse(parts[1]);
-        
+
         var inicio = new DateTime(ano, mes, 1);
         var fim = inicio.AddMonths(1).AddDays(-1);
-        
+
         return new Periodo(inicio, fim);
     }
 }

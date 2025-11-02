@@ -1,10 +1,10 @@
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using SpendWise.Application.DTOs;
-using SpendWise.Application.Commands.Usuario;
-using SpendWise.Application.Queries.Usuario;
 using SpendWise.API.Extensions;
-using MediatR;
+using SpendWise.Application.Commands.Usuario;
+using SpendWise.Application.DTOs;
+using SpendWise.Application.Queries.Usuario;
 
 namespace SpendWise.API.Controllers;
 
@@ -30,10 +30,10 @@ public class UsuariosController : ControllerBase
         var usuarioId = User.GetUserId();
         var query = new GetUsuarioByIdQuery(usuarioId);
         var usuario = await _mediator.Send(query);
-        
+
         if (usuario == null)
             return NotFound();
-            
+
         return Ok(usuario);
     }
 
@@ -44,17 +44,17 @@ public class UsuariosController : ControllerBase
     public async Task<ActionResult<UsuarioDto>> GetById(Guid id)
     {
         var usuarioId = User.GetUserId();
-        
+
         // Só permite acessar o próprio perfil
         if (id != usuarioId)
             return Forbid();
-            
+
         var query = new GetUsuarioByIdQuery(id);
         var usuario = await _mediator.Send(query);
-        
+
         if (usuario == null)
             return NotFound();
-            
+
         return Ok(usuario);
     }
 
@@ -83,11 +83,11 @@ public class UsuariosController : ControllerBase
     public async Task<ActionResult<UsuarioDto>> Update(Guid id, [FromBody] UpdateUsuarioDto updateDto)
     {
         var usuarioId = User.GetUserId();
-        
+
         // Só permite atualizar o próprio perfil
         if (id != usuarioId)
             return Forbid();
-            
+
         var command = new UpdateUsuarioCommand(
             id,
             updateDto.Nome,
@@ -95,10 +95,10 @@ public class UsuariosController : ControllerBase
         );
 
         var usuario = await _mediator.Send(command);
-        
+
         if (usuario == null)
             return NotFound();
-            
+
         return Ok(usuario);
     }
 
@@ -109,17 +109,17 @@ public class UsuariosController : ControllerBase
     public async Task<ActionResult> Delete(Guid id)
     {
         var usuarioId = User.GetUserId();
-        
+
         // Só permite deletar a própria conta
         if (id != usuarioId)
             return Forbid();
-            
+
         var command = new DeleteUsuarioCommand(id);
         var success = await _mediator.Send(command);
-        
+
         if (!success)
             return NotFound();
-            
+
         return NoContent();
     }
 }

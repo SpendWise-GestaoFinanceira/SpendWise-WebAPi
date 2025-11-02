@@ -1,4 +1,4 @@
-﻿namespace SpendWise.Domain.Entities;
+namespace SpendWise.Domain.Entities;
 
 public abstract class BaseEntity
 {

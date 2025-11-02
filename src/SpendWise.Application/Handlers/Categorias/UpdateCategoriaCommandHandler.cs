@@ -1,7 +1,7 @@
 using AutoMapper;
 using MediatR;
-using SpendWise.Application.DTOs;
 using SpendWise.Application.Commands.Categorias;
+using SpendWise.Application.DTOs;
 using SpendWise.Domain.Interfaces;
 using SpendWise.Domain.ValueObjects;
 
@@ -21,7 +21,7 @@ public class UpdateCategoriaCommandHandler : IRequestHandler<UpdateCategoriaComm
     public async Task<CategoriaDto?> Handle(UpdateCategoriaCommand request, CancellationToken cancellationToken)
     {
         var categoria = await _unitOfWork.Categorias.GetByIdAsync(request.Id);
-        
+
         if (categoria == null)
             return null;
 
@@ -29,7 +29,7 @@ public class UpdateCategoriaCommandHandler : IRequestHandler<UpdateCategoriaComm
         categoria.AtualizarNome(request.Nome);
         categoria.AtualizarDescricao(request.Descricao);
         categoria.AtualizarCor(request.Cor);
-        
+
         // Atualizar limite se fornecido
         if (request.Limite.HasValue)
         {
@@ -40,7 +40,7 @@ public class UpdateCategoriaCommandHandler : IRequestHandler<UpdateCategoriaComm
         {
             categoria.AtualizarLimite(null);
         }
-        
+
         if (request.IsAtiva)
             categoria.Ativar();
         else

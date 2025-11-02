@@ -16,13 +16,13 @@ public class MockEmailService : IEmailService
     {
         // Simular envio de email
         await Task.Delay(100); // Simular latência
-        
+
         _logger.LogInformation("=== MOCK EMAIL - RESET DE SENHA ===");
         _logger.LogInformation("Para: {Email}", email);
         _logger.LogInformation("Token: {Token}", resetToken);
         _logger.LogInformation("URL: {Url}", resetUrl);
         _logger.LogInformation("====================================");
-        
+
         return true;
     }
 
@@ -30,12 +30,12 @@ public class MockEmailService : IEmailService
     {
         // Simular envio de email
         await Task.Delay(100); // Simular latência
-        
+
         _logger.LogInformation("=== MOCK EMAIL - BOAS-VINDAS ===");
         _logger.LogInformation("Para: {Email}", email);
         _logger.LogInformation("Nome: {UserName}", userName);
         _logger.LogInformation("================================");
-        
+
         return true;
     }
 }

@@ -15,12 +15,12 @@ public class TransacaoDto
     public string? Observacoes { get; set; }
     public DateTime CreatedAt { get; set; }
     public DateTime? UpdatedAt { get; set; }
-    
+
     // Dados relacionados
     public string? CategoriaNome { get; set; }
     public string? CategoriaCor { get; set; }
     public string? UsuarioNome { get; set; }
-    
+
     // Categoria completa para facilitar uso no frontend
     public CategoriaDto? Categoria { get; set; }
 }

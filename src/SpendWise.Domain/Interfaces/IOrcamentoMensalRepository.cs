@@ -12,7 +12,7 @@ public interface IOrcamentoMensalRepository
     Task AddAsync(OrcamentoMensal orcamento);
     void Update(OrcamentoMensal orcamento);
     void Delete(OrcamentoMensal orcamento);
-    
+
     // Métodos para relatórios
     Task<IEnumerable<OrcamentoMensal>> BuscarPorPeriodoAsync(
         Guid usuarioId,

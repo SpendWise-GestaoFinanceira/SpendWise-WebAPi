@@ -24,10 +24,10 @@ public class GetEstatisticasCategoriasQueryHandlerTests
         _unitOfWorkMock = new Mock<IUnitOfWork>();
         _categoriaRepositoryMock = new Mock<ICategoriaRepository>();
         _transacaoRepositoryMock = new Mock<ITransacaoRepository>();
-        
+
         _unitOfWorkMock.Setup(u => u.Categorias).Returns(_categoriaRepositoryMock.Object);
         _unitOfWorkMock.Setup(u => u.Transacoes).Returns(_transacaoRepositoryMock.Object);
-        
+
         _handler = new GetEstatisticasCategoriasQueryHandler(_unitOfWorkMock.Object);
         _usuarioId = Guid.NewGuid();
     }
@@ -37,7 +37,7 @@ public class GetEstatisticasCategoriasQueryHandlerTests
     {
         // Arrange
         var query = new GetEstatisticasCategoriasQuery(_usuarioId, "2025-10");
-        
+
         _categoriaRepositoryMock
             .Setup(r => r.GetByUsuarioIdAsync(_usuarioId))
             .ReturnsAsync(new List<Categoria>());
@@ -79,7 +79,7 @@ public class GetEstatisticasCategoriasQueryHandlerTests
         );
 
         var query = new GetEstatisticasCategoriasQuery(_usuarioId, "2025-10");
-        
+
         _categoriaRepositoryMock
             .Setup(r => r.GetByUsuarioIdAsync(_usuarioId))
             .ReturnsAsync(new List<Categoria> { categoria });
@@ -94,7 +94,7 @@ public class GetEstatisticasCategoriasQueryHandlerTests
         // Assert
         result.Should().NotBeNull();
         result.Categorias.Should().HaveCount(1);
-        
+
         var categoriaResult = result.Categorias.First();
         categoriaResult.CategoriaId.Should().Be(categoriaId);
         categoriaResult.Nome.Should().Be("Alimentação");
@@ -123,7 +123,7 @@ public class GetEstatisticasCategoriasQueryHandlerTests
         );
 
         var query = new GetEstatisticasCategoriasQuery(_usuarioId, "2025-10");
-        
+
         _categoriaRepositoryMock
             .Setup(r => r.GetByUsuarioIdAsync(_usuarioId))
             .ReturnsAsync(new List<Categoria> { categoria });
@@ -160,7 +160,7 @@ public class GetEstatisticasCategoriasQueryHandlerTests
         );
 
         var query = new GetEstatisticasCategoriasQuery(_usuarioId, "2025-10");
-        
+
         _categoriaRepositoryMock
             .Setup(r => r.GetByUsuarioIdAsync(_usuarioId))
             .ReturnsAsync(new List<Categoria> { categoria });
@@ -197,7 +197,7 @@ public class GetEstatisticasCategoriasQueryHandlerTests
         );
 
         var query = new GetEstatisticasCategoriasQuery(_usuarioId, "2025-10");
-        
+
         _categoriaRepositoryMock
             .Setup(r => r.GetByUsuarioIdAsync(_usuarioId))
             .ReturnsAsync(new List<Categoria> { categoria });
@@ -243,7 +243,7 @@ public class GetEstatisticasCategoriasQueryHandlerTests
         );
 
         var query = new GetEstatisticasCategoriasQuery(_usuarioId, "2025-10");
-        
+
         _categoriaRepositoryMock
             .Setup(r => r.GetByUsuarioIdAsync(_usuarioId))
             .ReturnsAsync(new List<Categoria> { categoria });
@@ -269,7 +269,7 @@ public class GetEstatisticasCategoriasQueryHandlerTests
     {
         // Arrange
         var query = new GetEstatisticasCategoriasQuery(_usuarioId, anoMes);
-        
+
         _categoriaRepositoryMock
             .Setup(r => r.GetByUsuarioIdAsync(_usuarioId))
             .ReturnsAsync(new List<Categoria>());
@@ -292,7 +292,7 @@ public class GetEstatisticasCategoriasQueryHandlerTests
         var query = new GetEstatisticasCategoriasQuery(_usuarioId, "2025/10"); // Formato inválido
 
         // Act & Assert
-        await Assert.ThrowsAsync<ArgumentException>(() => 
+        await Assert.ThrowsAsync<ArgumentException>(() =>
             _handler.Handle(query, CancellationToken.None));
     }
 }

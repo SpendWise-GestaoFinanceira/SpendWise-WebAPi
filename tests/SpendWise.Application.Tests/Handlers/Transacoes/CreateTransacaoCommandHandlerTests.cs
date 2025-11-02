@@ -135,10 +135,10 @@ public class CreateTransacaoCommandHandlerTests
 
         _businessRuleMock
             .Setup(r => r.ValidateAsync(It.IsAny<BusinessRuleContext>()))
-            .ReturnsAsync(new BusinessRuleResult 
-            { 
-                IsValid = false, 
-                Errors = new List<string> { "Limite excedido" } 
+            .ReturnsAsync(new BusinessRuleResult
+            {
+                IsValid = false,
+                Errors = new List<string> { "Limite excedido" }
             });
 
         // Act & Assert

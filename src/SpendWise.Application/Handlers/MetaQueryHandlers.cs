@@ -113,7 +113,7 @@ public class GetEstatisticasMetasHandler : IRequestHandler<GetEstatisticasMetasQ
         var valorTotalObjetivos = metasAtivas.Sum(m => m.ValorObjetivo.Valor);
         var valorTotalProgresso = metasAtivas.Sum(m => m.ValorAtual.Valor);
 
-        var percentualMedioProgresso = totalAtivas > 0 
+        var percentualMedioProgresso = totalAtivas > 0
             ? metasAtivas.Average(m => m.CalcularPercentualProgresso())
             : 0;
 
@@ -148,7 +148,7 @@ public class GetMetasResumoHandler : IRequestHandler<GetMetasResumoQuery, IEnume
     public async Task<IEnumerable<MetaResumoDto>> Handle(GetMetasResumoQuery request, CancellationToken cancellationToken)
     {
         var metas = await _unitOfWork.Metas.GetAtivasByUsuarioIdAsync(request.UsuarioId);
-        
+
         // Ordenar por prioridade: mais próximas do vencimento primeiro
         var metasOrdenadas = metas
             .Where(m => m.IsAtiva)

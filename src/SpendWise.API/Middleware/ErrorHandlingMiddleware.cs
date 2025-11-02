@@ -51,7 +51,7 @@ public class ErrorHandlingMiddleware
                     }
                 };
                 break;
-                
+
             case ValidationException validationEx:
                 statusCode = (int)HttpStatusCode.BadRequest;
                 response = new

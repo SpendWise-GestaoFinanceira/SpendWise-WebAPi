@@ -1,7 +1,7 @@
 using AutoMapper;
 using MediatR;
-using SpendWise.Application.DTOs;
 using SpendWise.Application.Commands.Categorias;
+using SpendWise.Application.DTOs;
 using SpendWise.Domain.Entities;
 using SpendWise.Domain.Interfaces;
 using SpendWise.Domain.ValueObjects;
@@ -30,7 +30,7 @@ public class CreateCategoriaCommandHandler : IRequestHandler<CreateCategoriaComm
 
         Money? limite = request.Limite.HasValue ? new Money(request.Limite.Value) : null;
         var categoria = new Categoria(request.Nome, request.Tipo, request.UsuarioId, request.Descricao, limite);
-        
+
         // Definir cor se fornecida
         if (!string.IsNullOrEmpty(request.Cor))
         {

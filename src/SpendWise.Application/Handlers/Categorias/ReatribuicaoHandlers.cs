@@ -3,8 +3,8 @@ using MediatR;
 using SpendWise.Application.Commands.Categorias;
 using SpendWise.Application.DTOs.Categorias;
 using SpendWise.Application.Queries.Categorias;
-using SpendWise.Domain.Interfaces;
 using SpendWise.Domain.Enums;
+using SpendWise.Domain.Interfaces;
 
 namespace SpendWise.Application.Handlers.Categorias;
 

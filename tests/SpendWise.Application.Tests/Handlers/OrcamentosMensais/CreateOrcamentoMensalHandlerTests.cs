@@ -101,7 +101,7 @@ public class CreateOrcamentoMensalHandlerTests
         // Arrange
         var usuario = new Usuario("Teste", new Email("teste@email.com"), "hash");
         var orcamentoExistente = new OrcamentoMensal(_usuarioId, "2025-10", new Money(3000));
-        
+
         var command = new CreateOrcamentoMensalCommand(
             _usuarioId,
             "2025-10",

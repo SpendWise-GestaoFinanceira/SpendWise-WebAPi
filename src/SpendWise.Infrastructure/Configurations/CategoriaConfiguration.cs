@@ -40,7 +40,7 @@ public class CategoriaConfiguration : IEntityTypeConfiguration<Categoria>
             limite.Property(m => m.Valor)
                 .HasColumnName("LimiteValor")
                 .HasPrecision(18, 2);
-            
+
             limite.Property(m => m.Moeda)
                 .HasColumnName("LimiteMoeda")
                 .HasMaxLength(3)

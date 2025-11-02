@@ -33,13 +33,13 @@ public class ComparativoMesesHandler : IRequestHandler<ComparativoMesesQuery, Co
 
         // Gerar lista de meses no período
         var meses = GerarListaMeses(request.AnoInicio, request.MesInicio, request.AnoFim, request.MesFim);
-        
+
         // Buscar orçamentos mensais do período
         var orcamentos = await _unitOfWork.OrcamentosMensais.BuscarPorPeriodoAsync(
-            request.UsuarioId, 
-            request.AnoInicio, 
-            request.MesInicio, 
-            request.AnoFim, 
+            request.UsuarioId,
+            request.AnoInicio,
+            request.MesInicio,
+            request.AnoFim,
             request.MesFim,
             cancellationToken);
 

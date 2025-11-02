@@ -1,12 +1,12 @@
+using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using SpendWise.API.Extensions;
 using SpendWise.Application.Commands.Categorias;
 using SpendWise.Application.DTOs;
 using SpendWise.Application.DTOs.Categorias;
 using SpendWise.Application.Queries.Categorias;
-using SpendWise.API.Extensions;
-using FluentValidation;
 
 namespace SpendWise.API.Controllers;
 
@@ -37,10 +37,10 @@ public class CategoriasController : ControllerBase
         var usuarioId = User.GetUserId();
         var query = new GetCategoriaByIdQuery(id);
         var categoria = await _mediator.Send(query);
-        
+
         if (categoria == null || categoria.UsuarioId != usuarioId)
             return NotFound();
-            
+
         return Ok(categoria);
     }
 
@@ -57,14 +57,14 @@ public class CategoriasController : ControllerBase
     public async Task<ActionResult<CategoriaDto>> Update(Guid id, [FromBody] UpdateCategoriaCommand command)
     {
         var usuarioId = User.GetUserId();
-        
+
         if (id != command.Id)
             return BadRequest("ID mismatch");
 
         // Verificar ownership antes de atualizar
         var existingQuery = new GetCategoriaByIdQuery(id);
         var existing = await _mediator.Send(existingQuery);
-        
+
         if (existing == null || existing.UsuarioId != usuarioId)
             return NotFound();
 
@@ -76,20 +76,20 @@ public class CategoriasController : ControllerBase
     public async Task<ActionResult> Delete(Guid id)
     {
         var usuarioId = User.GetUserId();
-        
+
         // Verificar ownership antes de deletar
         var existingQuery = new GetCategoriaByIdQuery(id);
         var existing = await _mediator.Send(existingQuery);
-        
+
         if (existing == null || existing.UsuarioId != usuarioId)
             return NotFound();
-            
+
         var command = new DeleteCategoriaCommand(id);
         var result = await _mediator.Send(command);
-        
+
         if (!result)
             return NotFound();
-            
+
         return NoContent();
     }
 
@@ -154,10 +154,10 @@ public class CategoriasController : ControllerBase
             var usuarioId = User.GetUserId();
             var command = new DeleteCategoriaWithReatribuicaoCommand(usuarioId, id, categoriaDestinoId);
             var result = await _mediator.Send(command);
-            
+
             if (!result)
                 return NotFound();
-                
+
             return NoContent();
         }
         catch (ValidationException ex)

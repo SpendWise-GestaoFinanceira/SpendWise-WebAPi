@@ -29,12 +29,12 @@ public class GetOrcamentoMensalByIdQueryHandler : IRequestHandler<GetOrcamentoMe
 
         // Usar o serviço de cálculo para obter estatísticas
         var estatisticas = await _calculoService.CalcularEstatisticasOrcamentoAsync(
-            orcamentoMensal.UsuarioId, 
+            orcamentoMensal.UsuarioId,
             orcamentoMensal.AnoMes);
 
         // Calcular percentuais e status
         var calculo = _calculoService.CalcularPercentuais(
-            orcamentoMensal.Valor.Valor, 
+            orcamentoMensal.Valor.Valor,
             estatisticas.ValorGasto);
 
         return new OrcamentoMensalDto
@@ -77,12 +77,12 @@ public class GetOrcamentosMensaisByUsuarioQueryHandler : IRequestHandler<GetOrca
         {
             // Usar o serviço de cálculo para obter estatísticas
             var estatisticas = await _calculoService.CalcularEstatisticasOrcamentoAsync(
-                orcamento.UsuarioId, 
+                orcamento.UsuarioId,
                 orcamento.AnoMes);
 
             // Calcular percentuais e status
             var calculo = _calculoService.CalcularPercentuais(
-                orcamento.Valor.Valor, 
+                orcamento.Valor.Valor,
                 estatisticas.ValorGasto);
 
             result.Add(new OrcamentoMensalDto
@@ -129,12 +129,12 @@ public class GetOrcamentoMensalByUsuarioEAnoMesQueryHandler : IRequestHandler<Ge
 
         // Usar o serviço de cálculo para obter estatísticas
         var estatisticas = await _calculoService.CalcularEstatisticasOrcamentoAsync(
-            orcamentoMensal.UsuarioId, 
+            orcamentoMensal.UsuarioId,
             orcamentoMensal.AnoMes);
 
         // Calcular percentuais e status
         var calculo = _calculoService.CalcularPercentuais(
-            orcamentoMensal.Valor.Valor, 
+            orcamentoMensal.Valor.Valor,
             estatisticas.ValorGasto);
 
         return new OrcamentoMensalDto

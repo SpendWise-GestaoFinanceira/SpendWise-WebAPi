@@ -19,9 +19,9 @@ public class ReabrirMesCommandHandlerTests
     {
         _unitOfWorkMock = new Mock<IUnitOfWork>();
         _fechamentoRepositoryMock = new Mock<IFechamentoMensalRepository>();
-        
+
         _unitOfWorkMock.Setup(u => u.FechamentosMensais).Returns(_fechamentoRepositoryMock.Object);
-        
+
         _handler = new ReabrirMesCommandHandler(_unitOfWorkMock.Object);
         _usuarioId = Guid.NewGuid();
     }
@@ -32,10 +32,10 @@ public class ReabrirMesCommandHandlerTests
         // Arrange
         var anoMes = "2025-10";
         var command = new ReabrirMesCommand(_usuarioId, anoMes);
-        
+
         var fechamento = new Domain.Entities.FechamentoMensal(_usuarioId, anoMes, 5000, 3000);
         fechamento.Status.Should().Be(Domain.Enums.StatusFechamento.Fechado); // Garantir que está fechado
-        
+
         _fechamentoRepositoryMock
             .Setup(r => r.GetByUsuarioEAnoMesAsync(_usuarioId, anoMes))
             .ReturnsAsync(fechamento);
@@ -46,7 +46,7 @@ public class ReabrirMesCommandHandlerTests
         // Assert
         result.Should().BeTrue();
         fechamento.Status.Should().Be(Domain.Enums.StatusFechamento.Aberto);
-        
+
         _fechamentoRepositoryMock.Verify(r => r.UpdateAsync(fechamento), Times.Once);
         _unitOfWorkMock.Verify(u => u.SaveChangesAsync(), Times.Once);
     }
@@ -57,7 +57,7 @@ public class ReabrirMesCommandHandlerTests
         // Arrange
         var anoMes = "2025-10";
         var command = new ReabrirMesCommand(_usuarioId, anoMes);
-        
+
         _fechamentoRepositoryMock
             .Setup(r => r.GetByUsuarioEAnoMesAsync(_usuarioId, anoMes))
             .ReturnsAsync((Domain.Entities.FechamentoMensal?)null);
@@ -67,7 +67,7 @@ public class ReabrirMesCommandHandlerTests
 
         // Assert
         result.Should().BeFalse();
-        
+
         _fechamentoRepositoryMock.Verify(r => r.UpdateAsync(It.IsAny<Domain.Entities.FechamentoMensal>()), Times.Never);
         _unitOfWorkMock.Verify(u => u.SaveChangesAsync(), Times.Never);
     }
@@ -78,11 +78,11 @@ public class ReabrirMesCommandHandlerTests
         // Arrange
         var anoMes = "2025-10";
         var command = new ReabrirMesCommand(_usuarioId, anoMes);
-        
+
         var fechamento = new Domain.Entities.FechamentoMensal(_usuarioId, anoMes, 5000, 3000);
         // Não reabrir antes - deixar fechado para o handler reabrir
         fechamento.Status.Should().Be(Domain.Enums.StatusFechamento.Fechado);
-        
+
         _fechamentoRepositoryMock
             .Setup(r => r.GetByUsuarioEAnoMesAsync(_usuarioId, anoMes))
             .ReturnsAsync(fechamento);
@@ -93,7 +93,7 @@ public class ReabrirMesCommandHandlerTests
         // Assert
         result.Should().BeTrue();
         fechamento.Status.Should().Be(Domain.Enums.StatusFechamento.Aberto);
-        
+
         _fechamentoRepositoryMock.Verify(r => r.UpdateAsync(fechamento), Times.Once);
     }
 
@@ -105,9 +105,9 @@ public class ReabrirMesCommandHandlerTests
     {
         // Arrange
         var command = new ReabrirMesCommand(_usuarioId, anoMes);
-        
+
         var fechamento = new Domain.Entities.FechamentoMensal(_usuarioId, anoMes, 1000, 500);
-        
+
         _fechamentoRepositoryMock
             .Setup(r => r.GetByUsuarioEAnoMesAsync(_usuarioId, anoMes))
             .ReturnsAsync(fechamento);
@@ -126,14 +126,14 @@ public class ReabrirMesCommandHandlerTests
         // Arrange
         var anoMes = "2025-10";
         var command = new ReabrirMesCommand(_usuarioId, anoMes);
-        
+
         var fechamento = new Domain.Entities.FechamentoMensal(_usuarioId, anoMes, 5000, 3000);
         var updatedAtAnterior = fechamento.UpdatedAt;
-        
+
         _fechamentoRepositoryMock
             .Setup(r => r.GetByUsuarioEAnoMesAsync(_usuarioId, anoMes))
             .ReturnsAsync(fechamento);
-        
+
         Thread.Sleep(100); // Garantir diferença de tempo
 
         // Act
@@ -153,13 +153,13 @@ public class ReabrirMesCommandHandlerTests
         // Arrange
         var anoMes = "2025-10";
         var command = new ReabrirMesCommand(_usuarioId, anoMes);
-        
+
         var receitas = 5000m;
         var despesas = 3000m;
         var saldo = 2000m;
-        
+
         var fechamento = new Domain.Entities.FechamentoMensal(_usuarioId, anoMes, receitas, despesas);
-        
+
         _fechamentoRepositoryMock
             .Setup(r => r.GetByUsuarioEAnoMesAsync(_usuarioId, anoMes))
             .ReturnsAsync(fechamento);
@@ -180,7 +180,7 @@ public class ReabrirMesCommandHandlerTests
         var outroUsuarioId = Guid.NewGuid();
         var anoMes = "2025-10";
         var command = new ReabrirMesCommand(_usuarioId, anoMes);
-        
+
         // Fechamento existe, mas é de outro usuário
         _fechamentoRepositoryMock
             .Setup(r => r.GetByUsuarioEAnoMesAsync(_usuarioId, anoMes))
@@ -200,9 +200,9 @@ public class ReabrirMesCommandHandlerTests
         // Arrange
         var anoMes = "2025-10";
         var command = new ReabrirMesCommand(_usuarioId, anoMes);
-        
+
         var fechamento = new Domain.Entities.FechamentoMensal(_usuarioId, anoMes, 5000, 3000);
-        
+
         _fechamentoRepositoryMock
             .Setup(r => r.GetByUsuarioEAnoMesAsync(_usuarioId, anoMes))
             .ReturnsAsync(fechamento);

@@ -90,7 +90,7 @@ public class GetOrcamentoMensalByIdQueryHandlerTests
         // Assert
         result.Should().BeNull();
         _calculoServiceMock.Verify(
-            s => s.CalcularEstatisticasOrcamentoAsync(It.IsAny<Guid>(), It.IsAny<string>()), 
+            s => s.CalcularEstatisticasOrcamentoAsync(It.IsAny<Guid>(), It.IsAny<string>()),
             Times.Never
         );
     }

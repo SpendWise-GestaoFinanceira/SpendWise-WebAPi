@@ -1,7 +1,7 @@
+using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SpendWise.Infrastructure.Data;
-using System.Diagnostics;
 
 namespace SpendWise.API.Controllers;
 
@@ -28,12 +28,12 @@ public class HealthController : ControllerBase
         try
         {
             var startTime = DateTime.UtcNow;
-            
+
             // Verificar conectividade com o banco de dados
             var canConnectToDb = await CheckDatabaseConnectionAsync();
-            
+
             var responseTime = DateTime.UtcNow - startTime;
-            
+
             var healthStatus = new
             {
                 status = canConnectToDb ? "healthy" : "unhealthy",
@@ -63,7 +63,7 @@ public class HealthController : ControllerBase
         catch (Exception ex)
         {
             _logger.LogError(ex, "Health check failed with exception");
-            
+
             var errorResponse = new
             {
                 status = "unhealthy",
@@ -87,9 +87,9 @@ public class HealthController : ControllerBase
             // Verificar se o banco está acessível e migrado
             var canConnectToDb = await CheckDatabaseConnectionAsync();
             var hasPendingMigrations = await CheckPendingMigrationsAsync();
-            
+
             var isReady = canConnectToDb && !hasPendingMigrations;
-            
+
             var readinessStatus = new
             {
                 status = isReady ? "ready" : "not ready",
@@ -106,7 +106,7 @@ public class HealthController : ControllerBase
         catch (Exception ex)
         {
             _logger.LogError(ex, "Readiness check failed with exception");
-            
+
             var errorResponse = new
             {
                 status = "not ready",

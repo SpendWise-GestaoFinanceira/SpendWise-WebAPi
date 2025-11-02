@@ -1,12 +1,12 @@
+using System.Text;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Serilog;
 using SpendWise.Application;
 using SpendWise.Infrastructure;
 using SpendWise.Infrastructure.Data;
-using System.Text;
-using Serilog;
 
 // Configurar Serilog
 Log.Logger = new LoggerConfiguration()
@@ -28,32 +28,32 @@ try
     // Configurar Serilog como provedor de logging
     builder.Host.UseSerilog();
 
-// Add services to the container
-builder.Services.AddControllers();
+    // Add services to the container
+    builder.Services.AddControllers();
 
-// Add Swagger/OpenAPI
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(c =>
-{
-    c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
+    // Add Swagger/OpenAPI
+    builder.Services.AddEndpointsApiExplorer();
+    builder.Services.AddSwaggerGen(c =>
     {
-        Title = "SpendWise API",
-        Version = "v1",
-        Description = "API para gerenciamento de finanças pessoais"
-    });
-    
-    // Configurar JWT no Swagger
-    c.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
-    {
-        Description = "JWT Authorization header usando o esquema Bearer. \r\n\r\n Digite 'Bearer' [espaço] e então seu token no campo de texto abaixo.\r\n\r\nExemplo: \"Bearer 12345abcdef\"",
-        Name = "Authorization",
-        In = Microsoft.OpenApi.Models.ParameterLocation.Header,
-        Type = Microsoft.OpenApi.Models.SecuritySchemeType.ApiKey,
-        Scheme = "Bearer"
-    });
+        c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
+        {
+            Title = "SpendWise API",
+            Version = "v1",
+            Description = "API para gerenciamento de finanças pessoais"
+        });
 
-    c.AddSecurityRequirement(new Microsoft.OpenApi.Models.OpenApiSecurityRequirement()
-    {
+        // Configurar JWT no Swagger
+        c.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+        {
+            Description = "JWT Authorization header usando o esquema Bearer. \r\n\r\n Digite 'Bearer' [espaço] e então seu token no campo de texto abaixo.\r\n\r\nExemplo: \"Bearer 12345abcdef\"",
+            Name = "Authorization",
+            In = Microsoft.OpenApi.Models.ParameterLocation.Header,
+            Type = Microsoft.OpenApi.Models.SecuritySchemeType.ApiKey,
+            Scheme = "Bearer"
+        });
+
+        c.AddSecurityRequirement(new Microsoft.OpenApi.Models.OpenApiSecurityRequirement()
+        {
         {
             new Microsoft.OpenApi.Models.OpenApiSecurityScheme
             {
@@ -68,80 +68,80 @@ builder.Services.AddSwaggerGen(c =>
             },
             new List<string>()
         }
+        });
     });
-});
 
-// Add CORS
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("AllowAll", policy =>
+    // Add CORS
+    builder.Services.AddCors(options =>
     {
-        policy.AllowAnyOrigin()
-              .AllowAnyMethod()
-              .AllowAnyHeader();
+        options.AddPolicy("AllowAll", policy =>
+        {
+            policy.AllowAnyOrigin()
+                  .AllowAnyMethod()
+                  .AllowAnyHeader();
+        });
     });
-});
 
-// Add Database
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") 
-    ?? "Host=localhost;Port=5432;Database=spendwise;Username=financas_user;Password=financas_pass";
+    // Add Database
+    var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
+        ?? "Host=localhost;Port=5432;Database=spendwise;Username=financas_user;Password=financas_pass";
 
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseNpgsql(connectionString));
+    builder.Services.AddDbContext<ApplicationDbContext>(options =>
+        options.UseNpgsql(connectionString));
 
-// Add JWT Authentication
-var jwtSecretKey = builder.Configuration["JWT:SecretKey"] ?? "MinhaChaveSecretaSuperSeguraParaJWT2024!@#$%";
-var key = Encoding.ASCII.GetBytes(jwtSecretKey);
+    // Add JWT Authentication
+    var jwtSecretKey = builder.Configuration["JWT:SecretKey"] ?? "MinhaChaveSecretaSuperSeguraParaJWT2024!@#$%";
+    var key = Encoding.ASCII.GetBytes(jwtSecretKey);
 
-builder.Services.AddAuthentication(x =>
-{
-    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-})
-.AddJwtBearer(x =>
-{
-    x.RequireHttpsMetadata = false;
-    x.SaveToken = true;
-    x.TokenValidationParameters = new TokenValidationParameters
+    builder.Services.AddAuthentication(x =>
     {
-        ValidateIssuerSigningKey = true,
-        IssuerSigningKey = new SymmetricSecurityKey(key),
-        ValidateIssuer = true,
-        ValidIssuer = builder.Configuration["JWT:Issuer"] ?? "SpendWise",
-        ValidateAudience = true,
-        ValidAudience = builder.Configuration["JWT:Audience"] ?? "SpendWise",
-        ValidateLifetime = true,
-        ClockSkew = TimeSpan.Zero
-    };
-});
+        x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+        x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    })
+    .AddJwtBearer(x =>
+    {
+        x.RequireHttpsMetadata = false;
+        x.SaveToken = true;
+        x.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(key),
+            ValidateIssuer = true,
+            ValidIssuer = builder.Configuration["JWT:Issuer"] ?? "SpendWise",
+            ValidateAudience = true,
+            ValidAudience = builder.Configuration["JWT:Audience"] ?? "SpendWise",
+            ValidateLifetime = true,
+            ClockSkew = TimeSpan.Zero
+        };
+    });
 
-builder.Services.AddAuthorization();
+    builder.Services.AddAuthorization();
 
-// Add Application Services
-builder.Services.AddApplication();
-builder.Services.AddInfrastructure();
+    // Add Application Services
+    builder.Services.AddApplication();
+    builder.Services.AddInfrastructure();
 
-var app = builder.Build();
+    var app = builder.Build();
 
-// Configure the HTTP request pipeline
-// Swagger disponível em todos os ambientes para facilitar testes
-app.UseSwagger();
-app.UseSwaggerUI(c =>
-{
-    c.SwaggerEndpoint("/swagger/v1/swagger.json", "SpendWise API v1");
-    c.RoutePrefix = "swagger";
-});
-// Add Request Logging Middleware
-app.UseMiddleware<SpendWise.API.Middleware.RequestLoggingMiddleware>();
+    // Configure the HTTP request pipeline
+    // Swagger disponível em todos os ambientes para facilitar testes
+    app.UseSwagger();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "SpendWise API v1");
+        c.RoutePrefix = "swagger";
+    });
+    // Add Request Logging Middleware
+    app.UseMiddleware<SpendWise.API.Middleware.RequestLoggingMiddleware>();
 
-// Add Error Handling Middleware
-app.UseMiddleware<SpendWise.API.Middleware.ErrorHandlingMiddleware>();
-app.UseHttpsRedirection();
-app.UseCors("AllowAll");
+    // Add Error Handling Middleware
+    app.UseMiddleware<SpendWise.API.Middleware.ErrorHandlingMiddleware>();
+    app.UseHttpsRedirection();
+    app.UseCors("AllowAll");
 
-// Add Authentication & Authorization
-app.UseAuthentication();
-app.UseAuthorization();
+    // Add Authentication & Authorization
+    app.UseAuthentication();
+    app.UseAuthorization();
 
     app.MapControllers();
 

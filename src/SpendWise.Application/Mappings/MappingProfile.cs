@@ -1,4 +1,4 @@
-using AutoMapper; 
+using AutoMapper;
 using SpendWise.Application.DTOs;
 using SpendWise.Domain.Entities;
 using SpendWise.Domain.ValueObjects;
@@ -15,7 +15,7 @@ public class MappingProfile : Profile
         CreateMap<Categoria, CategoriaDto>()
             .ForMember(dest => dest.Limite, opt => opt.MapFrom(src => GetLimiteValue(src.Limite)))
             .ForMember(dest => dest.Cor, opt => opt.MapFrom(src => src.Cor));
-            
+
         CreateMap<Categoria, CategoriaComProgressoDto>()
             .ForMember(dest => dest.Limite, opt => opt.MapFrom(src => GetLimiteValue(src.Limite)))
             .ForMember(dest => dest.Cor, opt => opt.MapFrom(src => src.Cor));
@@ -60,7 +60,7 @@ public class MappingProfile : Profile
             .ForMember(dest => dest.IsVencida, opt => opt.MapFrom(src => src.CalcularDiasRestantes() == 0 && !src.DataAlcancada.HasValue))
             .ForMember(dest => dest.Descricao, opt => opt.MapFrom(src => src.Nome + " - " + src.Descricao));
     }
-    
+
     private static decimal? GetLimiteValue(Money? limite)
     {
         return limite?.Valor;

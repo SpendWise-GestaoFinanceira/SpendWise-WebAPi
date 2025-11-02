@@ -1,9 +1,9 @@
+using AutoMapper;
 using MediatR;
-using SpendWise.Application.DTOs.Transacoes;
 using SpendWise.Application.DTOs;
+using SpendWise.Application.DTOs.Transacoes;
 using SpendWise.Application.Queries.Transacoes;
 using SpendWise.Domain.Interfaces;
-using AutoMapper;
 
 namespace SpendWise.Application.Handlers.Transacoes;
 
@@ -35,7 +35,7 @@ public class ListarTransacoesFiltrada : IRequestHandler<ListarTransacoesFiltrada
 
         // Buscar transações com filtros
         var query = await _unitOfWork.Transacoes.GetAllAsync();
-        
+
         // Filtrar por usuário
         var transacoesFiltradas = query.Where(t => t.UsuarioId == request.UsuarioId);
 
@@ -73,7 +73,7 @@ public class ListarTransacoesFiltrada : IRequestHandler<ListarTransacoesFiltrada
         if (!string.IsNullOrWhiteSpace(filtros.BuscaTextual))
         {
             var termoBusca = filtros.BuscaTextual.ToLower();
-            transacoesFiltradas = transacoesFiltradas.Where(t => 
+            transacoesFiltradas = transacoesFiltradas.Where(t =>
                 t.Descricao.ToLower().Contains(termoBusca) ||
                 (t.Observacoes != null && t.Observacoes.ToLower().Contains(termoBusca))
             );
@@ -87,22 +87,22 @@ public class ListarTransacoesFiltrada : IRequestHandler<ListarTransacoesFiltrada
         switch (paginacao.OrdenarPor?.ToLower())
         {
             case "valor":
-                transacoesFiltradas = paginacao.Direcao?.ToLower() == "asc" 
+                transacoesFiltradas = paginacao.Direcao?.ToLower() == "asc"
                     ? transacoesFiltradas.OrderBy(t => t.Valor.Valor)
                     : transacoesFiltradas.OrderByDescending(t => t.Valor.Valor);
                 break;
             case "descricao":
-                transacoesFiltradas = paginacao.Direcao?.ToLower() == "asc" 
+                transacoesFiltradas = paginacao.Direcao?.ToLower() == "asc"
                     ? transacoesFiltradas.OrderBy(t => t.Descricao)
                     : transacoesFiltradas.OrderByDescending(t => t.Descricao);
                 break;
             case "categoria":
-                transacoesFiltradas = paginacao.Direcao?.ToLower() == "asc" 
+                transacoesFiltradas = paginacao.Direcao?.ToLower() == "asc"
                     ? transacoesFiltradas.OrderBy(t => t.Categoria != null ? t.Categoria.Nome : "")
                     : transacoesFiltradas.OrderByDescending(t => t.Categoria != null ? t.Categoria.Nome : "");
                 break;
             default: // "data"
-                transacoesFiltradas = paginacao.Direcao?.ToLower() == "asc" 
+                transacoesFiltradas = paginacao.Direcao?.ToLower() == "asc"
                     ? transacoesFiltradas.OrderBy(t => t.DataTransacao)
                     : transacoesFiltradas.OrderByDescending(t => t.DataTransacao);
                 break;

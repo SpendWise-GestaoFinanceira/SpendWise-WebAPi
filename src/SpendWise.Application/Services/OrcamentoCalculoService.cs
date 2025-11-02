@@ -17,11 +17,11 @@ public class OrcamentoCalculoService : IOrcamentoCalculoService
     public async Task<OrcamentoCalculoResultado> CalcularEstatisticasOrcamentoAsync(Guid usuarioId, string anoMes)
     {
         var periodo = CriarPeriodo(anoMes);
-        
+
         // Buscar total de despesas do período
         var valorGasto = await _transacaoRepository.GetTotalByTipoAsync(
-            usuarioId, 
-            TipoTransacao.Despesa, 
+            usuarioId,
+            TipoTransacao.Despesa,
             periodo);
 
         // Como não temos o valor do orçamento aqui, retornamos só o valor gasto
@@ -33,7 +33,7 @@ public class OrcamentoCalculoService : IOrcamentoCalculoService
     }
 
     public async Task<IEnumerable<OrcamentoCalculoResultado>> CalcularEstatisticasMultiplosOrcamentosAsync(
-        Guid usuarioId, 
+        Guid usuarioId,
         IEnumerable<string> anoMeses)
     {
         var resultados = new List<OrcamentoCalculoResultado>();
@@ -50,8 +50,8 @@ public class OrcamentoCalculoService : IOrcamentoCalculoService
     public OrcamentoCalculoResultado CalcularPercentuais(decimal valorOrcamento, decimal valorGasto)
     {
         var valorRestante = valorOrcamento - valorGasto;
-        var percentualUtilizado = valorOrcamento > 0 
-            ? Math.Round((valorGasto / valorOrcamento) * 100, 2) 
+        var percentualUtilizado = valorOrcamento > 0
+            ? Math.Round((valorGasto / valorOrcamento) * 100, 2)
             : 0;
 
         var status = DeterminarStatus(percentualUtilizado);
@@ -110,10 +110,10 @@ public class OrcamentoCalculoService : IOrcamentoCalculoService
         var parts = anoMes.Split('-');
         var ano = int.Parse(parts[0]);
         var mes = int.Parse(parts[1]);
-        
+
         var inicio = new DateTime(ano, mes, 1);
         var fim = inicio.AddMonths(1).AddDays(-1);
-        
+
         return new Periodo(inicio, fim);
     }
 }

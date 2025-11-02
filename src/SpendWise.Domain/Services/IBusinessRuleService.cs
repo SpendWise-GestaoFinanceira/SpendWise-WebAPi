@@ -17,7 +17,7 @@ public class ValidationResult
     public bool IsValid { get; set; }
     public List<string> Errors { get; set; } = new();
     public List<string> Warnings { get; set; } = new();
-    
+
     public void AddError(string message) => Errors.Add(message);
     public void AddWarning(string message) => Warnings.Add(message);
 }

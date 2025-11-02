@@ -1,10 +1,10 @@
+using AutoMapper;
 using MediatR;
 using Microsoft.Extensions.Logging;
 using SpendWise.Application.DTOs.Transacoes;
 using SpendWise.Application.Queries.Transacoes;
 using SpendWise.Application.Services;
 using SpendWise.Domain.Interfaces;
-using AutoMapper;
 
 namespace SpendWise.Application.Handlers.Transacoes;
 
@@ -16,8 +16,8 @@ public class ExportTransacoesHandler : IRequestHandler<ExportTransacoesQuery, Ex
     private readonly ILogger<ExportTransacoesHandler> _logger;
 
     public ExportTransacoesHandler(
-        IUnitOfWork unitOfWork, 
-        IExportService exportService, 
+        IUnitOfWork unitOfWork,
+        IExportService exportService,
         IMapper mapper,
         ILogger<ExportTransacoesHandler> logger)
     {
@@ -35,7 +35,7 @@ public class ExportTransacoesHandler : IRequestHandler<ExportTransacoesQuery, Ex
         {
             // Buscar transações com filtros
             var transacoes = await BuscarTransacoesComFiltros(request.UsuarioId, request.Request);
-            
+
             _logger.LogInformation("Encontradas {Count} transações para export", transacoes.Count());
 
             // Converter para DTO de export
@@ -57,13 +57,13 @@ public class ExportTransacoesHandler : IRequestHandler<ExportTransacoesQuery, Ex
             }
 
             var nomeArquivo = _exportService.GerarNomeArquivo(
-                request.Request.Formato, 
-                request.Request.DataInicio, 
+                request.Request.Formato,
+                request.Request.DataInicio,
                 request.Request.DataFim);
 
             var descricaoFiltros = _exportService.GerarDescricaoFiltros(request.Request);
 
-            _logger.LogInformation("Export concluído: arquivo {NomeArquivo} com {Tamanho} bytes", 
+            _logger.LogInformation("Export concluído: arquivo {NomeArquivo} com {Tamanho} bytes",
                 nomeArquivo, conteudoArquivo.Length);
 
             return new ExportTransacoesResponseDto
@@ -86,7 +86,7 @@ public class ExportTransacoesHandler : IRequestHandler<ExportTransacoesQuery, Ex
     private async Task<IEnumerable<Domain.Entities.Transacao>> BuscarTransacoesComFiltros(Guid usuarioId, ExportTransacoesRequestDto request)
     {
         var todasTransacoes = await _unitOfWork.Transacoes.GetAllAsync();
-        
+
         // Filtrar por usuário
         var query = todasTransacoes.Where(t => t.UsuarioId == usuarioId);
 
@@ -117,17 +117,17 @@ public class ExportTransacoesHandler : IRequestHandler<ExportTransacoesQuery, Ex
         switch (request.OrdenarPor?.ToLower())
         {
             case "valor":
-                query = request.Crescente 
+                query = request.Crescente
                     ? query.OrderBy(t => t.Valor.Valor)
                     : query.OrderByDescending(t => t.Valor.Valor);
                 break;
             case "descricao":
-                query = request.Crescente 
+                query = request.Crescente
                     ? query.OrderBy(t => t.Descricao)
                     : query.OrderByDescending(t => t.Descricao);
                 break;
             default: // "datatransacao"
-                query = request.Crescente 
+                query = request.Crescente
                     ? query.OrderBy(t => t.DataTransacao)
                     : query.OrderByDescending(t => t.DataTransacao);
                 break;

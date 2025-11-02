@@ -1,12 +1,12 @@
+using AutoMapper;
 using FluentAssertions;
 using Moq;
-using AutoMapper;
-using SpendWise.Application.Queries.Categorias;
 using SpendWise.Application.Handlers.Categorias;
+using SpendWise.Application.Queries.Categorias;
 using SpendWise.Domain.Entities;
+using SpendWise.Domain.Enums;
 using SpendWise.Domain.Interfaces;
 using SpendWise.Domain.ValueObjects;
-using SpendWise.Domain.Enums;
 
 namespace SpendWise.Application.Tests.Handlers.Categorias;
 
@@ -22,9 +22,9 @@ public class GetCategoriasByUsuarioQueryHandlerTests
         _categoriaRepositoryMock = new Mock<ICategoriaRepository>();
         _unitOfWorkMock = new Mock<IUnitOfWork>();
         _mapperMock = new Mock<IMapper>();
-        
+
         _unitOfWorkMock.Setup(x => x.Categorias).Returns(_categoriaRepositoryMock.Object);
-        
+
         _handler = new GetCategoriasByUsuarioQueryHandler(_unitOfWorkMock.Object, _mapperMock.Object);
     }
 

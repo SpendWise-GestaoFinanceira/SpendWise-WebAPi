@@ -1,8 +1,8 @@
 using AutoMapper;
 using MediatR;
 using SpendWise.Application.DTOs;
-using SpendWise.Domain.Interfaces;
 using SpendWise.Application.Queries.Categorias;
+using SpendWise.Domain.Interfaces;
 
 
 namespace SpendWise.Application.Handlers.Categorias;

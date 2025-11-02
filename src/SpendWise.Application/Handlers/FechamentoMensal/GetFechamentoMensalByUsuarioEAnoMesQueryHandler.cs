@@ -21,7 +21,7 @@ public class GetFechamentoMensalByUsuarioEAnoMesQueryHandler : IRequestHandler<G
     {
         var fechamento = await _unitOfWork.FechamentosMensais
             .GetByUsuarioEAnoMesAsync(request.UsuarioId, request.AnoMes);
-            
+
         return fechamento != null ? _mapper.Map<FechamentoMensalDto>(fechamento) : null;
     }
 }

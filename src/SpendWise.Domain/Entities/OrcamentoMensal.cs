@@ -23,10 +23,10 @@ public class OrcamentoMensal : BaseEntity
     {
         if (usuarioId == Guid.Empty)
             throw new ArgumentException("UsuarioId não pode ser vazio", nameof(usuarioId));
-        
+
         if (string.IsNullOrWhiteSpace(anoMes))
             throw new ArgumentException("AnoMes não pode ser vazio", nameof(anoMes));
-        
+
         if (!IsValidAnoMesFormat(anoMes))
             throw new ArgumentException("AnoMes deve estar no formato YYYY-MM", nameof(anoMes));
 
@@ -64,7 +64,7 @@ public class OrcamentoMensal : BaseEntity
 
     private static bool IsValidAnoMesFormat(string anoMes)
     {
-        return DateTime.TryParseExact(anoMes + "-01", "yyyy-MM-dd", null, 
+        return DateTime.TryParseExact(anoMes + "-01", "yyyy-MM-dd", null,
             System.Globalization.DateTimeStyles.None, out _);
     }
 }

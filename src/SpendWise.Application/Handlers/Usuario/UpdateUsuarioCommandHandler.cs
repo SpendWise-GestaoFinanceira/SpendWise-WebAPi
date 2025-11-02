@@ -20,7 +20,7 @@ public class UpdateUsuarioCommandHandler : IRequestHandler<UpdateUsuarioCommand,
     public async Task<UsuarioDto> Handle(UpdateUsuarioCommand request, CancellationToken cancellationToken)
     {
         var usuario = await _unitOfWork.Usuarios.GetByIdAsync(request.Id);
-        
+
         if (usuario == null)
             throw new InvalidOperationException("Usuário não encontrado");
 

@@ -34,7 +34,7 @@ public class CreateMetaHandler : IRequestHandler<CreateMetaCommand, MetaDto>
         if (temporalRule != null)
         {
             var context = new { CurrentDate = DateTime.UtcNow, TargetDate = request.Prazo };
-            
+
             // Como não temos acesso direto ao ValidationContext, vamos criar uma validação simples
             if (request.Prazo <= DateTime.UtcNow.Date)
                 throw new ArgumentException("A data de prazo deve ser futura");

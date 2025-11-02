@@ -1,12 +1,12 @@
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using SpendWise.API.Extensions;
 using SpendWise.Application.Commands.Transacoes;
+using SpendWise.Application.Common;
 using SpendWise.Application.DTOs;
 using SpendWise.Application.DTOs.Transacoes;
 using SpendWise.Application.Queries.Transacoes;
-using SpendWise.Application.Common;
-using SpendWise.API.Extensions;
 
 namespace SpendWise.API.Controllers;
 
@@ -50,7 +50,7 @@ public class TransacoesController : ControllerBase
         [FromQuery] int pageSize = 10)
     {
         var usuarioId = User.GetUserId();
-        
+
         // Parse tipo enum
         Domain.Enums.TipoTransacao? tipoEnum = null;
         if (!string.IsNullOrEmpty(tipo) && Enum.TryParse<Domain.Enums.TipoTransacao>(tipo, true, out var parsedTipo))
@@ -98,7 +98,7 @@ public class TransacoesController : ControllerBase
         var usuarioId = User.GetUserId();
         var query = new GetTransacoesByCategoriaQuery(categoriaId);
         var transacoes = await _mediator.Send(query);
-        
+
         // Filtrar apenas transações do usuário logado
         var transacoesUsuario = transacoes.Where(t => t.UsuarioId == usuarioId);
         return Ok(transacoesUsuario);
@@ -117,14 +117,14 @@ public class TransacoesController : ControllerBase
     public async Task<ActionResult<TransacaoDto>> Update(Guid id, [FromBody] UpdateTransacaoCommand command)
     {
         var usuarioId = User.GetUserId();
-        
+
         if (id != command.Id)
             return BadRequest("ID mismatch");
 
         // Verificar ownership antes de atualizar
         var existingQuery = new GetTransacaoByIdQuery(id);
         var existing = await _mediator.Send(existingQuery);
-        
+
         if (existing == null || existing.UsuarioId != usuarioId)
             return NotFound();
 
@@ -136,14 +136,14 @@ public class TransacoesController : ControllerBase
     public async Task<ActionResult> Delete(Guid id)
     {
         var usuarioId = User.GetUserId();
-        
+
         // Verificar ownership antes de deletar
         var existingQuery = new GetTransacaoByIdQuery(id);
         var existing = await _mediator.Send(existingQuery);
-        
+
         if (existing == null || existing.UsuarioId != usuarioId)
             return NotFound();
-            
+
         var command = new DeleteTransacaoCommand(id);
         var result = await _mediator.Send(command);
 
@@ -152,10 +152,10 @@ public class TransacoesController : ControllerBase
 
         return NoContent();
     }
-    
+
     [HttpGet("periodo")]
     public async Task<ActionResult<IEnumerable<TransacaoDto>>> GetByPeriodo(
-        [FromQuery] DateTime dataInicio, 
+        [FromQuery] DateTime dataInicio,
         [FromQuery] DateTime dataFim,
         [FromQuery] Guid? usuarioId = null)
     {
@@ -172,29 +172,29 @@ public class TransacoesController : ControllerBase
     public async Task<ActionResult<PreVisualizacaoImportacaoDto>> PreviewImportacaoCsv(IFormFile arquivo)
     {
         var usuarioId = User.GetUserId();
-        
+
         // Validações básicas
         if (arquivo == null || arquivo.Length == 0)
             return BadRequest("Arquivo é obrigatório");
-            
+
         if (!arquivo.FileName.EndsWith(".csv", StringComparison.OrdinalIgnoreCase))
             return BadRequest("Arquivo deve ter extensão .csv");
-            
+
         if (arquivo.Length > 5 * 1024 * 1024) // 5MB
             return BadRequest("Arquivo não pode ser maior que 5MB");
-        
+
         using var stream = arquivo.OpenReadStream();
         var command = new ProcessarArquivoCsvCommand(usuarioId, stream, arquivo.FileName);
         var preview = await _mediator.Send(command);
-        
+
         // Armazenar preview em cache para confirmação posterior (simulação)
         var idImportacao = Guid.NewGuid().ToString();
         // TODO: Refatorar para usar cache service apropriado via MediatR
         // ConfirmarImportacaoCsvHandler.ArmazenarImportacaoEmCache(idImportacao, preview.Importacao);
-        
+
         // Adicionar ID da importação ao resultado
         preview.Importacao.StatusProcessamento = $"Pronto para importação (ID: {idImportacao})";
-        
+
         return Ok(preview);
     }
 
@@ -207,10 +207,10 @@ public class TransacoesController : ControllerBase
         var usuarioId = User.GetUserId();
         var command = new ConfirmarImportacaoCsvCommand(usuarioId, confirmacao);
         var resultado = await _mediator.Send(command);
-        
+
         if (!resultado.Sucesso)
             return BadRequest(resultado);
-            
+
         return Ok(resultado);
     }
 
@@ -229,7 +229,7 @@ public class TransacoesController : ControllerBase
         [FromQuery] bool crescente = false)
     {
         var usuarioId = User.GetUserId();
-        
+
         var request = new ExportTransacoesRequestDto
         {
             DataInicio = dataInicio,

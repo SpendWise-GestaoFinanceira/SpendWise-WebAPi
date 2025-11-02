@@ -16,7 +16,7 @@ public class DeleteCategoriaCommandHandler : IRequestHandler<DeleteCategoriaComm
     public async Task<bool> Handle(DeleteCategoriaCommand request, CancellationToken cancellationToken)
     {
         var categoria = await _unitOfWork.Categorias.GetByIdAsync(request.Id);
-        
+
         if (categoria == null)
             return false;
 

@@ -15,7 +15,7 @@ public class MetaDto
     public string? Observacoes { get; set; }
     public DateTime CreatedAt { get; set; }
     public DateTime? UpdatedAt { get; set; }
-    
+
     // Propriedades calculadas
     public decimal PercentualProgresso { get; set; }
     public decimal ValorRestante { get; set; }

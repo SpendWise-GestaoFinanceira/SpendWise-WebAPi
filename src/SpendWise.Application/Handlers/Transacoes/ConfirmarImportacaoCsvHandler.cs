@@ -1,13 +1,13 @@
+using AutoMapper;
 using MediatR;
 using Microsoft.Extensions.Logging;
 using SpendWise.Application.Commands.Transacoes;
-using SpendWise.Application.DTOs.Transacoes;
 using SpendWise.Application.DTOs;
+using SpendWise.Application.DTOs.Transacoes;
 using SpendWise.Domain.Entities;
+using SpendWise.Domain.Enums;
 using SpendWise.Domain.Interfaces;
 using SpendWise.Domain.ValueObjects;
-using SpendWise.Domain.Enums;
-using AutoMapper;
 
 namespace SpendWise.Application.Handlers.Transacoes;
 
@@ -43,11 +43,11 @@ public class ConfirmarImportacaoCsvHandler : IRequestHandler<ConfirmarImportacao
             }
 
             var linhasParaImportar = importacao.Linhas.Where(l => l.EhValida);
-            
+
             // Se específicas linhas foram selecionadas
             if (request.Confirmacao.LinhasParaImportar.Any())
             {
-                linhasParaImportar = linhasParaImportar.Where(l => 
+                linhasParaImportar = linhasParaImportar.Where(l =>
                     request.Confirmacao.LinhasParaImportar.Contains(l.NumeroLinha));
             }
 
@@ -62,7 +62,7 @@ public class ConfirmarImportacaoCsvHandler : IRequestHandler<ConfirmarImportacao
                 {
                     // Resolver categoria
                     var categoriaId = await ResolverCategoriaId(linha, request);
-                    
+
                     if (!categoriaId.HasValue)
                     {
                         resultado.TransacoesComErro++;
@@ -73,7 +73,7 @@ public class ConfirmarImportacaoCsvHandler : IRequestHandler<ConfirmarImportacao
                     // Verificar se o mês da transação está fechado
                     var anoMes = linha.DataParsed!.Value.ToString("yyyy-MM");
                     var mesEstaFechado = await _unitOfWork.FechamentosMensais.MesEstaFechadoAsync(request.UsuarioId, anoMes);
-                    
+
                     if (mesEstaFechado)
                     {
                         resultado.TransacoesComErro++;
@@ -82,8 +82,8 @@ public class ConfirmarImportacaoCsvHandler : IRequestHandler<ConfirmarImportacao
                     }
 
                     // Criar transação
-                    var tipo = string.Equals(linha.Tipo, "Receita", StringComparison.OrdinalIgnoreCase) 
-                        ? Domain.Enums.TipoTransacao.Receita 
+                    var tipo = string.Equals(linha.Tipo, "Receita", StringComparison.OrdinalIgnoreCase)
+                        ? Domain.Enums.TipoTransacao.Receita
                         : Domain.Enums.TipoTransacao.Despesa;
 
                     var transacao = new Domain.Entities.Transacao(
@@ -98,10 +98,10 @@ public class ConfirmarImportacaoCsvHandler : IRequestHandler<ConfirmarImportacao
 
                     // Salvar no banco
                     await _unitOfWork.Transacoes.AddAsync(transacao);
-                    
-                    _logger.LogInformation("Transação criada: {Descricao} - {Valor} - {Data}", 
+
+                    _logger.LogInformation("Transação criada: {Descricao} - {Valor} - {Data}",
                         transacao.Descricao, transacao.Valor.Valor, transacao.DataTransacao);
-                    
+
                     var transacaoDto = _mapper.Map<TransacaoDto>(transacao);
                     transacoesCriadas.Add(transacaoDto);
                     resultado.TransacoesCriadas++;
@@ -124,7 +124,7 @@ public class ConfirmarImportacaoCsvHandler : IRequestHandler<ConfirmarImportacao
             // Limpar cache após importação
             _importacoesEmCache.Remove(request.Confirmacao.IdImportacao);
 
-            _logger.LogInformation("Importação concluída: {Criadas} transações criadas, {Erros} erros", 
+            _logger.LogInformation("Importação concluída: {Criadas} transações criadas, {Erros} erros",
                 resultado.TransacoesCriadas, resultado.TransacoesComErro);
         }
         catch (Exception ex)
@@ -156,7 +156,7 @@ public class ConfirmarImportacaoCsvHandler : IRequestHandler<ConfirmarImportacao
 
         // Buscar categoria pelo nome (case insensitive)
         var categorias = await _unitOfWork.Categorias.GetByUsuarioIdAsync(request.UsuarioId);
-        var categoria = categorias.FirstOrDefault(c => 
+        var categoria = categorias.FirstOrDefault(c =>
             string.Equals(c.Nome, linha.Categoria, StringComparison.OrdinalIgnoreCase));
 
         if (categoria != null)
@@ -170,13 +170,13 @@ public class ConfirmarImportacaoCsvHandler : IRequestHandler<ConfirmarImportacao
     public static void ArmazenarImportacaoEmCache(string id, ImportacaoCsvDto importacao)
     {
         _importacoesEmCache[id] = importacao;
-        
+
         // Limpar cache antigo (simulação de TTL)
         var expirados = _importacoesEmCache
             .Where(kvp => kvp.Value.DataUpload < DateTime.UtcNow.AddHours(-1))
             .Select(kvp => kvp.Key)
             .ToList();
-            
+
         foreach (var chave in expirados)
         {
             _importacoesEmCache.Remove(chave);

@@ -35,7 +35,7 @@ public class FechamentoMensalTests
     {
         // Arrange & Act & Assert
         var act = () => new FechamentoMensal(Guid.Empty, "2025-10", 1000, 500);
-        
+
         act.Should().Throw<ArgumentException>()
             .WithMessage("*UsuarioId*");
     }
@@ -47,7 +47,7 @@ public class FechamentoMensalTests
     {
         // Arrange & Act & Assert
         var act = () => new FechamentoMensal(_usuarioId, anoMes, 1000, 500);
-        
+
         act.Should().Throw<ArgumentException>()
             .WithMessage("*AnoMes*");
     }
@@ -57,7 +57,7 @@ public class FechamentoMensalTests
     {
         // Arrange & Act & Assert
         var act = () => new FechamentoMensal(_usuarioId, null!, 1000, 500);
-        
+
         act.Should().Throw<ArgumentException>()
             .WithMessage("*AnoMes*");
     }
@@ -104,7 +104,7 @@ public class FechamentoMensalTests
         // Arrange
         var fechamento = new FechamentoMensal(_usuarioId, "2025-10", 5000, 3000);
         var updatedAtAnterior = fechamento.UpdatedAt;
-        
+
         Thread.Sleep(100); // Garantir diferença de tempo
 
         // Act

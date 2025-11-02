@@ -46,8 +46,8 @@ public class TransacaoRepository : ITransacaoRepository
     {
         return await _context.Transacoes
             .Include(t => t.Categoria)
-            .Where(t => t.UsuarioId == usuarioId 
-                && t.DataTransacao.Date >= periodo.DataInicio 
+            .Where(t => t.UsuarioId == usuarioId
+                && t.DataTransacao.Date >= periodo.DataInicio
                 && t.DataTransacao.Date <= periodo.DataFim)
             .OrderByDescending(t => t.DataTransacao)
             .ToListAsync();
@@ -96,9 +96,9 @@ public class TransacaoRepository : ITransacaoRepository
     public async Task<decimal> GetTotalByTipoAsync(Guid usuarioId, TipoTransacao tipo, Periodo periodo)
     {
         return await _context.Transacoes
-            .Where(t => t.UsuarioId == usuarioId 
+            .Where(t => t.UsuarioId == usuarioId
                 && t.Tipo == tipo
-                && t.DataTransacao.Date >= periodo.DataInicio 
+                && t.DataTransacao.Date >= periodo.DataInicio
                 && t.DataTransacao.Date <= periodo.DataFim)
             .SumAsync(t => t.Valor.Valor);
     }
@@ -107,7 +107,7 @@ public class TransacaoRepository : ITransacaoRepository
     {
         var receitas = await GetTotalByTipoAsync(usuarioId, TipoTransacao.Receita, periodo);
         var despesas = await GetTotalByTipoAsync(usuarioId, TipoTransacao.Despesa, periodo);
-        
+
         return receitas - despesas;
     }
 
@@ -132,7 +132,7 @@ public class TransacaoRepository : ITransacaoRepository
             .Where(t => t.UsuarioId == usuarioId);
 
         // Aplicar filtros
-        query = ApplyFilters(query, dataInicio, dataFim, valorMinimo, valorMaximo, 
+        query = ApplyFilters(query, dataInicio, dataFim, valorMinimo, valorMaximo,
                            categoriaId, tipo, descricao, observacoes);
 
         // Aplicar ordenação
@@ -160,7 +160,7 @@ public class TransacaoRepository : ITransacaoRepository
             .Where(t => t.UsuarioId == usuarioId);
 
         // Aplicar filtros
-        query = ApplyFilters(query, dataInicio, dataFim, valorMinimo, valorMaximo, 
+        query = ApplyFilters(query, dataInicio, dataFim, valorMinimo, valorMaximo,
                            categoriaId, tipo, descricao, observacoes);
 
         return await query.CountAsync();
@@ -211,17 +211,17 @@ public class TransacaoRepository : ITransacaoRepository
     {
         return orderBy.ToLower() switch
         {
-            "valor" => ascending 
-                ? query.OrderBy(t => t.Valor.Valor) 
+            "valor" => ascending
+                ? query.OrderBy(t => t.Valor.Valor)
                 : query.OrderByDescending(t => t.Valor.Valor),
-            "descricao" => ascending 
-                ? query.OrderBy(t => t.Descricao) 
+            "descricao" => ascending
+                ? query.OrderBy(t => t.Descricao)
                 : query.OrderByDescending(t => t.Descricao),
-            "categoria" => ascending 
-                ? query.OrderBy(t => t.Categoria != null ? t.Categoria.Nome : "") 
+            "categoria" => ascending
+                ? query.OrderBy(t => t.Categoria != null ? t.Categoria.Nome : "")
                 : query.OrderByDescending(t => t.Categoria != null ? t.Categoria.Nome : ""),
-            _ => ascending 
-                ? query.OrderBy(t => t.DataTransacao) 
+            _ => ascending
+                ? query.OrderBy(t => t.DataTransacao)
                 : query.OrderByDescending(t => t.DataTransacao)
         };
     }
@@ -235,8 +235,8 @@ public class TransacaoRepository : ITransacaoRepository
     {
         var query = _context.Transacoes
             .Include(t => t.Categoria)
-            .Where(t => t.UsuarioId == usuarioId 
-                && t.DataTransacao >= dataInicio 
+            .Where(t => t.UsuarioId == usuarioId
+                && t.DataTransacao >= dataInicio
                 && t.DataTransacao <= dataFim);
 
         if (categoriaIds != null && categoriaIds.Any())

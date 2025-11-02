@@ -1,11 +1,11 @@
+using FluentValidation;
 using MediatR;
 using SpendWise.Application.Commands.OrcamentosMensais;
 using SpendWise.Application.DTOs;
 using SpendWise.Domain.Entities;
+using SpendWise.Domain.Exceptions;
 using SpendWise.Domain.Interfaces;
 using SpendWise.Domain.ValueObjects;
-using SpendWise.Domain.Exceptions;
-using FluentValidation;
 
 namespace SpendWise.Application.Handlers.OrcamentosMensais;
 

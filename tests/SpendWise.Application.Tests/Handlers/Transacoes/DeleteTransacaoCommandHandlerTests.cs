@@ -110,7 +110,7 @@ public class DeleteTransacaoCommandHandlerTests
         // Act & Assert
         var act = async () => await _handler.Handle(command, CancellationToken.None);
         await act.Should().ThrowAsync<MesFechadoException>();
-        
+
         _transacaoRepositoryMock.Verify(r => r.DeleteAsync(It.IsAny<Guid>()), Times.Never);
     }
 }

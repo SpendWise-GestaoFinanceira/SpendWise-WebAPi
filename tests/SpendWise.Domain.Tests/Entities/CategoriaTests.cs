@@ -225,9 +225,9 @@ public class CategoriaTests
         // Act
         categoria.AtualizarNome("Nome 1");
         var firstUpdate = categoria.UpdatedAt;
-        
+
         Thread.Sleep(1); // Garantir diferença no timestamp
-        
+
         categoria.AtualizarNome("Nome 2");
         var secondUpdate = categoria.UpdatedAt;
 

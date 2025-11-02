@@ -1,6 +1,6 @@
 using SpendWise.Application.Validators.BusinessRules;
-using SpendWise.Domain.Interfaces;
 using SpendWise.Domain.Enums;
+using SpendWise.Domain.Interfaces;
 using SpendWise.Domain.ValueObjects;
 
 namespace SpendWise.Application.Validators.BusinessRules;
@@ -43,10 +43,10 @@ public class CategoryLimitValidationRule : IBusinessRule
             new DateTime(data.Year, data.Month, DateTime.DaysInMonth(data.Year, data.Month), 23, 59, 59, DateTimeKind.Utc));
 
         var transacoes = await _unitOfWork.Transacoes.GetByCategoriaAsync(categoriaId);
-        
+
         return transacoes
-            .Where(t => t.Tipo == TipoTransacao.Despesa && 
-                       t.DataTransacao >= periodo.DataInicio && 
+            .Where(t => t.Tipo == TipoTransacao.Despesa &&
+                       t.DataTransacao >= periodo.DataInicio &&
                        t.DataTransacao <= periodo.DataFim)
             .Sum(t => t.Valor.Valor);
     }

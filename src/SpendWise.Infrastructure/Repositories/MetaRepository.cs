@@ -49,9 +49,9 @@ public class MetaRepository : IMetaRepository
     {
         var hoje = DateTime.UtcNow.Date;
         return await _context.Metas
-            .Where(m => m.UsuarioId == usuarioId && 
-                       m.IsAtiva && 
-                       m.DataAlcancada == null && 
+            .Where(m => m.UsuarioId == usuarioId &&
+                       m.IsAtiva &&
+                       m.DataAlcancada == null &&
                        m.Prazo.Date < hoje)
             .OrderBy(m => m.Prazo)
             .ToListAsync();

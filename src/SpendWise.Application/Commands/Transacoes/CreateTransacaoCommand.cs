@@ -11,6 +11,6 @@ public record CreateTransacaoCommand(
     DateTime DataTransacao,
     TipoTransacao Tipo,
     Guid UsuarioId,
-    Guid CategoriaId,      
+    Guid CategoriaId,
     string? Observacoes
 ) : IRequest<TransacaoDto>;

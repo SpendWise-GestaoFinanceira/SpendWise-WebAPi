@@ -1,11 +1,11 @@
 using AutoMapper;
 using MediatR;
-using SpendWise.Application.DTOs;
 using SpendWise.Application.Commands.Transacoes;
+using SpendWise.Application.DTOs;
 using SpendWise.Application.Validators.BusinessRules;
 using SpendWise.Domain.Entities;
-using SpendWise.Domain.Interfaces;
 using SpendWise.Domain.Exceptions;
+using SpendWise.Domain.Interfaces;
 using SpendWise.Domain.Utils;
 using SpendWise.Domain.ValueObjects;
 
@@ -29,7 +29,7 @@ public class CreateTransacaoCommandHandler : IRequestHandler<CreateTransacaoComm
         // Verificar se o mês está fechado
         var anoMes = DateUtils.ToAnoMesString(request.DataTransacao);
         var mesEstaFechado = await _unitOfWork.FechamentosMensais.MesEstaFechadoAsync(request.UsuarioId, anoMes);
-        
+
         if (mesEstaFechado)
         {
             throw new MesFechadoException(anoMes, "criar transações");

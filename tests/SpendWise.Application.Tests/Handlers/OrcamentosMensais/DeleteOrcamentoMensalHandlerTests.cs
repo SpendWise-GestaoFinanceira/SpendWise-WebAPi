@@ -85,7 +85,7 @@ public class DeleteOrcamentoMensalHandlerTests
         // Act & Assert
         var act = async () => await _handler.Handle(command, CancellationToken.None);
         await act.Should().ThrowAsync<ArgumentException>();
-        
+
         _orcamentoRepositoryMock.Verify(r => r.Delete(It.IsAny<OrcamentoMensal>()), Times.Never);
     }
 

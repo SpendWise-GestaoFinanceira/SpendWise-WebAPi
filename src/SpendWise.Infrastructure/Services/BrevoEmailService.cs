@@ -1,9 +1,9 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-using SpendWise.Domain.Interfaces;
 using sib_api_v3_sdk.Api;
 using sib_api_v3_sdk.Client;
 using sib_api_v3_sdk.Model;
+using SpendWise.Domain.Interfaces;
 
 namespace SpendWise.Infrastructure.Services;
 
@@ -19,7 +19,7 @@ public class BrevoEmailService : IEmailService
         ILogger<BrevoEmailService> logger)
     {
         _logger = logger;
-        
+
         var apiKey = configuration["EmailSettings:ApiKey"];
         _senderEmail = configuration["EmailSettings:SenderEmail"] ?? "noreply@spendwise.com";
         _senderName = configuration["EmailSettings:SenderName"] ?? "SpendWise";
@@ -93,9 +93,9 @@ public class BrevoEmailService : IEmailService
             };
 
             var result = await _apiInstance.SendTransacEmailAsync(sendSmtpEmail);
-            _logger.LogInformation("✅ Email de reset enviado com sucesso para {Email}. MessageId: {MessageId}", 
+            _logger.LogInformation("✅ Email de reset enviado com sucesso para {Email}. MessageId: {MessageId}",
                 email, result.MessageId);
-            
+
             return true;
         }
         catch (Exception ex)
@@ -170,9 +170,9 @@ public class BrevoEmailService : IEmailService
             };
 
             var result = await _apiInstance.SendTransacEmailAsync(sendSmtpEmail);
-            _logger.LogInformation("✅ Email de boas-vindas enviado para {Email}. MessageId: {MessageId}", 
+            _logger.LogInformation("✅ Email de boas-vindas enviado para {Email}. MessageId: {MessageId}",
                 email, result.MessageId);
-            
+
             return true;
         }
         catch (Exception ex)

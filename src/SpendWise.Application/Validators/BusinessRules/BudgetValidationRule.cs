@@ -1,6 +1,6 @@
 using SpendWise.Application.Validators.BusinessRules;
-using SpendWise.Domain.Interfaces;
 using SpendWise.Domain.Enums;
+using SpendWise.Domain.Interfaces;
 using SpendWise.Domain.ValueObjects;
 
 namespace SpendWise.Application.Validators.BusinessRules;
@@ -22,7 +22,7 @@ public class BudgetValidationRule : IBusinessRule
 
         var anoMes = $"{context.Data.Year:D4}-{context.Data.Month:D2}";
         var orcamento = await _unitOfWork.OrcamentosMensais.GetByUsuarioEAnoMesAsync(context.UsuarioId, anoMes);
-        
+
         if (orcamento == null)
             return BusinessRuleResult.Success(); // Se não há orçamento definido, permite a despesa
 

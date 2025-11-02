@@ -17,8 +17,8 @@ public class Meta : BaseEntity
     public virtual Usuario Usuario { get; private set; } = null!;
 
     // Construtor privado para EF Core
-    private Meta() 
-    { 
+    private Meta()
+    {
         Nome = string.Empty;
         Descricao = string.Empty;
         ValorObjetivo = new Money(0);
@@ -29,7 +29,7 @@ public class Meta : BaseEntity
     {
         if (string.IsNullOrWhiteSpace(nome))
             throw new ArgumentException("Nome da meta não pode ser vazio", nameof(nome));
-        
+
         if (string.IsNullOrWhiteSpace(descricao))
             throw new ArgumentException("Descrição da meta não pode ser vazia", nameof(descricao));
 
@@ -55,7 +55,7 @@ public class Meta : BaseEntity
     {
         if (string.IsNullOrWhiteSpace(nome))
             throw new ArgumentException("Nome da meta não pode ser vazio", nameof(nome));
-        
+
         Nome = nome;
         UpdatedAt = DateTime.UtcNow;
     }
@@ -64,7 +64,7 @@ public class Meta : BaseEntity
     {
         if (string.IsNullOrWhiteSpace(descricao))
             throw new ArgumentException("Descrição da meta não pode ser vazia", nameof(descricao));
-        
+
         Descricao = descricao;
         UpdatedAt = DateTime.UtcNow;
     }
@@ -73,7 +73,7 @@ public class Meta : BaseEntity
     {
         if (novoValorObjetivo.Valor <= 0)
             throw new ArgumentException("Valor objetivo deve ser maior que zero", nameof(novoValorObjetivo));
-        
+
         ValorObjetivo = novoValorObjetivo;
         UpdatedAt = DateTime.UtcNow;
     }
@@ -82,7 +82,7 @@ public class Meta : BaseEntity
     {
         if (novoPrazo <= DateTime.UtcNow.Date)
             throw new ArgumentException("Prazo deve ser no futuro", nameof(novoPrazo));
-        
+
         Prazo = novoPrazo;
         UpdatedAt = DateTime.UtcNow;
     }
@@ -91,15 +91,15 @@ public class Meta : BaseEntity
     {
         if (valorProgresso.Valor <= 0)
             throw new ArgumentException("Valor de progresso deve ser positivo", nameof(valorProgresso));
-        
+
         ValorAtual = ValorAtual.Add(valorProgresso);
-        
+
         // Verificar se a meta foi alcançada
         if (ValorAtual.Valor >= ValorObjetivo.Valor && DataAlcancada is null)
         {
             DataAlcancada = DateTime.UtcNow;
         }
-        
+
         UpdatedAt = DateTime.UtcNow;
     }
 
@@ -107,15 +107,15 @@ public class Meta : BaseEntity
     {
         if (valorProgresso.Valor <= 0)
             throw new ArgumentException("Valor de progresso deve ser positivo", nameof(valorProgresso));
-        
+
         ValorAtual = ValorAtual.Subtract(valorProgresso);
-        
+
         // Reset data alcançada se valor diminuiu abaixo do objetivo
         if (ValorAtual.Valor < ValorObjetivo.Valor)
         {
             DataAlcancada = null;
         }
-        
+
         UpdatedAt = DateTime.UtcNow;
     }
 
@@ -153,10 +153,10 @@ public class Meta : BaseEntity
     public DateTime? ProjetarDataAlcance(decimal mediaEconomiaMensal)
     {
         if (mediaEconomiaMensal <= 0) return null;
-        
+
         var valorRestante = CalcularValorRestante().Valor;
         if (valorRestante <= 0) return DataAlcancada;
-        
+
         var mesesNecessarios = (double)(valorRestante / mediaEconomiaMensal);
         return DateTime.UtcNow.AddMonths((int)Math.Ceiling(mesesNecessarios));
     }

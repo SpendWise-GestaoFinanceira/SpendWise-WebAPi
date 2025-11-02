@@ -1,12 +1,12 @@
-using MediatR;
-using Microsoft.Extensions.Logging;
-using SpendWise.Application.Commands.Transacoes;
-using SpendWise.Application.DTOs.Transacoes;
-using SpendWise.Application.DTOs;
-using SpendWise.Domain.Interfaces;
 using System.Globalization;
 using System.Text;
 using AutoMapper;
+using MediatR;
+using Microsoft.Extensions.Logging;
+using SpendWise.Application.Commands.Transacoes;
+using SpendWise.Application.DTOs;
+using SpendWise.Application.DTOs.Transacoes;
+using SpendWise.Domain.Interfaces;
 
 namespace SpendWise.Application.Handlers.Transacoes;
 
@@ -47,9 +47,9 @@ public class ProcessarArquivoCsvHandler : IRequestHandler<ProcessarArquivoCsvCom
             {
                 linha = await reader.ReadLineAsync();
                 numeroLinha++;
-                
+
                 // Verificar se é cabeçalho (contém texto comum em cabeçalhos)
-                if (linha?.ToLower().Contains("data") == true || 
+                if (linha?.ToLower().Contains("data") == true ||
                     linha?.ToLower().Contains("descricao") == true ||
                     linha?.ToLower().Contains("valor") == true)
                 {
@@ -82,14 +82,14 @@ public class ProcessarArquivoCsvHandler : IRequestHandler<ProcessarArquivoCsvCom
             importacao.LinhasComErro = linhas.Count(l => !l.EhValida);
             importacao.StatusProcessamento = "Processado";
 
-            _logger.LogInformation("Arquivo processado: {TotalLinhas} linhas, {Validas} válidas, {Erros} com erro", 
+            _logger.LogInformation("Arquivo processado: {TotalLinhas} linhas, {Validas} válidas, {Erros} com erro",
                 importacao.TotalLinhas, importacao.LinhasValidas, importacao.LinhasComErro);
         }
         catch (Exception ex)
         {
             _logger.LogError(ex, "Erro ao processar arquivo CSV");
             importacao.StatusProcessamento = "Erro";
-            
+
             // Adicionar linha de erro geral
             linhas.Add(new LinhaImportacaoDto
             {
@@ -138,15 +138,15 @@ public class ProcessarArquivoCsvHandler : IRequestHandler<ProcessarArquivoCsvCom
             linhaDto.Descricao = campos[1];
             linhaDto.Valor = campos[2];
             linhaDto.Tipo = campos[3];
-            
+
             if (campos.Length > 4)
                 linhaDto.Categoria = campos[4];
-            
+
             if (campos.Length > 5)
                 linhaDto.Observacoes = campos[5];
 
             // Validar e parsear Data
-            if (DateTime.TryParseExact(linhaDto.Data, new[] { "dd/MM/yyyy", "dd-MM-yyyy", "yyyy-MM-dd" }, 
+            if (DateTime.TryParseExact(linhaDto.Data, new[] { "dd/MM/yyyy", "dd-MM-yyyy", "yyyy-MM-dd" },
                 CultureInfo.InvariantCulture, DateTimeStyles.None, out var dataParsed))
             {
                 linhaDto.DataParsed = dataParsed;
@@ -188,9 +188,9 @@ public class ProcessarArquivoCsvHandler : IRequestHandler<ProcessarArquivoCsvCom
             if (!string.IsNullOrWhiteSpace(linhaDto.Categoria))
             {
                 var categorias = await _unitOfWork.Categorias.GetByUsuarioIdAsync(usuarioId);
-                var categoria = categorias.FirstOrDefault(c => 
+                var categoria = categorias.FirstOrDefault(c =>
                     string.Equals(c.Nome, linhaDto.Categoria, StringComparison.OrdinalIgnoreCase));
-                
+
                 if (categoria != null)
                 {
                     linhaDto.CategoriaId = categoria.Id;
@@ -214,7 +214,7 @@ public class ProcessarArquivoCsvHandler : IRequestHandler<ProcessarArquivoCsvCom
     private List<string> GerarSugestoesMapeamento(List<LinhaImportacaoDto> linhas, List<CategoriaDto> categorias)
     {
         var sugestoes = new List<string>();
-        
+
         // Encontrar categorias mencionadas mas não encontradas
         var categoriasNaoEncontradas = linhas
             .Where(l => !string.IsNullOrWhiteSpace(l.Categoria) && !l.CategoriaId.HasValue)
