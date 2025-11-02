@@ -10,6 +10,11 @@ COPY ["src/SpendWise.Application/SpendWise.Application.csproj", "src/SpendWise.A
 COPY ["src/SpendWise.Domain/SpendWise.Domain.csproj", "src/SpendWise.Domain/"]
 COPY ["src/SpendWise.Infrastructure/SpendWise.Infrastructure.csproj", "src/SpendWise.Infrastructure/"]
 
+# Copiar projetos de teste (necessários para restore da solution)
+COPY ["tests/SpendWise.Domain.Tests/SpendWise.Domain.Tests.csproj", "tests/SpendWise.Domain.Tests/"]
+COPY ["tests/SpendWise.Application.Tests/SpendWise.Application.Tests.csproj", "tests/SpendWise.Application.Tests/"]
+COPY ["tests/SpendWise.Infrastructure.Tests/SpendWise.Infrastructure.Tests.csproj", "tests/SpendWise.Infrastructure.Tests/"]
+
 # Restaurar dependências
 RUN dotnet restore "SpendWise.sln"
 
