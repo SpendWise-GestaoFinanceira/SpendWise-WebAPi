@@ -11,12 +11,12 @@ public class ApplicationDbContext : DbContext
     {
     }
 
-    public DbSet<Usuario> Usuarios { get; set; }
-    public DbSet<Categoria> Categorias { get; set; }
-    public DbSet<Transacao> Transacoes { get; set; }
-    public DbSet<OrcamentoMensal> OrcamentosMensais { get; set; }
-    public DbSet<FechamentoMensal> FechamentosMensais { get; set; }
-    public DbSet<Meta> Metas { get; set; }
+    public DbSet<Usuario> Usuarios { get; set; } = null!;
+    public DbSet<Categoria> Categorias { get; set; } = null!;
+    public DbSet<Transacao> Transacoes { get; set; } = null!;
+    public DbSet<OrcamentoMensal> OrcamentosMensais { get; set; } = null!;
+    public DbSet<FechamentoMensal> FechamentosMensais { get; set; } = null!;
+    public DbSet<Meta> Metas { get; set; } = null!;
 
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
