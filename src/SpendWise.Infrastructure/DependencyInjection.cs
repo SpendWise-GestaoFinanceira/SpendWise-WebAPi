@@ -1,3 +1,4 @@
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SpendWise.Application.Services;
 using SpendWise.Domain.Interfaces;
@@ -8,7 +9,7 @@ namespace SpendWise.Infrastructure;
 
 public static class DependencyInjection
 {
-    public static IServiceCollection AddInfrastructure(this IServiceCollection services)
+    public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
         // Add Repositories
         services.AddScoped<IUsuarioRepository, UsuarioRepository>();
@@ -28,6 +29,15 @@ public static class DependencyInjection
 
         // Add Cache Service
         services.AddSingleton<ICacheService, InMemoryCacheService>();
+
+        // Add HttpClient for Auth Service
+        services.AddHttpClient("SpendWiseAuth", client =>
+        {
+            var authServiceUrl = configuration["Services:AuthServiceUrl"] ?? "http://localhost:5001/api";
+            client.BaseAddress = new Uri(authServiceUrl);
+            client.DefaultRequestHeaders.Add("Accept", "application/json");
+            client.Timeout = TimeSpan.FromSeconds(30);
+        });
 
         return services;
     }

@@ -58,23 +58,8 @@ public class UsuariosController : ControllerBase
         return Ok(usuario);
     }
 
-    /// <summary>
-    /// Criar novo usuário (registro)
-    /// </summary>
-    [AllowAnonymous]
-    [HttpPost("register")]
-    public async Task<ActionResult<UsuarioDto>> Create([FromBody] CreateUsuarioDto createDto)
-    {
-        var command = new CreateUsuarioCommand(
-            createDto.Nome,
-            createDto.Email,
-            createDto.Password,
-            createDto.RendaMensal
-        );
-
-        var usuario = await _mediator.Send(command);
-        return CreatedAtAction(nameof(GetById), new { id = usuario.Id }, usuario);
-    }
+    // Endpoint de registro removido - agora é feito via /api/auth/register
+    // que redireciona para o SpendWise Auth Service
 
     /// <summary>
     /// Atualizar perfil próprio

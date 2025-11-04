@@ -119,7 +119,7 @@ try
 
     // Add Application Services
     builder.Services.AddApplication();
-    builder.Services.AddInfrastructure();
+    builder.Services.AddInfrastructure(builder.Configuration);
 
     var app = builder.Build();
 
@@ -145,22 +145,22 @@ try
 
     app.MapControllers();
 
-    // Aplicar migrations automaticamente em produção
-    using (var scope = app.Services.CreateScope())
-    {
-        try
-        {
-            var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-            Log.Information("Verificando e aplicando migrations...");
-            context.Database.Migrate();
-            Log.Information("Migrations aplicadas com sucesso");
-        }
-        catch (Exception ex)
-        {
-            Log.Error(ex, "Erro ao aplicar migrations");
-            throw;
-        }
-    }
+    // Migrations automáticas comentadas para usar banco compartilhado com Auth
+    // using (var scope = app.Services.CreateScope())
+    // {
+    //     try
+    //     {
+    //         var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+    //         Log.Information("Verificando e aplicando migrations...");
+    //         context.Database.Migrate();
+    //         Log.Information("Migrations aplicadas com sucesso");
+    //     }
+    //     catch (Exception ex)
+    //     {
+    //         Log.Error(ex, "Erro ao aplicar migrations");
+    //         throw;
+    //     }
+    // }
 
     Log.Information("SpendWise API iniciada com sucesso");
     app.Run();
